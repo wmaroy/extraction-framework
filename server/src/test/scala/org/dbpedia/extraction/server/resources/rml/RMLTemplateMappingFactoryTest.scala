@@ -2,6 +2,7 @@ package org.dbpedia.extraction.server.resources.rml
 
 import org.dbpedia.extraction.mappings.MappingsLoader
 import org.scalatest.FunSuite
+import scala.language.reflectiveCalls
 import org.dbpedia.extraction.mappings.rml.util.ContextCreator
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{Namespace, PageNode, WikiParser, WikiTitle}
@@ -20,7 +21,8 @@ class RMLTemplateMappingFactoryTest extends FunSuite {
 
       //test files
       val pathsToXml: Array[String] = Array("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.xml",
-        "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_automobile_generation.xml")
+        "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_automobile_generation.xml",
+        "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_artist.xml")
 
       //context
       val contexts = pathsToXml.map( path => ContextCreator.createXMLContext(path, languageEN))

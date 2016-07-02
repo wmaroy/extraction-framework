@@ -10,55 +10,7 @@ import org.dbpedia.extraction.wikiparser.WikiTitle
   */
 class ModelWrapper() {
 
-  protected val model: Model = ModelFactory.createDefaultModel()
-
-  /**
-    * Add a string as a property to a resource in this model
-    */
-  def addLiteralAsPropertyToResource(subject: Resource, predicate: String, literal: String): Unit =
-  {
-    subject.addProperty(model.createProperty(predicate), literal)
-  }
-
-  /**
-    * Create a resource and add to this model
-    */
-  def addPropertyAsResource(subjectIRI: String, _object: String): Resource =
-  {
-    model.createResource(subjectIRI, model.createProperty(_object))
-  }
-
-  /**
-    * Create a blank node and add to this model
-    */
-  def addBlankNode(): Resource =
-  {
-    model.createResource()
-  }
-
-  /**
-    * Add a resource as a property to a resource in this model
-    */
-  def addResourceAsPropertyToResource(subject: Resource, predicate: String, _object: Resource): Unit =
-  {
-    subject.addProperty(model.createProperty(predicate), _object)
-  }
-
-  /**
-    * Add a property as a property to a resource in this model
-    */
-  def addPropertyAsPropertyToResource(subject: Resource, predicate: String, _object: String): Unit =
-  {
-    subject.addProperty(model.createProperty(predicate), model.createProperty(_object))
-  }
-
-  /**
-    * Returns resource using a String from this model
-    */
-  def getResource(resource: String) =
-  {
-    model.getResource(resource)
-  }
+  val model: Model = ModelFactory.createDefaultModel()
 
   def printAsNTriples: Unit =
   {
