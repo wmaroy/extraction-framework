@@ -1,6 +1,6 @@
-package org.dbpedia.extraction.mappings.rml
-import java.nio.file
-import java.nio.file.{Path, Paths}
+package org.dbpedia.extraction.mappings.rml.loading
+
+import java.nio.file.Paths
 
 import be.ugent.mmlab.rml.mapdochandler.extraction.std.StdRMLMappingFactory
 import be.ugent.mmlab.rml.mapdochandler.retrieval.RMLDocRetrieval

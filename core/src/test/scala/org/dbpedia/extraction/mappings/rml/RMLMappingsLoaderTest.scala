@@ -1,6 +1,7 @@
 package org.dbpedia.extraction.mappings.rml
 
 import org.dbpedia.extraction.mappings._
+import org.dbpedia.extraction.mappings.rml.loading.RMLMappingsLoader
 import org.dbpedia.extraction.mappings.rml.util.{ContextCreator, TemplateMappingsPrinter}
 import org.dbpedia.extraction.util.Language
 import org.junit.runner.RunWith
