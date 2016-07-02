@@ -1,12 +1,13 @@
-package org.dbpedia.extraction.mappings.rml
+package org.dbpedia.extraction.mappings.rml.loading
 
-import be.ugent.mmlab.rml.model.RDFTerm.PredicateMap
 import be.ugent.mmlab.rml.model.{PredicateObjectMap, TriplesMap}
+import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
 import org.dbpedia.extraction.mappings.{PropertyMapping, Redirects, SimplePropertyMapping}
 import org.dbpedia.extraction.ontology.Ontology
 import org.dbpedia.extraction.util.Language
+
+import scala.collection.JavaConverters._
 import scala.language.reflectiveCalls
-import collection.JavaConverters._
 
 
 /**

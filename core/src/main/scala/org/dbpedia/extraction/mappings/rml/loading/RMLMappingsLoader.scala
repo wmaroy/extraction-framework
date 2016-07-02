@@ -1,15 +1,15 @@
-package org.dbpedia.extraction.mappings.rml
+package org.dbpedia.extraction.mappings.rml.loading
 
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings._
+import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
 import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty}
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{TableNode, TemplateNode}
 
-import collection.JavaConverters._
+import scala.collection.JavaConverters._
 import scala.collection.immutable.List
-import scala.collection.mutable.HashMap
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.{ArrayBuffer, HashMap}
 import scala.language.reflectiveCalls
 
 /**

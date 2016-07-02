@@ -1,4 +1,4 @@
-package org.dbpedia.extraction.mappings.rml
+package org.dbpedia.extraction.mappings.rml.util
 
 import be.ugent.mmlab.rml.model.TriplesMap
 import org.dbpedia.extraction.ontology.datatypes.Datatype
