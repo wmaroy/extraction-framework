@@ -16,6 +16,9 @@ class RMLModel(val wikiTitle: WikiTitle, val sourceUri : String) extends ModelWr
   private val _subjectMap: RMLSubjectMap = _triplesMap.addSubjectMap(new RMLUri(convertToSubjectMapUri(wikiTitle)))
   private val _logicalSource: RMLLogicalSource = _triplesMap.addLogicalSource(new RMLUri(convertToLogicalSourceUri(wikiTitle)))
 
+  _logicalSource.addIterator(new RMLLiteral("Infobox"))
+  _logicalSource.addReferenceFormulation(new RMLUri(RdfNamespace.QL.namespace + "wikitext"))
+
   def logicalSource = _logicalSource
   def subjectMap = _subjectMap
   def triplesMap = _triplesMap

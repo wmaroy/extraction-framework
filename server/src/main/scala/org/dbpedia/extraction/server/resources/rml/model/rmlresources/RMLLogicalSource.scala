@@ -18,9 +18,9 @@ class RMLLogicalSource(override val resource: Resource) extends RMLResource(reso
     resource.addProperty(createProperty(RdfNamespace.RML.namespace+ "iterator"), literal.toString())
   }
 
-  def addSource(uri: RMLUri) =
+  def addSource(literal: RMLLiteral) =
   {
-    resource.addProperty(createProperty(RdfNamespace.RML.namespace + "source"), createProperty(uri.toString()))
+    resource.addLiteral(createProperty(RdfNamespace.RML.namespace + "source"), literal)
   }
 
 }

@@ -1,7 +1,7 @@
 package org.dbpedia.extraction.mappings.rml
 
 import collection.JavaConverters._
-import be.ugent.mmlab.rml.model.RMLMapping
+import be.ugent.mmlab.rml.model.{PredicateObjectMap, RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings.rml.loading.RMLParser
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -16,16 +16,23 @@ class RMLParserTest extends FlatSpec with Matchers
         parse() shouldBe a [RMLMapping]
     }
 
-    "RMLParser" should "parse 2 triples map" in
+    "RMLParser" should "find Triples Maps with a dcterms:type" in
     {
-        parse().getTriplesMaps.size() should equal(2)
+        val document = parse()
+
+        var counter = 0
+        for (triplesMap: TriplesMap <- document.getTriplesMaps.asScala;
+             predicateObjectMap: PredicateObjectMap <- triplesMap.getPredicateObjectMaps.asScala) {
+            if(predicateObjectMap.getDCTermsType != null) {
+                counter += 1
+            }
+        }
+        println("\nAmount of Predicate Object Maps with dcterm:type that were found: " + counter)
     }
-
-
 
     def parse(): RMLMapping =
     {
-        val pathToDocument = "src/test/resources/org/dbpedia/extraction/mappings/rml/test.rml"
+        val pathToDocument = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.rml"
         val rmlMapping = RMLParser.parseFromFile(pathToDocument)
         return rmlMapping
 

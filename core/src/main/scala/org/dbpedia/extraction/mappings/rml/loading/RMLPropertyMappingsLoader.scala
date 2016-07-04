@@ -45,14 +45,21 @@ object RMLPropertyMappingsLoader {
 
     //TODO: Making a distinction between the type of mappings
 
-    val predicateMap = predicateObjectMap.getPredicateMaps.asScala.head
-    val objectMap = predicateObjectMap.getObjectMaps.asScala.head
+    predicateObjectMap.getDCTermsType match {
+      case "simplePropertyMapping" => {
 
-    val templateProperty = objectMap.getReferenceMap.getReference
-    val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateMap.getConstantValue.stringValue(), context)
-    val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)
+        val predicateMap = predicateObjectMap.getPredicateMaps.asScala.head
+        val objectMap = predicateObjectMap.getObjectMaps.asScala.head
 
-    new SimplePropertyMapping(templateProperty, ontologyProperty, null, null, null, null, dataType, context.language, 1, context)
+        val templateProperty = objectMap.getReferenceMap.getReference
+        val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateMap.getConstantValue.stringValue(), context)
+        val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)
+
+        new SimplePropertyMapping(templateProperty, ontologyProperty, null, null, null, null, dataType, context.language, 1, context)
+
+      }
+    }
+
   }
 
 }
