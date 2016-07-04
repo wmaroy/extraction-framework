@@ -12,9 +12,10 @@ class RMLModel(val wikiTitle: WikiTitle, val sourceUri : String) extends ModelWr
 
   val rmlFactory = new RMLResourceFactory(model)
 
-  private val _triplesMap: RMLTriplesMap = rmlFactory.createRMLTriplesMap(rmlFactory.createRMLUri(wikiTitle.resourceIri))
+  private val _triplesMap: RMLTriplesMap = rmlFactory.createRMLTriplesMap(new RMLUri(wikiTitle.resourceIri))
   private val _subjectMap: RMLSubjectMap = _triplesMap.addSubjectMap(new RMLUri(convertToSubjectMapUri(wikiTitle)))
   private val _logicalSource: RMLLogicalSource = _triplesMap.addLogicalSource(new RMLUri(convertToLogicalSourceUri(wikiTitle)))
+  private val _functionSubjectMap: RMLSubjectMap = rmlFactory.createRMLSubjectMap(new RMLUri(convertToSubjectMapUri(wikiTitle) + "/Function"))
 
   _logicalSource.addIterator(new RMLLiteral("Infobox"))
   _logicalSource.addReferenceFormulation(new RMLUri(RdfNamespace.QL.namespace + "wikitext"))
@@ -22,6 +23,7 @@ class RMLModel(val wikiTitle: WikiTitle, val sourceUri : String) extends ModelWr
   def logicalSource = _logicalSource
   def subjectMap = _subjectMap
   def triplesMap = _triplesMap
+  def functionSubjectMap = _functionSubjectMap
 
   //setting predefined prefixes
   for(rdfNamespace <- RdfNamespace.prefixMap) {
