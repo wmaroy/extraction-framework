@@ -26,7 +26,7 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
 
   def addSimplePropertyMappingToTriplesMap(uri: String, triplesMap: RMLTriplesMap) =
   {
-    val simplePropertyMappingUri = rmlFactory.createRMLUri(uri + "/SimplePropertyMapping/" + mapping.ontologyProperty.name + "/" + mapping.templateProperty)
+    val simplePropertyMappingUri = rmlFactory.createRMLUri(uri + "/SimplePropertyMapping/" + mapping.ontologyProperty.name + "/" + encode(mapping.templateProperty))
     val simplePmPom = triplesMap.addPredicateObjectMap(simplePropertyMappingUri)
 
     simplePmPom.addDCTermsType(rmlFactory.createRMLLiteral("simplePropertyMapping"))
@@ -41,6 +41,10 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
 
   }
 
+  private def encode(s: String) : String =
+  {
+    s.replace(" ", "_")
+  }
 
   private def addUnitToPredicateObjectMap(predicateObjectMap: RMLPredicateObjectMap, unit : Datatype): Unit =
   {

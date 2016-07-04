@@ -2,7 +2,7 @@ package org.dbpedia.extraction.mappings.rml
 
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.mappings.rml.loading.RMLMappingsLoader
-import org.dbpedia.extraction.mappings.rml.util.{ContextCreator, TemplateMappingsPrinter}
+import org.dbpedia.extraction.mappings.rml.util.{ContextCreator}
 import org.dbpedia.extraction.util.Language
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -31,9 +31,9 @@ class RMLMappingsLoaderTest extends FlatSpec with Matchers
 
   // printing output of both versions
   println("**** RML MAPPINGS ****")
-  TemplateMappingsPrinter.printTemplateMappings(rmlTemplateMappings)
+  //TemplateMappingsPrinter.printTemplateMappings(rmlTemplateMappings)
 
   println("\n\n**** XML MAPPINGS ****")
-  TemplateMappingsPrinter.printTemplateMappings(xmlTemplateMappings)
+  //TemplateMappingsPrinter.printTemplateMappings(xmlTemplateMappings)
 
 }

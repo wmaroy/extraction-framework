@@ -48,7 +48,8 @@ class RMLTemplateMappingFactory extends RMLMappingFactory {
 
   private def defineLogicalSource(rMLModel: RMLModel) =
   {
-    rMLModel.logicalSource.addSource(rMLModel.rmlFactory.createRMLUri(rMLModel.sourceUri))
+    rMLModel.logicalSource.addSource(rMLModel.rmlFactory.createRMLLiteral
+    (rMLModel.sourceUri))
   }
 
   private def addPropertyMappings(rMLModel: RMLModel, templateMapping: TemplateMapping) =
