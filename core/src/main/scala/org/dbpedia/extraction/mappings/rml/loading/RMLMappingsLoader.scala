@@ -32,7 +32,16 @@ object RMLMappingsLoader {
 
       val triplesMapCollection = context.mappingDoc.getTriplesMaps.asScala //get triplesmaps from mapping document
       for (triplesMap: TriplesMap <- triplesMapCollection) {
-        templateMappings.put(triplesMap.getName().replaceAll(".*/Mapping_en:", "").replaceAll("_", " "), loadTemplateMapping(triplesMap, context))
+        if(triplesMap.getDCTermsType == "templateMapping") {
+          println("Loading: " + triplesMap.getName)
+          try {
+            templateMappings.put(triplesMap.getName().replaceAll(".*/Mapping_en:", "").replaceAll("_", " "), loadTemplateMapping(triplesMap, context))
+          } catch {
+            case _ : IllegalArgumentException => println("Failed to load Template Mapping: " + triplesMap.getName)
+          }
+        } else {
+
+        }
       }
 
       new Mappings(templateMappings.toMap,tableMappings.toList)

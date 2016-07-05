@@ -15,7 +15,7 @@ import java.io.File
 import java.net.URL
 
 import org.dbpedia.extraction.mappings.rml.loading.RMLMappingsLoader
-import org.dbpedia.extraction.mappings.rml.util.ContextCreator
+import org.dbpedia.extraction.mappings.rml.util.{ContextCreator, Counter}
 
 /**
  * Base class for extraction managers.
@@ -66,7 +66,9 @@ abstract class ExtractionManager(
     def extract(source: Source, destination: Destination, language: Language, useCustomExtraction: Boolean = false): Unit = {
       val extract = if (useCustomExtraction) customExtractor(language) else mappingExtractor(language)
       destination.open()
+      Counter.reset()
       for (page <- source) destination.write(extract(page))
+      Counter.print()
       destination.close()
     }
 
@@ -225,11 +227,11 @@ abstract class ExtractionManager(
           val disambiguations = self.disambiguations
         }
 
-        val rmlContext = ContextCreator.createRMLContext("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.rml", lang)
+        //val rmlContext = ContextCreator.createRMLContext("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml", lang)
 
-        //MappingsLoader.load(context)
+        MappingsLoader.load(context)
 
-        RMLMappingsLoader.load(rmlContext)
+        //RMLMappingsLoader.load(rmlContext)
     }
 
 
