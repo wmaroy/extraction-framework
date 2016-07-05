@@ -8,8 +8,11 @@ import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
 import org.dbpedia.extraction.util.{ExtractorUtils, Language}
 import org.dbpedia.extraction.ontology._
 import java.lang.IllegalArgumentException
+
+import org.dbpedia.extraction.mappings.rml.util.Counter
 import org.dbpedia.extraction.wikiparser.TemplateNode
-import org.dbpedia.extraction.ontology.{OntologyDatatypeProperty,OntologyClass,OntologyProperty,DBpediaNamespace}
+import org.dbpedia.extraction.ontology.{DBpediaNamespace, OntologyClass, OntologyDatatypeProperty, OntologyProperty}
+
 import scala.collection.mutable.ArrayBuffer
 import scala.language.reflectiveCalls
 
@@ -38,6 +41,9 @@ extends PropertyMapping
             case null => identity
             case _ => throw new IllegalArgumentException("Only 'first' or 'last' are allowed in property 'select'")
         }
+
+
+
 
   /**
    * Transforms a text value appending/prepending a suffix/prefix.
@@ -248,7 +254,11 @@ extends PropertyMapping
                 graph ++= g
             }
         }
-        
+        var i = 0
+        while(i < graph.size) {
+          Counter.increment()
+          i +=1
+        }
         graph
     }
 

@@ -28,7 +28,10 @@ object RMLPropertyMappingsLoader {
       val predicateObjectMaps = triplesMap.getPredicateObjectMaps.asScala
 
       for (predicateObjectMap : PredicateObjectMap <- predicateObjectMaps) {
-          propertyMappings ::= loadPropertyMapping(predicateObjectMap, context)
+          val propertyMapping = loadPropertyMapping(predicateObjectMap, context)
+          if(propertyMapping != null) {
+            propertyMappings ::= propertyMapping
+          }
       }
 
       propertyMappings
@@ -53,10 +56,17 @@ object RMLPropertyMappingsLoader {
 
         val templateProperty = objectMap.getReferenceMap.getReference
         val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateMap.getConstantValue.stringValue(), context)
-        val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)
 
-        new SimplePropertyMapping(templateProperty, ontologyProperty, null, null, null, null, dataType, context.language, 1, context)
+        if(ontologyProperty != null) {
+          val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)
+          new SimplePropertyMapping(templateProperty, ontologyProperty, null, null, null, null, dataType, context.language, 1, context)
+        } else {
+          null
+        }
+      }
 
+      case null => {
+        null
       }
     }
 
