@@ -29,6 +29,4 @@ class RMLConditionalObjectMap(resource: Resource) extends RMLObjectMap(resource)
     conditionalObjectMap
   }
 
-
-
 }
