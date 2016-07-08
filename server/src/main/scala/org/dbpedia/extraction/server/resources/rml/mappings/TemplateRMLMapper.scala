@@ -24,13 +24,13 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
   {
     rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}"))
     rmlModel.subjectMap.addClass(rmlModel.rmlFactory.createRMLUri(templateMapping.mapToClass.uri))
-    rmlModel.subjectMap.addTermTypeIRI()
+    rmlModel.subjectMap.addIRITermType()
     addCorrespondingPropertyAndClassToSubjectMap()
   }
 
   private def defineLogicalSource() =
   {
-    rmlModel.logicalSource.addSource(rmlModel.rmlFactory.createRMLUri(rmlModel.sourceUri))
+    rmlModel.logicalSource.addSource(rmlModel.rmlFactory.createRMLLiteral(rmlModel.sourceUri))
   }
 
   private def addPropertyMappings() =
