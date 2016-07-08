@@ -1,6 +1,6 @@
-package org.dbpedia.extraction.server.resources.rml.model
+package org.dbpedia.extraction.server.resources.rml.model.factories
 
-import org.apache.jena.rdf.model.{Model, ModelFactory, Property}
+import org.apache.jena.rdf.model.{Model, Property}
 import org.dbpedia.extraction.ontology.RdfNamespace
 import org.dbpedia.extraction.server.resources.rml.model.rmlresources._
 
@@ -26,7 +26,7 @@ class RMLResourceFactory(model: Model) {
 
   def createRMLSubjectMap(uri: RMLUri) : RMLSubjectMap =
   {
-    new RMLSubjectMap(model.createResource(uri.toString(), createProperty(RdfNamespace.RML.namespace + "SubjectMap")))
+    new RMLSubjectMap(model.createResource(uri.toString(), createProperty(RdfNamespace.RR.namespace + "SubjectMap")))
   }
 
   def createRMLPredicateObjectMap(uri: RMLUri) : RMLPredicateObjectMap =
@@ -44,6 +44,11 @@ class RMLResourceFactory(model: Model) {
     new RMLConditionalObjectMap(model.createResource(uri.toString(), createProperty(RdfNamespace.RR.namespace + "ObjectMap")))
   }
 
+  def createRMLConditionalPredicateObjectMap(uri: RMLUri) : RMLConditionalPredicateObjectMap =
+  {
+    new RMLConditionalPredicateObjectMap(model.createResource(uri.toString(), createProperty(RdfNamespace.RR.namespace + "PredicateObjectMap")))
+  }
+
   def createRMLFunctionTermMap(uri: RMLUri) : RMLFunctionTermMap =
   {
     new RMLFunctionTermMap(model.createResource(uri.toString(), createProperty(RdfNamespace.FNML.namespace + "FunctionTermMap")))
@@ -57,6 +62,11 @@ class RMLResourceFactory(model: Model) {
   def createRMLLiteral(literal: String) : RMLLiteral =
   {
     new RMLLiteral(literal)
+  }
+
+  def transformToConditional(pom : RMLPredicateObjectMap): RMLConditionalPredicateObjectMap =
+  {
+    new RMLConditionalPredicateObjectMap(pom.resource)
   }
 
   private def createProperty(s: String) : Property =

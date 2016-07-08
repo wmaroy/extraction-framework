@@ -3,70 +3,68 @@ package org.dbpedia.extraction.server.resources.rml.mappings
 import org.apache.jena.rdf.model.Resource
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.ontology.RdfNamespace
-import org.dbpedia.extraction.server.resources.rml.model.{RMLModel, RMLResourceFactory}
+import org.dbpedia.extraction.server.resources.rml.model.rmlresources.{RMLLiteral, RMLPredicateObjectMap, RMLTriplesMap, RMLUri}
+import org.dbpedia.extraction.server.resources.rml.model.RMLModel
 
 /**
-  * Created by wmaroy on 30.06.16.
+  * IntermediateNodeMapper
   */
-class IntermediateNodeMapper(rmlFactory: RMLResourceFactory, modelWrapper: RMLModel, mapping: IntermediateNodeMapping) {
+class IntermediateNodeMapper(rmlModel: RMLModel, mapping: IntermediateNodeMapping) {
 
-  /**
 
-  def mapToModel() = {
+  def mapToModel() : List[RMLPredicateObjectMap] = {
     addIntermediateNodeMapping()
   }
 
-  def addIntermediateNodeMapping() =
+  def addIndependentIntermediateNodeMapping() : List[RMLPredicateObjectMap] =
+  {
+    //create the predicate object map and add it to the triples map
+    val uri = new RMLUri(rmlModel.wikiTitle.resourceIri + "/IntermediateNodeMapping/" + mapping.nodeClass.name + "/" + mapping.correspondingProperty.name)
+    val intermediateNodePom = rmlModel.rmlFactory.createRMLPredicateObjectMap(uri)
+    addIntermediateNodeMappingToPredicateObjectMap(intermediateNodePom)
+
+    List(intermediateNodePom)
+  }
+
+  def addIntermediateNodeMapping() : List[RMLPredicateObjectMap] =
   {
 
-    //create the predicate object map and it to the triples map
-    val templateString = "IntermediateNodeMapping/" + mapping.nodeClass.name + "/" + mapping.correspondingProperty.name
-    val uniqueString = baseName(templateString)
-    val predicateObjectMap = modelWrapper.addPredicateObjectMap(uniqueString)
-    modelWrapper.addPropertyAsPropertyToResource(predicateObjectMap, RdfNamespace.RR.namespace + "predicate", mapping.correspondingProperty.uri)
-    modelWrapper.addPredicateObjectMapUriToTriplesMap(uniqueString, modelWrapper.triplesMap)
+    val uri = new RMLUri(rmlModel.wikiTitle.resourceIri + "/IntermediateNodeMapping/" + mapping.nodeClass.name + "/" + mapping.correspondingProperty.name)
+    val intermediateNodePom = rmlModel.triplesMap.addPredicateObjectMap(uri)
 
-    //add dcterms:type to predicate:
-    modelWrapper.addPropertyAsPropertyToResource(predicateObjectMap, RdfNamespace.DCTERMS.namespace + "type", RdfNamespace.DBF.namespace + "intermediateNodeMapping" )
+    addIntermediateNodeMappingToPredicateObjectMap(intermediateNodePom)
 
-    //create the triples map with its subject map and object map
-    val subjectMap = modelWrapper.addResourceWithPredicate(baseName(templateString + "/SubjectMap"), RdfNamespace.RR.namespace + "SubjectMap")
-    modelWrapper.addPropertyAsPropertyToResource(subjectMap, RdfNamespace.RR.namespace + "constant", "tobeDefined")
-    val triplesMap = modelWrapper.addTriplesMap(baseName(templateString + "/TriplesMap"), subjectMap)
-    val objectMap = modelWrapper.addBlankNode()
-    modelWrapper.addResourceAsPropertyToResource(objectMap, RdfNamespace.RR.namespace + "parentTriplesMap", triplesMap)
-    modelWrapper.addResourceAsPropertyToResource(predicateObjectMap, RdfNamespace.RR.namespace + "objectMap", objectMap)
+    List(intermediateNodePom)
+
+  }
+
+  private def addIntermediateNodeMappingToPredicateObjectMap(intermediateNodePom: RMLPredicateObjectMap) =
+  {
+    intermediateNodePom.addPredicate(new RMLUri(mapping.correspondingProperty.uri))
+    intermediateNodePom.addDCTermsType(new RMLLiteral("intermediateNodeMapping"))
+
+    val intermediateNodeObjectMapUri = intermediateNodePom.uri.extend("/ObjectMap")
+    val interMediateNodeObjectMap = intermediateNodePom.addObjectMap(intermediateNodeObjectMapUri)
+
+    val parentTriplesMapUri = intermediateNodeObjectMapUri.extend("/ParentTriplesMap")
+    val parentTriplesMap = interMediateNodeObjectMap.addParentTriplesMap(parentTriplesMapUri)
+    parentTriplesMap.addLogicalSource(rmlModel.logicalSource)
+
+    val parentSubjectMap = parentTriplesMap.addSubjectMap(parentTriplesMapUri.extend("/SubjectMap"))
+    parentSubjectMap.addClass(new RMLUri(mapping.nodeClass.uri))
+    parentSubjectMap.addTermTypeIRI()
+    parentSubjectMap.addConstant(new RMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}/" + mapping.nodeClass.name + "/" + mapping.correspondingProperty.name))
 
     //create the intermediate mappings
     for(mapping <- mapping.mappings) {
-      addPropertyMapping(mapping, triplesMap)
-    }
-
-  }
-
-  /**
-    * Adds mappings (this is used by intermediate node mappings
-    */
-  private def addPropertyMapping(mapping: PropertyMapping, triplesMap: Resource) =
-  {
-    mapping.getClass.getSimpleName match {
-      case "SimplePropertyMapping" => new SimplePropertyRMLMapper(rmlFactory, mapping.asInstanceOf[SimplePropertyMapping]).addSimplePropertyMappingToTriplesMap(triplesMap.getNameSpace, triplesMap)
-      case "CalculateMapping" => println("Intermediate Calculate Mapping not supported.")
-      case "CombineDateMapping" => println("Intermediate Combine Date Mapping not supported.")
-      case "DateIntervalMapping" => new DateIntervalRMLMapper(modelWrapper, mapping.asInstanceOf[DateIntervalMapping]).addDateIntervalMappingToTriplesMap(triplesMap.getNameSpace, triplesMap)
-      case "GeoCoordinatesMapping" => new GeoCoordinatesRMLMapper(modelWrapper, mapping.asInstanceOf[GeoCoordinatesMapping]).addGeoCoordinatesMappingToTriplesMap(triplesMap.getNameSpace, triplesMap)
-      case "ConditionalMapping" => println("Intermediate Conditional Mapping not supported.")
-      case "IntermediateNodeMapping" => println("Intermediate Intermediate Mapping not supported.")
-      case "ConstantMapping" => println("Constant Mapping not supported.")
+      addPropertyMapping(mapping, parentTriplesMap)
     }
   }
 
-  /**
-    * Returns the base name + name added
-    */
-  private def baseName(name : String): String =
+  private def addPropertyMapping(mapping: PropertyMapping, triplesMap: RMLTriplesMap) =
   {
-    "http://mappings.dbpedia.org/wiki/" + modelWrapper.wikiTitle.encodedWithNamespace + "/" + name
+    val rmlMapper = new RMLModelMapper(rmlModel)
+    rmlMapper.addMappingToTriplesMap(mapping, triplesMap)
   }
-  **/
+
 }
