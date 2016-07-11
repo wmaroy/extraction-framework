@@ -31,7 +31,7 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
 
   private def defineLogicalSource() =
   {
-    rmlModel.logicalSource.addSource(rmlModel.rmlFactory.createRMLLiteral(rmlModel.sourceUri))
+    rmlModel.logicalSource.addSource(rmlModel.rmlFactory.createRMLUri(rmlModel.sourceUri))
   }
 
   private def addPropertyMappings() =
