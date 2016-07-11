@@ -54,8 +54,10 @@ object RMLPropertyMappingsLoader {
         val predicateMap = predicateObjectMap.getPredicateMaps.asScala.head
         val objectMap = predicateObjectMap.getObjectMaps.asScala.head
 
-        val templateProperty = objectMap.getReferenceMap.getReference
         val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateMap.getConstantValue.stringValue(), context)
+
+        val test = objectMap.getTermMapType
+        val templateProperty = objectMap.getReferenceMap.getReference
 
         if(ontologyProperty != null) {
           val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)

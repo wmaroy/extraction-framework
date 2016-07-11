@@ -97,7 +97,7 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
   private def defineSubjectMap() =
   {
     rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://mappings.dbpedia.org/wiki/resource/{{wikititle}}"))
-    rmlModel.subjectMap.addTermTypeIRI()
+    rmlModel.subjectMap.addIRITermType()
   }
 
   private def defineLogicalSource() =
