@@ -37,7 +37,10 @@ object RMLMappingsLoader {
           try {
             templateMappings.put(triplesMap.getName().replaceAll(".*/Mapping_en:", "").replaceAll("_", " "), loadTemplateMapping(triplesMap, context))
           } catch {
-            case _ : IllegalArgumentException => println("Failed to load Template Mapping: " + triplesMap.getName)
+            case e : IllegalArgumentException => {
+              println(e)
+              println("Failed to load Template Mapping: " + triplesMap.getName)
+            }
           }
         } else {
 

@@ -15,7 +15,7 @@
 @prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 @prefix crml:  <http://semweb.mmlab.be/ns/crml#> .
-@prefix fno:   <http://w3id.org/function/ontology/> .
+@prefix fno:   <http://w3id.org/function/ontology#> .
 @prefix georss: <http://www.georss.org/georss/> .
 @prefix dbf:   <http://dbpedia.org/function/> .
 @prefix dbo:   <http://dbpedia.org/ontology/> .
@@ -49,8 +49,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap>
         a                   fnml:FunctionTermMap ;
@@ -102,8 +102,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/award/awards>
         a             rr:PredicateObjectMap ;
@@ -118,7 +118,7 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap> ;
         rr:predicate  dbo:activeYearsStartYear .
 
@@ -135,8 +135,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/pseudonym/pseudonym/ObjectMap>
         a              rr:ObjectMap ;
@@ -197,8 +197,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap>
         a                   fnml:FunctionTermMap ;
@@ -211,8 +211,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap>
         a                   fnml:FunctionTermMap ;
@@ -265,8 +265,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height/FunctionTermMap/FunctionValue/unitParameterPOM>
         a             rr:PredicateObjectMap ;
@@ -307,8 +307,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -345,8 +345,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/foaf:homepage/website/ObjectMap>
         a              rr:ObjectMap ;
@@ -375,8 +375,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM>
         a             rr:PredicateObjectMap ;
@@ -393,9 +393,7 @@
         rr:predicate  dbf:endDateParameter .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function>
-        a             rr:SubjectMap ;
-        rr:termType   rr:BlankNode ;
-        rr:class      fno:Execution .
+        a       rr:SubjectMap .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -404,14 +402,14 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ExecutePOM>
         a             rr:PredicateObjectMap ;
@@ -516,8 +514,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM>
         a             rr:PredicateObjectMap ;
@@ -557,7 +555,7 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap> ;
         rr:predicate  dbo:functionStartYear .
 
@@ -575,8 +573,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathYear/death_date>
         a             rr:PredicateObjectMap ;
@@ -636,7 +634,7 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap> ;
         rr:predicate  dbo:functionStartDate .
 
@@ -657,8 +655,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource>
         a           rml:LogicalSource ;
@@ -667,14 +665,14 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap> ;
         rr:predicate  dbo:functionStartDate .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap> ;
         rr:predicate  dbo:functionStartYear .
 
@@ -796,8 +794,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -820,7 +818,7 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap> ;
         rr:predicate  dbo:functionStartYear .
 
@@ -830,6 +828,7 @@
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person>
         a                      rr:TriplesMap ;
+        dcterms:type           "templateMapping" ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
         rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/relative/relatives> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/award/awards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/successor/successor> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthDate/birth_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/child/children> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthYear/birth_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/foaf:homepage/website> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/employer/employer> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/height/height> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/religion/religion> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/board/boards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/restingPlace/resting_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/bodyDiscovered/body_discovered> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/stateOfOrigin/nationality> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/residence/residence> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/hometown/home_town> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/opponent/opponents> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/occupation/occupation> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathDate/death_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/citizenship/citizenship> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/nationality/nationality> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/pseudonym/pseudonym> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/foaf:name/name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/title/title> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathPlace/death_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthPlace/birth_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/parent/parents> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/knownFor/known_for> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathDate/deathdate> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/ethnicity/ethnicity> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/party/party> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathCause/death_cause> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/foaf:homepage/homepage> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathPlace/deathplace> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthName/birth_name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/alias/othername> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/alias/other_names> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthName/birthname> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathYear/death_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/relation/relations> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/spouse/spouse> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthPlace/birthplace> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/education/education> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/IntermediateNodeMapping/PersonFunction/personFunction> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/IntermediateNodeMapping/PersonFunction/occupation> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthDate/birthdate> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/almaMater/alma_mater> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/partner/partner> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/callSign/callsign> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/predecessor/predecessor> ;
         rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap> .
@@ -837,8 +836,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/term>
         a              rr:PredicateObjectMap ;
@@ -850,8 +849,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/networth/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/deathPlace/deathplace/ObjectMap>
         a              rr:ObjectMap ;
@@ -991,8 +990,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net%20worth/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/birthDate/birth_date/ObjectMap>
         a              rr:ObjectMap ;
@@ -1051,8 +1050,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
         a            rr:ObjectMap ;
@@ -1086,8 +1085,8 @@
         a                      rr:TriplesMap , fnml:FunctionTermMap ;
         fnml:functionValue     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude/FunctionTermMap> ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude/FunctionTermMap/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude/FunctionTermMap/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude/FunctionTermMap/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude/FunctionTermMap/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -1128,8 +1127,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/weight/weight/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -1256,8 +1255,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/term/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -1412,8 +1411,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/relation/relations/ObjectMap>
         a              rr:ObjectMap ;
@@ -1422,14 +1421,14 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartDate/functionEndDate/years_active> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/years_active/FunctionTermMap> ;
         rr:predicate  dbo:functionStartDate .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active>
         a             rr:PredicateObjectMap ;
         dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/activeYearsStartYear/activeYearsEndYear/years_active> ;
-        dcterms:type  "startDateInvervalMapping" ;
+        dcterms:type  "startDateIntervalMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/activeYearsStartYear/activeYearsEndYear/years_active/FunctionTermMap> ;
         rr:predicate  dbo:activeYearsStartYear .
 
@@ -1454,8 +1453,8 @@
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
         rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
-        rr:subjectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/ExecutePOM> .
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/salary/salary/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/unitParameterPOM>
         a             rr:PredicateObjectMap ;
