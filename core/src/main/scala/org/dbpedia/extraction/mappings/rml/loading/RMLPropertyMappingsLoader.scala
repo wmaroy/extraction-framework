@@ -166,8 +166,9 @@ object RMLPropertyMappingsLoader {
       case "intermediateNodeMapping" => {
         val parentTriplesMap = predicateObjectMap.getReferencingObjectMaps.asScala.head.getParentTriplesMap
         val nodeClass = RMLOntologyUtil.loadOntologyClassFromIRI(parentTriplesMap.getSubjectMap.getClassIRIs.asScala.head.toString, context)
+        val correspondingProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateObjectMap.getPredicateMaps.asScala.head.getConstantValue.toString, context)
         val propertyMappings = loadPropertyMappings(parentTriplesMap, context)
-        new IntermediateNodeMapping(nodeClass, null, propertyMappings, context)
+        new IntermediateNodeMapping(nodeClass, correspondingProperty, propertyMappings, context)
 
       }
 
