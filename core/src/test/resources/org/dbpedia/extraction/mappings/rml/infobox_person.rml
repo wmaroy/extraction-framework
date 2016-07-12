@@ -393,9 +393,7 @@
         rr:predicate  dbf:endDateParameter .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function>
-        a            rr:SubjectMap ;
-        rr:class     fno:Execution ;
-        rr:termType  rr:BlankNode .
+        a       rr:SubjectMap .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -561,16 +559,22 @@
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap> ;
         rr:predicate  dbo:functionStartYear .
 
-<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM>
-        a             rr:PredicateObjectMap ;
-        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
-        rr:predicate  fno:executes .
-
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/spouse/spouse>
         a             rr:PredicateObjectMap ;
         dcterms:type  "simplePropertyMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/spouse/spouse/ObjectMap> ;
         rr:predicate  dbo:spouse .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartYear/functionEndYear/years_active/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/SubjectMap>
+        a            rr:SubjectMap ;
+        rr:class     geo:SpatialThing ;
+        rr:constant  "http://en.dbpedia.org/resource/{{wikititle}}/restingPlacePosition/" ;
+        rr:termType  rr:IRI .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/term/FunctionTermMap/FunctionValue>
         a                      rr:TriplesMap ;
@@ -661,10 +665,8 @@
         rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource>
-        a                         rml:LogicalSource ;
-        rml:iterator              "Infobox" ;
-        rml:referenceFormulation  ql:wikitext ;
-        rml:source                "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person?oldid=26071" .
+        a           rml:LogicalSource ;
+        rml:source  "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person?oldid=26071" .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive>
         a             rr:PredicateObjectMap ;
@@ -1344,7 +1346,9 @@
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap>
         a                      rr:TriplesMap ;
-        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude> .
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/longitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/latitude> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/SubjectMap> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/EndDate/functionStartYear/functionEndYear/years_active>
         a              rr:PredicateObjectMap ;
