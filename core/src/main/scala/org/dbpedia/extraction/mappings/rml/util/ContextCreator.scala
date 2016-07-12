@@ -51,7 +51,7 @@ object ContextCreator {
     new {
       def ontology: Ontology = ontologyObject
       def language: Language = lang
-      def redirects: Redirects  = null
+      def redirects: Redirects = new Redirects(Map())
       def mappingDoc: RMLMapping = rmlMapping
     }
   }
