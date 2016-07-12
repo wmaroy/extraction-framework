@@ -1,0 +1,708 @@
+@prefix schema: <http://schema.org/> .
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix gml:   <http://www.opengis.net/gml/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix bio:   <http://purl.org/vocab/bio/0.1/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix d0:    <http://www.ontologydesignpatterns.org/ont/d0.owl#> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rml:   <http://semweb.mmlab.be/ns/rml#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix fnml:  <http://semweb.mmlab.be/ns/fnml#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix crml:  <http://semweb.mmlab.be/ns/crml#> .
+@prefix fno:   <http://w3id.org/function/ontology#> .
+@prefix georss: <http://www.georss.org/georss/> .
+@prefix dbf:   <http://dbpedia.org/function/> .
+@prefix dbo:   <http://dbpedia.org/ontology/> .
+@prefix mappings: <http://mappings.dbpedia.org/wiki/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix dul:   <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix cidoccrm: <http://purl.org/NET/cidoc-crm/core#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "inhabitantsPerSquareKilometre" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/native_name/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "native_name" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/governmentType/government_type/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "government_type" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/propertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:propertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date9>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date9/ObjectMap> ;
+        rr:predicate  dbo:foundingDate .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title2/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_title2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatMinutesParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatMinutesParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:latMinutesParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name5>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name5/ObjectMap> ;
+        rr:predicate  dbo:leader .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatDegreesParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatDegreesParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:latDegreesParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name5/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_name5" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function>
+        a            rr:SubjectMap ;
+        rr:class     fno:Execution ;
+        rr:termType  rr:BlankNode .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDegreesParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "longd" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonMinutesParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonMinutesParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:lonMinutesParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:propertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/regionalLanguage/regional_languages/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "regional_languages" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/motto/national_motto/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "national_motto" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/national_anthem/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "national_anthem" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/latDirectionParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "latNS" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/native_name>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/native_name/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title4/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_title4" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatMinutesParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "latm" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatDegreesParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "latd" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "image_map" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/governmentType/government_type>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/governmentType/government_type/ObjectMap> ;
+        rr:predicate  dbo:governmentType .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/percentageOfAreaWater/percent_water/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "percent_water" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap>
+        a            rr:SubjectMap ;
+        rr:class     dbo:Country ;
+        rr:constant  "http://en.dbpedia.org/resource/{{wikititle}}" ;
+        rr:termType  rr:IRI .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource>
+        a                         rml:LogicalSource ;
+        rml:iterator              "Infobox" ;
+        rml:referenceFormulation  ql:wikitext ;
+        rml:source                "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country?oldid=35237" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/unitParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:unitParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "population_density_km2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestCity/largest_city>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestCity/largest_city/ObjectMap> ;
+        rr:predicate  dbo:largestCity .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title3/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_title3" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationTotal/population_estimate>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationTotal/population_estimate/ObjectMap> ;
+        rr:predicate  dbo:populationTotal .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:lonFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title5>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title5/ObjectMap> ;
+        rr:predicate  dbo:leaderTitle .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name4>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name4/ObjectMap> ;
+        rr:predicate  dbo:leader .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "area_sq_mi" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/currency/currency>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/currency/currency/ObjectMap> ;
+        rr:predicate  dbo:currency .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map2/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "image_map2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date2/ObjectMap> ;
+        rr:predicate  dbo:foundingDate .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title5/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_title5" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/officialLanguage/official_languages/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "official_languages" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDirectionParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "longEW" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/latDirectionParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatMinutesParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/LatDegreesParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap> ;
+        rr:predicate  dbo:populationDensity .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map2/ObjectMap> ;
+        rr:predicate  dbo:map .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "squareMile" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date1/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "established_date1" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/regional_languages/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "regional_languages" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDegreesParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDegreesParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:lonDegreesParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/longName/conventional_long_name>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/longName/conventional_long_name/ObjectMap> ;
+        rr:predicate  dbo:longName .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/demonym/demonym>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/demonym/demonym/ObjectMap> ;
+        rr:predicate  dbo:demonym .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/demonym/demonym/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "demonym" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/languages/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "languages" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:latFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:unitParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title4>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title4/ObjectMap> ;
+        rr:predicate  dbo:leaderTitle .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name3>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name3/ObjectMap> ;
+        rr:predicate  dbo:leader .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestSettlement/largest_settlement/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "largest_settlement" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/official_languages/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "official_languages" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date1>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date1/ObjectMap> ;
+        rr:predicate  dbo:foundingDate .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:simplePropertyFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestCity/largest_city/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "largest_city" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:propertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/longName/conventional_long_name/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "conventional_long_name" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/common_name/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "common_name" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroupsInYear/ethnic_groups_year>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroupsInYear/ethnic_groups_year/ObjectMap> ;
+        rr:predicate  dbo:ethnicGroupsInYear .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/regionalLanguage/regional_languages>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/regionalLanguage/regional_languages/ObjectMap> ;
+        rr:predicate  dbo:regionalLanguage .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap> ;
+        rr:predicate  dbo:areaTotal .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date2/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "established_date2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/capital/capital>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/capital/capital/ObjectMap> ;
+        rr:predicate  dbo:capital .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/flag/image_flag/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "image_flag" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/common_name>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/common_name/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/national_anthem>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/national_anthem/ObjectMap> ;
+        rr:predicate  dbo:anthem .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "inhabitantsPerSquareMile" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:unitParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title3>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title3/ObjectMap> ;
+        rr:predicate  dbo:leaderTitle .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestSettlement/largest_settlement>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestSettlement/largest_settlement/ObjectMap> ;
+        rr:predicate  dbo:largestSettlement .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name2/ObjectMap> ;
+        rr:predicate  dbo:leader .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/percentageOfAreaWater/percent_water>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/percentageOfAreaWater/percent_water/ObjectMap> ;
+        rr:predicate  dbo:percentageOfAreaWater .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/flag/image_flag>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/flag/image_flag/ObjectMap> ;
+        rr:predicate  dbo:flag .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/official_languages>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/official_languages/ObjectMap> ;
+        rr:predicate  dbo:language .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap> ;
+        rr:predicate  dbo:populationDensity .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "latitudeMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap> ;
+        rr:predicate  geo:lat .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name1/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_name1" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/regional_languages>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/regional_languages/ObjectMap> ;
+        rr:predicate  dbo:language .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/latDirectionParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude/ObjectMap/FunctionValue/latDirectionParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:latDirectionParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "longitudeMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap> ;
+        rr:predicate  geo:lon .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/unitParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:simplePropertyFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/languages>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/languages/ObjectMap> ;
+        rr:predicate  dbo:language .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/motto/national_motto>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/motto/national_motto/ObjectMap> ;
+        rr:predicate  dbo:motto .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:simplePropertyFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title2>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title2/ObjectMap> ;
+        rr:predicate  dbo:leaderTitle .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name1>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name1/ObjectMap> ;
+        rr:predicate  dbo:leader .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "population_density_sq_mi" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonMinutesParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "longm" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroup/ethnic_groups>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroup/ethnic_groups/ObjectMap> ;
+        rr:predicate  dbo:ethnicGroup .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country>
+        a                      rr:TriplesMap ;
+        dcterms:type           "templateMapping" ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/currency/currency> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/regionalLanguage/regional_languages> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroupsInYear/ethnic_groups_year> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/national_anthem> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/motto/national_motto> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/governmentType/government_type> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/flag/image_flag> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name5> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title4> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/longName/conventional_long_name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroup/ethnic_groups> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/demonym/demonym> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/officialLanguage/official_languages> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name4> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationTotal/population_estimate> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title3> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestCity/largest_city> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/largestSettlement/largest_settlement> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title1> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date1> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/percentageOfAreaWater/percent_water> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/regional_languages> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/native_name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/official_languages> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name3> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/language/languages> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title5> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title2> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/latitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date9> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/royal_anthem> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/capital/capital> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foaf:name/common_name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name1> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/timeZone/time_zone> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/timeZone/time_zone>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/timeZone/time_zone/ObjectMap> ;
+        rr:predicate  dbo:timeZone .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroup/ethnic_groups/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "ethnic_groups" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:simplePropertyFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDirectionParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDirectionParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:lonDirectionParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDirectionParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonMinutesParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/lonDegreesParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/longitude/ObjectMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/Infobox_country/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name2/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_name2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/royal_anthem/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "royal_anthem" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationTotal/population_estimate/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "population_estimate" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/royal_anthem>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/anthem/royal_anthem/ObjectMap> ;
+        rr:predicate  dbo:anthem .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/map/image_map/ObjectMap> ;
+        rr:predicate  dbo:map .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title1/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_title1" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/ethnicGroupsInYear/ethnic_groups_year/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "ethnic_groups_year" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/foundingDate/established_date9/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "established_date9" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/officialLanguage/official_languages>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/officialLanguage/official_languages/ObjectMap> ;
+        rr:predicate  dbo:officialLanguage .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_sq_mi/FunctionTermMap> ;
+        rr:predicate  dbo:areaTotal .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name4/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_name4" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/currency/currency/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "currency" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/unitParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:unitParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/capital/capital/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "capital" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title1>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leaderTitle/leader_title1/ObjectMap> ;
+        rr:predicate  dbo:leaderTitle .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/unitParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "squareKilometre" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/areaTotal/area_km2/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "area_km2" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/timeZone/time_zone/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "time_zone" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_sq_mi/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/leader/leader_name3/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "leader_name3" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/propertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_country/SimplePropertyMapping/populationDensity/population_density_km2/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:propertyParameter .

@@ -189,14 +189,14 @@ class Mappings(@PathParam("lang") langCode : String)
       //Load mappings
       val factory = new RMLTemplateMappingFactory()
       val rmlMapping = factory.createMapping(parser(page.head).get, language, MappingsLoader.load(context))
-      rmlMapping.writeAsTurtle
+      rmlMapping.writeAsNTriples
     }
 
     /**
      * Retrieves all rml mapping pages
      */
     @GET
-    @Path("pages/rdf/all")
+    @Path("pages/rml/all")
     @Produces(Array("text/turtle"))
     def getAllRdfMappings() : String =
     {
