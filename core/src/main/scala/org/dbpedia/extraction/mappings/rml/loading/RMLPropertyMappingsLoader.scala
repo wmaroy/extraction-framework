@@ -102,6 +102,7 @@ object RMLPropertyMappingsLoader {
         loadStartDateIntervalMapping(predicateObjectMap, context)
       }
       case "endDateIntervalMapping" => {
+          //this gets loaded with start date interval mapping
           null
       }
 
@@ -136,11 +137,25 @@ object RMLPropertyMappingsLoader {
       }
 
       case "latitudeMapping" => {
-        null
+
+        var latitudePom = predicateObjectMap
+        var longitudePom = searchPomInTriplesMapByDCTerm(latitudePom.getOwnTriplesMap, "longitudeMapping")
+        var ontologyProperty: OntologyProperty = null
+        loadGeoCoordinateMapping(latitudePom, longitudePom, null, context)
       }
 
       case "longitudeMapping" => {
+        //this gets loaded by latitude
         null
+      }
+
+      case "intermediateGeoMapping" => {
+        val parentTriplesMap = predicateObjectMap.getReferencingObjectMaps.asScala.head.getParentTriplesMap
+        val latitudePom = searchPomInTriplesMapByDCTerm(parentTriplesMap, "latitudeMapping")
+        val longitudePom = searchPomInTriplesMapByDCTerm(parentTriplesMap, "longitudeMapping")
+        val ontologyPropertyString = predicateObjectMap.getPredicateMaps.asScala.head.getConstantValue.stringValue()
+        val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(ontologyPropertyString, context)
+        loadGeoCoordinateMapping(latitudePom, longitudePom, ontologyProperty, context)
       }
 
       case "intermediateNodeMapping" => {
@@ -192,4 +207,77 @@ object RMLPropertyMappingsLoader {
       new DateIntervalMapping(templateProperty,startOntologyProperty,endOntologyProperty, context)
     } else null
   }
+
+  private def loadGeoCoordinateMapping(latitudePom: PredicateObjectMap, longitudePom: PredicateObjectMap, ontologyProperty: OntologyProperty,
+                                                                               context: {def ontology: Ontology
+                                                                                        def language: Language
+                                                                                        def redirects: Redirects}) : GeoCoordinatesMapping =
+{
+    val isObjectMap = latitudePom.getObjectMaps.size() != 0
+
+    val coordinates = if(!isObjectMap) {
+      getParameterRef(latitudePom, "latParameter")
+    } else null
+
+    val latitude = if(isObjectMap) {
+      val objectMap = latitudePom.getObjectMaps.asScala.head
+      objectMap.getReferenceMap.getReference
+    } else null
+
+    val longitude = if(isObjectMap) {
+      longitudePom.getObjectMaps.asScala.head.getReferenceMap.getReference
+    } else null
+
+
+    val latDegrees = if(!isObjectMap) {
+      getParameterRef(latitudePom, "latDegrees")
+    } else null
+
+    val longDegrees = if(!isObjectMap) {
+      getParameterRef(longitudePom, "longDegrees")
+    } else null
+
+    val latMinutes = if(!isObjectMap) {
+      getParameterRef(latitudePom, "latMinutes")
+    } else null
+
+    val longMinutes = if(!isObjectMap) {
+      getParameterRef(longitudePom, "longMinutes")
+    } else null
+
+    val latSeconds = if(!isObjectMap) {
+      getParameterRef(latitudePom, "latSeconds")
+    } else null
+
+    val longSeconds = if(!isObjectMap) {
+      getParameterRef(longitudePom, "longSeconds")
+    } else null
+
+    val latDirection = if(!isObjectMap) {
+      getParameterRef(latitudePom, "latDirection")
+    } else null
+
+    val longDirection = if(!isObjectMap) {
+      getParameterRef(longitudePom, "longDirection")
+    } else null
+
+    new GeoCoordinatesMapping(ontologyProperty, coordinates,
+      latitude, longitude,
+      latDegrees, longDegrees, latMinutes, longMinutes, latSeconds, longSeconds, latDirection, longDirection, context)
+
+  }
+
+  private def searchPomInTriplesMapByDCTerm(triplesMap: TriplesMap, dctermsType: String) : PredicateObjectMap =
+  {
+    for(pom <- triplesMap.getPredicateObjectMaps.asScala) {
+      val isCorrespondingProperty = pom.getDCTermsType == dctermsType
+      if(isCorrespondingProperty){
+        return pom
+      }
+    }
+    null
+  }
+
+
 }
+
