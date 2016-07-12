@@ -48,7 +48,6 @@ object RMLPropertyMappingsLoader {
 
 
 
-
     predicateObjectMap.getDCTermsType match {
 
       case "simplePropertyMapping" => {
@@ -194,18 +193,28 @@ object RMLPropertyMappingsLoader {
       val isCorrespondingOntology = pom.getDCTermsType == "endDateIntervalMapping" &&
         pom.getPredicateMaps.asScala.head.getConstantValue.stringValue().replaceAll("(?i)end", "") ==
           startOntologyProperty.uri.replaceAll("(?i)start", "")
+
       val isSameTemplateProperty = if (isCorrespondingOntology) {
+
         val endDateTemplateProperty = getParameterRef(pom, "endDate")
         templateProperty == endDateTemplateProperty
+
       } else false
+
       if (isCorrespondingOntology && isSameTemplateProperty) {
+
         val predicateMap = pom.getPredicateMaps.asScala.head
         endOntologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(predicateMap.getConstantValue.stringValue(), context)
+
       }
+
     }
     if (startOntologyProperty != null && endOntologyProperty != null) {
+
       new DateIntervalMapping(templateProperty,startOntologyProperty,endOntologyProperty, context)
+
     } else null
+
   }
 
   private def loadGeoCoordinateMapping(latitudePom: PredicateObjectMap, longitudePom: PredicateObjectMap, ontologyProperty: OntologyProperty,

@@ -393,7 +393,9 @@
         rr:predicate  dbf:endDateParameter .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function>
-        a       rr:SubjectMap .
+        a            rr:SubjectMap ;
+        rr:class     fno:Execution ;
+        rr:termType  rr:BlankNode .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/SimplePropertyMapping/networth/net_worth/FunctionTermMap/FunctionValue/propertyParameterPOM/ObjectMap>
         a              rr:ObjectMap ;
@@ -659,8 +661,10 @@
         rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/SubjectMap/Function> .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/Infobox_person/LogicalSource>
-        a           rml:LogicalSource ;
-        rml:source  "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person?oldid=26071" .
+        a                         rml:LogicalSource ;
+        rml:iterator              "Infobox" ;
+        rml:referenceFormulation  ql:wikitext ;
+        rml:source                "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person?oldid=26071" .
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/StartDate/functionStartDate/functionEndDate/yearsactive>
         a             rr:PredicateObjectMap ;
@@ -1289,6 +1293,7 @@
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping>
         a             rr:PredicateObjectMap ;
+        dcterms:type  "intermediateGeoMapping" ;
         rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_person/GeoCoordinatesMapping/ObjectMap> ;
         rr:predicate  dbo:restingPlacePosition .
 
