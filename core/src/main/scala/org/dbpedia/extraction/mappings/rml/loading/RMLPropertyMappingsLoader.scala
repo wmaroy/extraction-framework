@@ -225,7 +225,7 @@ object RMLPropertyMappingsLoader {
     val isObjectMap = latitudePom.getObjectMaps.size() != 0
 
     val coordinates = if(!isObjectMap) {
-      getParameterRef(latitudePom, "latParameter")
+      getParameterRef(latitudePom, "lat")
     } else null
 
     val latitude = if(isObjectMap) {

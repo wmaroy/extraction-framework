@@ -32,7 +32,7 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
       triplesMap.addLogicalSource(rmlModel.logicalSource)
       val parentSubjectMap = triplesMap.addSubjectMap(triplesMap.uri.extend("/SubjectMap"))
       parentSubjectMap.addClass(new RMLUri(RdfNamespace.GEO.namespace + "SpatialThing"))
-      parentSubjectMap.addTermTypeIRI()
+      parentSubjectMap.addIRITermType()
       parentSubjectMap.addConstant(new RMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}/" + mapping.ontologyProperty.name + "/"))
       addGeoCoordinatesMappingToTriplesMap(triplesMap)
       List(pom)
