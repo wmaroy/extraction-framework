@@ -20,10 +20,10 @@ class RMLMappingsLoaderTest extends FlatSpec with Matchers
   val languageEN = Language.English
 
   // xml mapping file location
-  val xmlMappingPath = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_country.xml"
+  val xmlMappingPath = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.xml"
 
   // rml mapping file location
-  val rmlDocumentPath = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_country.rml"
+  val rmlDocumentPath = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.rml"
 
   // testing RMLMappingsLoader && MappingsLoader
   val rmlTemplateMappings = RMLMappingsLoader.load(ContextCreator.createRMLContext(rmlDocumentPath, languageEN)).templateMappings
