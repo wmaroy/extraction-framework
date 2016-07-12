@@ -227,11 +227,11 @@ abstract class ExtractionManager(
           val disambiguations = self.disambiguations
         }
 
-        //val rmlContext = ContextCreator.createRMLContext("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml", lang)
+        val rmlContext = ContextCreator.createRMLContext("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml", lang)
 
-        MappingsLoader.load(context)
+        //MappingsLoader.load(context)
 
-        //RMLMappingsLoader.load(rmlContext)
+        RMLMappingsLoader.load(rmlContext)
     }
 
 

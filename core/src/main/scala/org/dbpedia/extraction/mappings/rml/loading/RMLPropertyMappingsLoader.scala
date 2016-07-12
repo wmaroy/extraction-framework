@@ -79,6 +79,13 @@ object RMLPropertyMappingsLoader {
           getParameterRef(predicateObjectMap, "transform")
         }
 
+        val unit = if(isObjectMap) null else {
+          val _unit = getParameterRef(predicateObjectMap, "unit")
+          if(_unit != null) {
+            RMLOntologyUtil.loadOntologyDataTypeFromIRI(_unit, context)
+          } else null
+        }
+
         val factor = if(isObjectMap) 1.0 else {
           val _factor = getParameterRef(predicateObjectMap, "factor")
           if(_factor != null) _factor.toDouble else 1.0
@@ -86,8 +93,7 @@ object RMLPropertyMappingsLoader {
 
         if(ontologyProperty != null) {
 
-          val dataType = RMLOntologyUtil.loadOntologyDataTypeFromIRI(ontologyProperty.range.name, context)
-          new SimplePropertyMapping(templateProperty, ontologyProperty, select, prefix, suffix, transform, dataType, context.language, factor, context)
+          new SimplePropertyMapping(templateProperty, ontologyProperty, select, prefix, suffix, transform, unit, context.language, factor, context)
 
         } else {
 
@@ -247,7 +253,7 @@ object RMLPropertyMappingsLoader {
     } else null
 
     val longDegrees = if(!isObjectMap) {
-      getParameterRef(longitudePom, "longDegrees")
+      getParameterRef(longitudePom, "lonDegrees")
     } else null
 
     val latMinutes = if(!isObjectMap) {
@@ -255,7 +261,7 @@ object RMLPropertyMappingsLoader {
     } else null
 
     val longMinutes = if(!isObjectMap) {
-      getParameterRef(longitudePom, "longMinutes")
+      getParameterRef(longitudePom, "lonMinutes")
     } else null
 
     val latSeconds = if(!isObjectMap) {
@@ -263,7 +269,7 @@ object RMLPropertyMappingsLoader {
     } else null
 
     val longSeconds = if(!isObjectMap) {
-      getParameterRef(longitudePom, "longSeconds")
+      getParameterRef(longitudePom, "lonSeconds")
     } else null
 
     val latDirection = if(!isObjectMap) {
@@ -271,12 +277,12 @@ object RMLPropertyMappingsLoader {
     } else null
 
     val longDirection = if(!isObjectMap) {
-      getParameterRef(longitudePom, "longDirection")
+      getParameterRef(longitudePom, "lonDirection")
     } else null
 
     new GeoCoordinatesMapping(ontologyProperty, coordinates,
       latitude, longitude,
-      latDegrees, longDegrees, latMinutes, longMinutes, latSeconds, longSeconds, latDirection, longDirection, context)
+      longDegrees, longMinutes, longSeconds, longDirection, latDegrees, latMinutes, latSeconds, latDirection, context)
 
   }
 
