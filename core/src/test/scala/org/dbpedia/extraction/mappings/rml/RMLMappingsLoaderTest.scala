@@ -31,9 +31,49 @@ class RMLMappingsLoaderTest extends FlatSpec with Matchers
 
   // printing output of both versions
   println("**** RML MAPPINGS ****")
-  //TemplateMappingsPrinter.printTemplateMappings(rmlTemplateMappings)
+
+  var simple = 0
+  var date = 0
+  var intermediate = 0
+  var geo = 0
+
+  for(mapping <- rmlTemplateMappings.head._2.asInstanceOf[TemplateMapping].mappings) {
+    mapping.getClass.getSimpleName match {
+      case "SimplePropertyMapping" => simple += 1
+      case "DateIntervalMapping" => date += 1
+      case "IntermediateNodeMapping" => intermediate += 1
+      case "GeoCoordinatesMapping" => geo += 1
+    }
+  }
+
+  println("SimplePropertyMappings: " + simple)
+  println("DateIntervalMappings: " + date)
+  println("IntermediateNodeMappings: " + intermediate)
+  println("GeoCoordinateMappings: " + geo)
+
+  simple = 0
+  date = 0
+  intermediate = 0
+  geo = 0
 
   println("\n\n**** XML MAPPINGS ****")
-  //TemplateMappingsPrinter.printTemplateMappings(xmlTemplateMappings)
+  for(mapping <- xmlTemplateMappings.head._2.asInstanceOf[TemplateMapping].mappings) {
+    mapping.getClass.getSimpleName match {
+      case "SimplePropertyMapping" => simple += 1
+      case "DateIntervalMapping" => date += 1
+      case "IntermediateNodeMapping" => intermediate += 1
+      case "GeoCoordinatesMapping" => geo += 1
+    }
+  }
+
+  println("SimplePropertyMappings: " + simple)
+  println("DateIntervalMappings: " + date)
+  println("IntermediateNodeMappings: " + intermediate)
+  println("GeoCoordinateMappings: " + geo)
+
+  println("\nEnd of test.\n\n\n")
+
+
+
 
 }

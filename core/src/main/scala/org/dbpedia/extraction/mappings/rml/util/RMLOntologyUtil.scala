@@ -53,13 +53,21 @@ object RMLOntologyUtil {
   }
 
   def loadOntologyPropertyFromIRI(ontologyIRI : String, context : {def ontology: Ontology}): OntologyProperty = {
-      //TODO: change in RMLProcessor for looking up local ontology property
       val localOntologyPropertyName = ontologyIRI.replaceAll(".*/","")
       try {
         loadOntologyProperty(localOntologyPropertyName, context)
       } catch {
         case _ : IllegalArgumentException => println("Skipping Ontology Property: " + localOntologyPropertyName); null
       }
+  }
+
+  def loadOntologyClassFromIRI(ontologyIRI : String, context : {def ontology: Ontology}): OntologyClass = {
+    val localOntologyClassName = ontologyIRI.replaceAll(".*/","")
+    try {
+      loadOntologyClass(localOntologyClassName, context)
+    } catch {
+      case _ : IllegalArgumentException => println("Skipping Ontology Property: " + localOntologyClassName); null
+    }
   }
 
   def loadOntologyDataTypeFromIRI(ontologyIRI : String, context : { def ontology : Ontology}) : Datatype = {
