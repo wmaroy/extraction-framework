@@ -1,5 +1,7 @@
 package org.dbpedia.extraction.mappings.rml.loading
 
+import be.ugent.mmlab.rml.model.RDFTerm.ObjectMap
+import be.ugent.mmlab.rml.model.std.StdConditionObjectMap
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
@@ -42,8 +44,16 @@ object RMLMappingsLoader {
               println("Failed to load Template Mapping: " + triplesMap.getName)
             }
           }
-        } else {
-
+        } else if(triplesMap.getDCTermsType == "conditionalMapping") {
+          println("Loading: " + triplesMap.getName)
+          try {
+            templateMappings.put(triplesMap.getName().replaceAll(".*/Mapping_en:", "").replaceAll("_", " "), loadConditionalMapping(triplesMap, context))
+          } catch {
+            case e : IllegalArgumentException => {
+              println(e)
+              println("Failed to load Conditional Mapping: " + triplesMap.getName)
+            }
+          }
         }
       }
 
@@ -67,6 +77,32 @@ object RMLMappingsLoader {
 
       new TemplateMapping(mapToClass, correspondingClass, correspondingProperty, propertyMappingList, context)
 
+  }
+
+  private def loadConditionalMapping(triplesMap: TriplesMap, context : {
+                                                            def ontology: Ontology
+                                                            def language: Language
+                                                            def redirects: Redirects}) : ConditionalMapping =
+  {
+    val conditions = loadConditions(triplesMap, context)
+    val defaultMappings = loadTemplateMapping(triplesMap,context).mappings
+
+    new ConditionalMapping(conditions,defaultMappings)
+  }
+
+  private def loadConditions(triplesMap: TriplesMap, context : {
+                                                            def ontology: Ontology
+                                                            def language: Language
+                                                            def redirects: Redirects}) : List[ConditionMapping] =
+  {
+    val set : Iterable[ObjectMap] = triplesMap.getPredicateObjectMaps.asScala.head.getObjectMaps.asScala
+    for(objectMap <- set) {
+      if(objectMap.isInstanceOf[StdConditionObjectMap]) {
+        println("found")
+      }
+    }
+
+    null
   }
 
 }

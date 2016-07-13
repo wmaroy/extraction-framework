@@ -1,0 +1,1046 @@
+@prefix schema: <http://schema.org/> .
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix gml:   <http://www.opengis.net/gml/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix bio:   <http://purl.org/vocab/bio/0.1/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix d0:    <http://www.ontologydesignpatterns.org/ont/d0.owl#> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rml:   <http://semweb.mmlab.be/ns/rml#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix fnml:  <http://semweb.mmlab.be/ns/fnml#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ql:    <http://semweb.mmlab.be/ns/ql#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix crml:  <http://semweb.mmlab.be/ns/crml#> .
+@prefix fno:   <http://w3id.org/function/ontology#> .
+@prefix georss: <http://www.georss.org/georss/> .
+@prefix dbf:   <http://dbpedia.org/function/> .
+@prefix dbo:   <http://dbpedia.org/ontology/> .
+@prefix mappings: <http://mappings.dbpedia.org/wiki/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix dul:   <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix cidoccrm: <http://purl.org/NET/cidoc-crm/core#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/nationality/nationality>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/nationality/nationality/ObjectMap> ;
+        rr:predicate  dbo:nationality .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive>
+        a              rr:PredicateObjectMap ;
+        dbf:startDate  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive> ;
+        dcterms:type   "endDateIntervalMapping" ;
+        rr:objectMap   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap> ;
+        rr:predicate   dbo:activeYearsEndYear .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hongkongfilmwards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hongkongfilmwards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/jyutpingchinesename/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "jyutpingchinesename" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/SubjectMap> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/child/children>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/child/children/ObjectMap> ;
+        rr:predicate  dbo:child .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/cesarAward/cesarAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "cesarAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "songwriter" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthName/birth_name/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "birth_name" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource>
+        a                         rml:LogicalSource ;
+        rml:iterator              "Infobox" ;
+        rml:referenceFormulation  ql:wikitext ;
+        rml:source                "http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist?oldid=46609" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goyaAward/goyaAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goyaAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:Band .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influenced/influenced>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influenced/influenced/ObjectMap> ;
+        rr:predicate  dbo:influenced .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthDate/birth_date>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthDate/birth_date/ObjectMap> ;
+        rr:predicate  dbo:birthDate .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containspropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goldenGlobeAward/goldenGlobeAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goldenGlobeAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "latitudeMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap> ;
+        rr:predicate  geo:lat .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthDate/birth_date/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "birth_date" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced%20by/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "influenced by" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/ntsawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "ntsawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/associatedAct/associatedact>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/associatedAct/associatedact/ObjectMap> ;
+        rr:predicate  dbo:associatedAct .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/name>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/name/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:isSet .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/spouse/spouse/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "spouse" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/recordLabel/label/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "label" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenbauhiniaawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goldenbauhiniaawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/spouse/spouse>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/spouse/spouse/ObjectMap> ;
+        rr:predicate  dbo:spouse .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/filmFareAward/filmfareAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/filmFareAward/filmfareAward/ObjectMap> ;
+        rr:predicate  dbo:filmFareAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/simpchinesename/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "simpchinesename" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/name/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "name" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/movement/movement>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/movement/movement/ObjectMap> ;
+        rr:predicate  dbo:movement .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:MusicalArtist .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/pinyinchinesename/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "pinyinchinesename" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/instrument/instrument>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/instrument/instrument/ObjectMap> ;
+        rr:predicate  dbo:instrument .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:latParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/restingPlace/resting_place>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/restingPlace/resting_place/ObjectMap> ;
+        rr:predicate  dbo:restingPlace .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/training/training/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "training" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:contains .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:latFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hkfcsawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hkfcsawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/afiAward/AFIAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "AFIAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:endDateFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenmelodyawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenmelodyawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced_by>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced_by/ObjectMap> ;
+        rr:predicate  dbo:influencedBy .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/pinyinchinesename>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/pinyinchinesename/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:Actor .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:contains .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:startDateFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/child/children/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "children" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/alias/othername>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/alias/othername/ObjectMap> ;
+        rr:predicate  dbo:alias .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathDate/death_date>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathDate/death_date/ObjectMap> ;
+        rr:predicate  dbo:deathDate .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathDate/death_date/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "death_date" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/pastMember/pastmembers/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "pastmembers" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/filmFareAward/filmfareAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "filmfareAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/emmyAward/emmyAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "emmyAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/tonyAward/tonyAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/tonyAward/tonyAward/ObjectMap> ;
+        rr:predicate  dbo:tonyAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/recordLabel/label>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/recordLabel/label/ObjectMap> ;
+        rr:predicate  dbo:recordLabel .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/baftaAward/BAFTAAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "BAFTAAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "intermediateGeoMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap> ;
+        rr:predicate  dbo:restingPlacePosition .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/cesarAward/cesarAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/cesarAward/cesarAward/ObjectMap> ;
+        rr:predicate  dbo:cesarAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:contains .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/occupation/occupation>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/occupation/occupation/ObjectMap> ;
+        rr:predicate  dbo:occupation .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:Band .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "restingplacecoordinates" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "restingplacecoordinates" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/nationality/nationality/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "nationality" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/chinesename>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/chinesename/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hongkongfilmwards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "hongkongfilmwards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/mtvasiaawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "mtvasiaawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/baftaAward/BAFTAAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/baftaAward/BAFTAAward/ObjectMap> ;
+        rr:predicate  dbo:baftaAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ValueParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hkfcsawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "hkfcsawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/restingPlace/resting_place/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "resting_place" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:isSetpropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/genre/genre>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/genre/genre/ObjectMap> ;
+        rr:predicate  dbo:genre .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:lonParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenroosterawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenroosterawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenbauhiniaawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenbauhiniaawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenhorseawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenhorseawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/academyAward/academyAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/academyAward/academyAward/ObjectMap> ;
+        rr:predicate  dbo:academyAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/field/field>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/field/field/ObjectMap> ;
+        rr:predicate  dbo:field .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/currentMember/currentmembers>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/currentMember/currentmembers/ObjectMap> ;
+        rr:predicate  dbo:currentMember .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ValueParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/parent/parents>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/parent/parents/ObjectMap> ;
+        rr:predicate  dbo:parent .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthName/birth_name>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthName/birth_name/ObjectMap> ;
+        rr:predicate  dbo:birthName .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "occupation" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:Actor .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "yearsactive" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathPlace/death_place>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathPlace/death_place/ObjectMap> ;
+        rr:predicate  dbo:deathPlace .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenmelodyawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goldenmelodyawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:lonFunction .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/emmyAward/emmyAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/emmyAward/emmyAward/ObjectMap> ;
+        rr:predicate  dbo:emmyAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ValueParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containsvalueParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influences/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "influences" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ValueParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influenced/influenced/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "influenced" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:contains .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/afiAward/AFIAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/afiAward/AFIAward/ObjectMap> ;
+        rr:predicate  dbo:afiAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenhorseawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goldenhorseawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "currentmembers" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/grammyAward/grammyAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/grammyAward/grammyAward/ObjectMap> ;
+        rr:predicate  dbo:grammyAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:isSetpropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/tradchinesename/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "tradchinesename" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ValueParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containsvalueParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced%20by>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced%20by/ObjectMap> ;
+        rr:predicate  dbo:influencedBy .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:MusicalArtist .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/mtvasiaawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/mtvasiaawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/currentMember/currentmembers/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "currentmembers" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/partner/partner>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/partner/partner/ObjectMap> ;
+        rr:predicate  dbo:partner .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/alias/othername/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "othername" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "occupation" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/tradchinesename>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/tradchinesename/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap>
+        a            rr:SubjectMap ;
+        rr:constant  "http://mappings.dbpedia.org/wiki/resource/{{wikititle}}" ;
+        rr:termType  rr:IRI .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/occupation/occupation/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "occupation" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/movement/movement/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "movement" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goldenGlobeAward/goldenGlobeAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goldenGlobeAward/goldenGlobeAward/ObjectMap> ;
+        rr:predicate  dbo:goldenGlobeAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "longitudeMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/longitude/FunctionTermMap> ;
+        rr:predicate  geo:lon .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "occupation" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:homepage/website/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "website" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap>
+        a                    rr:ObjectMap ;
+        rr:parentTriplesMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap>
+        a                      rr:TriplesMap , fnml:FunctionTermMap ;
+        fnml:functionValue     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap> ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/latitude/FunctionTermMap/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ValueParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containsvalueParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goyaAward/goyaAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/currentMember/currentmembers> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/afiAward/AFIAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/training/training> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/chinesename> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/pastMember/pastmembers> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/baftaAward/BAFTAAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/restingPlace/resting_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenroosterawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/ntsawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hongkongfilmwards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced_by> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/grammyAward/grammyAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influences> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathDate/death_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/field/field> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/mtvasiaawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goldenGlobeAward/goldenGlobeAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced%20by> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/partner/partner> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/pinyinchinesename> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenbauhiniaawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/associatedAct/associatedact> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/instrument/instrument> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthName/birth_name> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/cesarAward/cesarAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/parent/parents> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/awards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathPlace/death_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/spouse/spouse> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/genre/genre> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/hkfcsawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/tonyAward/tonyAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/child/children> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influencedby> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/voiceType/voicetype> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/jyutpingchinesename> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/movement/movement> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/tradchinesename> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/nationality/nationality> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/emmyAward/emmyAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthPlace/birth_place> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenmelodyawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenhorseawards> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/recordLabel/label> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthDate/birth_date> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:homepage/website> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/alias/othername> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/filmFareAward/filmfareAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/simpchinesename> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influenced/influenced> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/academyAward/academyAward> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/occupation/occupation> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/voiceType/voicetype>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/voiceType/voicetype/ObjectMap> ;
+        rr:predicate  dbo:voiceType .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influencedby/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "influencedby" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influenced_by/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "influenced_by" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/ntsawards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/ntsawards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containspropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/deathPlace/death_place/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "death_place" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/grammyAward/grammyAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "grammyAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/goldenroosterawards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "goldenroosterawards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:startDateParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goyaAward/goyaAward>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/goyaAward/goyaAward/ObjectMap> ;
+        rr:predicate  dbo:goyaAward .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containspropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/awards/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "awards" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/pastMember/pastmembers>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/pastMember/pastmembers/ObjectMap> ;
+        rr:predicate  dbo:pastMember .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influencedby>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influencedby/ObjectMap> ;
+        rr:predicate  dbo:influencedBy .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/academyAward/academyAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "academyAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "singer" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:homepage/website>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:homepage/website/ObjectMap> ;
+        rr:predicate  foaf:homepage .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "actress" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/partner/partner/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "partner" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "yearsactive" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "pastmembers" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/PropertyParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containspropertyParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/jyutpingchinesename>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/jyutpingchinesename/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:otherwise .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/genre/genre/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "genre" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/5/6/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbo:Artist .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ValueParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap> ;
+        rr:predicate  fno:containsvalueParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/PropertyParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "occupation" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap>
+        a                   fnml:FunctionTermMap ;
+        fnml:functionValue  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/FunctionTermMap/FunctionValue> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/training/training>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/training/training/ObjectMap> ;
+        rr:predicate  dbo:training .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/associatedAct/associatedact/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "associatedact" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthPlace/birth_place>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthPlace/birth_place/ObjectMap> ;
+        rr:predicate  dbo:birthPlace .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/field/field/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "field" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/FunctionTermMap/FunctionValue/ValueParameterPOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  "actor" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/parent/parents/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "parents" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/simpchinesename>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/simpchinesename/ObjectMap> ;
+        rr:predicate  foaf:name .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/GeoCoordinatesMapping/ObjectMap/ParentTriplesMap/SubjectMap>
+        a            rr:SubjectMap ;
+        rr:class     geo:SpatialThing ;
+        rr:constant  "http://en.dbpedia.org/resource/{{wikititle}}/restingPlacePosition/" ;
+        rr:termType  rr:IRI .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/voiceType/voicetype/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "voicetype" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function>
+        a            rr:SubjectMap ;
+        rr:class     fno:Execution ;
+        rr:termType  rr:BlankNode .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/birthPlace/birth_place/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "birth_place" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/awards>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/award/awards/ObjectMap> ;
+        rr:predicate  dbo:award .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ExecutePOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap> ;
+        rr:predicate  fno:executes .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/foaf:name/chinesename/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "chinesename" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap/FunctionValue/ExecutePOM/ObjectMap>
+        a            rr:ObjectMap ;
+        rr:constant  dbf:isSet .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null>
+        a                    rr:PredicateObjectMap ;
+        crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap> ;
+        crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1> ;
+        rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/ObjectMap> ;
+        rr:predicate         rdf:type .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/instrument/instrument/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "instrument" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM>
+        a             rr:PredicateObjectMap ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM/ObjectMap> ;
+        rr:predicate  dbf:endDateParameter .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/PropertyParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ValueParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1/2/3/4/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/tonyAward/tonyAward/ObjectMap>
+        a              rr:ObjectMap ;
+        rml:reference  "tonyAward" .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive>
+        a             rr:PredicateObjectMap ;
+        dbf:endDate   <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/EndDate/activeYearsStartYear/activeYearsEndYear/yearsactive> ;
+        dcterms:type  "startDateIntervalMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap> ;
+        rr:predicate  dbo:activeYearsStartYear .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influences>
+        a             rr:PredicateObjectMap ;
+        dcterms:type  "simplePropertyMapping" ;
+        rr:objectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/SimplePropertyMapping/influencedBy/influences/ObjectMap> ;
+        rr:predicate  dbo:influencedBy .
+
+<http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue>
+        a                      rr:TriplesMap ;
+        rml:logicalSource      <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/LogicalSource> ;
+        rr:predicateObjectMap  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ParameterPOM> , <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/StartDate/activeYearsStartYear/activeYearsEndYear/yearsactive/FunctionTermMap/FunctionValue/ExecutePOM> ;
+        rr:subjectMap          <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/Infobox_artist/SubjectMap/Function> .
