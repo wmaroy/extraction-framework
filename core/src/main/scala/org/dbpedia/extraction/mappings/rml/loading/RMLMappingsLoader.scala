@@ -1,8 +1,8 @@
 package org.dbpedia.extraction.mappings.rml.loading
 
-import be.ugent.mmlab.rml.model.RDFTerm.ObjectMap
-import be.ugent.mmlab.rml.model.std.StdConditionObjectMap
-import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
+import be.ugent.mmlab.rml.model.RDFTerm.{ObjectMap, ReferencingObjectMap}
+import be.ugent.mmlab.rml.model.std.{StdConditionObjectMap, StdConditionPredicateObjectMap, StdPredicateObjectMap, StdReferencingObjectMap}
+import be.ugent.mmlab.rml.model.{PredicateObjectMap, RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
 import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty}
@@ -95,12 +95,14 @@ object RMLMappingsLoader {
                                                             def language: Language
                                                             def redirects: Redirects}) : List[ConditionMapping] =
   {
-    val set : Iterable[ObjectMap] = triplesMap.getPredicateObjectMaps.head.getObjectMaps.asScala
-    for(objectMap <- set) {
-      if(objectMap.isInstanceOf[StdConditionObjectMap]) {
+    val poms = triplesMap.getPredicateObjectMaps.asScala
+
+    for(pom <- poms) {
+      if(pom.getDCTermsType == "conditionalMapping") {
         println("found")
       }
     }
+
 
     null
   }
