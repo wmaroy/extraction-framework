@@ -85,7 +85,7 @@ object RMLMappingsLoader {
                                                             def redirects: Redirects}) : ConditionalMapping =
   {
     val conditions = loadConditions(triplesMap, context)
-    val defaultMappings = loadTemplateMapping(triplesMap,context).mappings
+    val defaultMappings = RMLPropertyMappingsLoader.loadPropertyMappings(triplesMap, context)
 
     new ConditionalMapping(conditions,defaultMappings)
   }
@@ -95,7 +95,7 @@ object RMLMappingsLoader {
                                                             def language: Language
                                                             def redirects: Redirects}) : List[ConditionMapping] =
   {
-    val set : Iterable[ObjectMap] = triplesMap.getPredicateObjectMaps.asScala.head.getObjectMaps.asScala
+    val set : Iterable[ObjectMap] = triplesMap.getPredicateObjectMaps.head.getObjectMaps.asScala
     for(objectMap <- set) {
       if(objectMap.isInstanceOf[StdConditionObjectMap]) {
         println("found")
