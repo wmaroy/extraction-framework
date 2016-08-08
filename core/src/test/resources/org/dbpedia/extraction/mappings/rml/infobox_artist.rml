@@ -1003,6 +1003,7 @@
 
 <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null>
         a                    rr:PredicateObjectMap ;
+        dcterms:type         "conditionalMapping" ;
         crml:equalCondition  <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/FunctionTermMap> ;
         crml:fallbackMap     <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/1> ;
         rr:objectMap         <http://mappings.dbpedia.org/wiki/Mapping_en:Infobox_artist/ConditionalMapping/currentmembers_isSet_null/ObjectMap> ;

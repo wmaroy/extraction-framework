@@ -1,8 +1,8 @@
 package org.dbpedia.extraction.mappings.rml.util
 
-import be.ugent.mmlab.rml.model.TriplesMap
+import be.ugent.mmlab.rml.model.{PredicateObjectMap, TriplesMap}
 import org.dbpedia.extraction.ontology.datatypes.Datatype
-import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty}
+import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty, RdfNamespace}
 import org.openrdf.model.URI
 
 import scala.language.reflectiveCalls
@@ -15,8 +15,17 @@ object RMLOntologyUtil {
   // "class" is the rml value
   private final val mapToClass: String = "class"
 
-  def loadMapToClassOntology(triplesMap: TriplesMap, context: {def ontology : Ontology}): OntologyClass = {
+  def loadMapToClassOntology(triplesMap: TriplesMap, context: {def ontology : Ontology}): OntologyClass =
+  {
       loadTriplesMapOntologyClass(triplesMap, mapToClass, context)
+  }
+
+  def loadMapToClassOntologyViaType(predicateObjectMap: PredicateObjectMap, context: {def ontology : Ontology}): OntologyClass =
+  {
+      val oms = predicateObjectMap.getObjectMaps
+      val om = oms.iterator().next()
+      val ontologyClassName = om.getConstantValue.toString
+      loadOntologyClass(ontologyClassName, context)
   }
 
   def loadCorrespondingPropertyOntology(triplesMap: TriplesMap, context: {def ontology : Ontology}): OntologyProperty = {
@@ -53,7 +62,12 @@ object RMLOntologyUtil {
   }
 
   def loadOntologyPropertyFromIRI(ontologyIRI : String, context : {def ontology: Ontology}): OntologyProperty = {
-      val localOntologyPropertyName = ontologyIRI.replaceAll(".*/","")
+      val pattern = "(.*[/#])([^/#]+)".r
+      val pattern(namespace, localname) = ontologyIRI
+      val prefix = getPrefix(namespace)
+      val localOntologyPropertyName = if(prefix != "dbo") {
+        prefix + ":" + localname
+      } else localname
       try {
         loadOntologyProperty(localOntologyPropertyName, context)
       } catch {
@@ -75,7 +89,6 @@ object RMLOntologyUtil {
       loadOntologyDataType(localOntologyDataTypeName, context)
   }
 
-  // private defs
 
   private def loadTriplesMapOntologyClass(triplesMap: TriplesMap, ontologyType : String, context: {def ontology : Ontology}): OntologyClass = {
       val ontologyClassName = loadTriplesMapOntologyClassName(triplesMap)
@@ -83,7 +96,24 @@ object RMLOntologyUtil {
   }
 
   private def loadTriplesMapOntologyClassName(triplesMap: TriplesMap): String = {
-      triplesMap.getSubjectMap.getClassIRIs.toArray.head.asInstanceOf[URI].getLocalName
+    val namespace = triplesMap.getSubjectMap.getClassIRIs.toArray.head.asInstanceOf[URI].getNamespace
+    val localName = triplesMap.getSubjectMap.getClassIRIs.toArray.head.asInstanceOf[URI].getLocalName
+    if(namespace != "http://dbpedia.org/ontology/") {
+      val prefix = getPrefix(namespace)
+      prefix + ":" + localName
+    } else {
+      localName
+    }
+  }
+
+  //get prefix from namespace string
+  private def getPrefix(namespace: String) : String = {
+    for(key <- RdfNamespace.prefixMap.keySet) {
+      if(RdfNamespace.prefixMap(key).namespace == namespace) {
+        return key
+      }
+    }
+    null
   }
 
 

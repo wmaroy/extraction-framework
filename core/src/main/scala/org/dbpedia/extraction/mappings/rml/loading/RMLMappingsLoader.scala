@@ -1,11 +1,10 @@
 package org.dbpedia.extraction.mappings.rml.loading
 
-import be.ugent.mmlab.rml.model.RDFTerm.{ObjectMap, ReferencingObjectMap}
-import be.ugent.mmlab.rml.model.std.{StdConditionObjectMap, StdConditionPredicateObjectMap, StdPredicateObjectMap, StdReferencingObjectMap}
+import be.ugent.mmlab.rml.model.std.StdConditionPredicateObjectMap
 import be.ugent.mmlab.rml.model.{PredicateObjectMap, RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
-import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty}
+import org.dbpedia.extraction.ontology.{Ontology, OntologyClass, OntologyProperty, RdfNamespace}
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{TableNode, TemplateNode}
 
@@ -96,15 +95,65 @@ object RMLMappingsLoader {
                                                             def redirects: Redirects}) : List[ConditionMapping] =
   {
     val poms = triplesMap.getPredicateObjectMaps.asScala
-
+    var conditionMappings: List[ConditionMapping] = List[ConditionMapping]()
     for(pom <- poms) {
-      if(pom.getDCTermsType == "conditionalMapping") {
-        println("found")
+      val predicate = pom.getPredicateMaps.asScala.head.getConstantValue.toString
+
+      //TODO fix this in RMLModel: accessing conditionalPoms and determine DCTermsType from conditionalPoms
+      if(pom.getDCTermsType == null &&  predicate ==  RdfNamespace.RDF.namespace + "type") {
+        val conditionPom = pom.asInstanceOf[StdConditionPredicateObjectMap]
+        conditionMappings = loadConditionPoms(conditionPom, conditionMappings, context)
       }
     }
 
-
-    null
+    conditionMappings
   }
+
+  private def loadConditionPoms(conditionPom: StdConditionPredicateObjectMap, mappings: List[ConditionMapping], context : {
+                                                            def ontology: Ontology
+                                                            def language: Language
+                                                            def redirects: Redirects}) : List[ConditionMapping] =
+  {
+    var _mappings = mappings
+
+    val condition = conditionPom.getConditions.asScala.head //TODO: get equalConditions
+    val fallbacks = conditionPom.getFallbackPOMs.asScala.toList
+
+    val correspondingClass = null
+    val correspondingProperty = null
+    val mapToClass = RMLOntologyUtil.loadMapToClassOntologyViaType(conditionPom, context)
+    val propertyMappings = RMLPropertyMappingsLoader.loadPropertyMappingsFromList(fallbacks, context)
+
+    val templateMapping = new TemplateMapping(mapToClass, correspondingClass, correspondingProperty, propertyMappings, context)
+
+
+    //TODO: fill in value, property and operator field for condition
+    val value = null
+    
+    val property = null
+    val operator = null
+
+    var nextConditionPom: StdConditionPredicateObjectMap = null
+    var nextFallbacks: List[PredicateObjectMap] = List[PredicateObjectMap]()
+    for(fallback <- fallbacks)
+    {
+      if(fallback.getPredicateMaps.asScala.head.getConstantValue == RdfNamespace.RDF.namespace + "type")
+      {
+        nextConditionPom = fallback.asInstanceOf[StdConditionPredicateObjectMap]
+      } else {
+        nextFallbacks ::= fallback
+      }
+
+    }
+
+    _mappings ::= new ConditionMapping(property, operator, value, templateMapping)
+
+    if(nextConditionPom != null) {
+      loadConditionPoms(nextConditionPom, _mappings, context)
+    } else {
+      _mappings
+    }
+  }
+
 
 }
