@@ -24,7 +24,7 @@ object RMLOntologyUtil {
   {
       val oms = predicateObjectMap.getObjectMaps
       val om = oms.iterator().next()
-      val ontologyClassName = om.getConstantValue.toString
+      val ontologyClassName = om.getConstantValue.stringValue().replace("http://dbpedia.org/ontology/", "")
       loadOntologyClass(ontologyClassName, context)
   }
 

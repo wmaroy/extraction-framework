@@ -233,11 +233,11 @@ abstract class ExtractionManager(
           val disambiguations = self.disambiguations
         }
 
-        //val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
+        val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
 
-        MappingsLoader.load(context)
+        //MappingsLoader.load(context)
 
-        //RMLMappingsLoader.load(rmlContext)
+        RMLMappingsLoader.load(rmlContext)
     }
 
 
