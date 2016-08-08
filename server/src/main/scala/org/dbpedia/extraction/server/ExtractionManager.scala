@@ -14,7 +14,8 @@ import org.dbpedia.extraction.wikiparser._
 import java.io.File
 import java.net.URL
 
-import org.dbpedia.extraction.mappings.rml.loading.RMLMappingsLoader
+import be.ugent.mmlab.rml.model.RMLMapping
+import org.dbpedia.extraction.mappings.rml.loading.{RMLMappingsLoader, RMLParser}
 import org.dbpedia.extraction.mappings.rml.util.{ContextCreator, Counter}
 
 /**
@@ -55,6 +56,8 @@ abstract class ExtractionManager(
     def removeMappingPage(title : WikiTitle, language : Language)
 
     protected val disambiguations : Disambiguations = loadDisambiguations()
+
+    private val pathToRml = "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
 
     /**
      * Called by server to update all users of this extraction manager.
@@ -209,8 +212,11 @@ abstract class ExtractionManager(
             val mappings = self.mappings(lang);
             val redirects = self.redirects.getOrElse(lang, new Redirects(Map()))
             val disambiguations = self.disambiguations
+            val rmlMappings = RMLParser.parseFromFile(pathToRml)
       }
+
     }
+
 
     protected def loadMappings() : Map[Language, Mappings] =
     {
@@ -227,11 +233,11 @@ abstract class ExtractionManager(
           val disambiguations = self.disambiguations
         }
 
-        val rmlContext = ContextCreator.createRMLContext("../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml", lang)
+        //val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
 
-        //MappingsLoader.load(context)
+        MappingsLoader.load(context)
 
-        RMLMappingsLoader.load(rmlContext)
+        //RMLMappingsLoader.load(rmlContext)
     }
 
 

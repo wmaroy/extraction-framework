@@ -25,17 +25,24 @@ object RMLPropertyMappingsLoader {
   {
 
       var propertyMappings = List[PropertyMapping]()
-      val predicateObjectMaps = triplesMap.getPredicateObjectMaps.asScala
+      val predicateObjectMaps = triplesMap.getPredicateObjectMaps.asScala.toList
 
-      for (predicateObjectMap : PredicateObjectMap <- predicateObjectMaps) {
-          val propertyMapping = loadPropertyMapping(predicateObjectMap, context)
-          if(propertyMapping != null) {
-            propertyMappings ::= propertyMapping
-          }
+      loadPropertyMappingsFromList(predicateObjectMaps, context)
+
+  }
+
+  def loadPropertyMappingsFromList(pomList : List[PredicateObjectMap], context:{def ontology: Ontology
+                                                            def language: Language
+                                                            def redirects: Redirects}) : List[PropertyMapping] =
+  {
+    var propertyMappings = List[PropertyMapping]()
+    for (predicateObjectMap : PredicateObjectMap <- pomList) {
+      val propertyMapping = loadPropertyMapping(predicateObjectMap, context)
+      if(propertyMapping != null) {
+        propertyMappings ::= propertyMapping
       }
-
-      propertyMappings
-
+    }
+    propertyMappings
   }
 
   /**

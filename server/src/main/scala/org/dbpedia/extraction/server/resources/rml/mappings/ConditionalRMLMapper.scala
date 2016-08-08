@@ -71,7 +71,7 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     val mapToClassPomUri = new RMLUri(predicateObjectMap.resource.getURI).extend("/" + index)
     val mapToClassPom = predicateObjectMap.addFallbackMap(mapToClassPomUri)
     mapToClassPom.addPredicate(new RMLUri(RdfNamespace.RDF.namespace + "type"))
-    val mapToClassOm = mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
+    mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
 
     val conditionFunctionTermMap = addEqualCondition(condition, mapToClassPom)
 
