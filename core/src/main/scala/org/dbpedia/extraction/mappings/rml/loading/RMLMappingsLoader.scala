@@ -1,6 +1,6 @@
 package org.dbpedia.extraction.mappings.rml.loading
 
-import be.ugent.mmlab.rml.model.std.StdConditionPredicateObjectMap
+import be.ugent.mmlab.rml.model.std.{StdConditionPredicateObjectMap, StdPredicateObjectMap}
 import be.ugent.mmlab.rml.model.{PredicateObjectMap, RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
@@ -86,7 +86,8 @@ object RMLMappingsLoader {
     val conditions = loadConditions(triplesMap, context)
     val defaultMappings = RMLPropertyMappingsLoader.loadPropertyMappings(triplesMap, context)
 
-    new ConditionalMapping(conditions,defaultMappings)
+    val conditionalMapping = new ConditionalMapping(conditions,defaultMappings)
+    conditionalMapping
   }
 
   private def loadConditions(triplesMap: TriplesMap, context : {
@@ -102,7 +103,7 @@ object RMLMappingsLoader {
       //TODO fix this in RMLModel: accessing conditionalPoms and determine DCTermsType from conditionalPoms
       if(pom.getDCTermsType == null &&  predicate ==  RdfNamespace.RDF.namespace + "type") {
         val conditionPom = pom.asInstanceOf[StdConditionPredicateObjectMap]
-        conditionMappings = loadConditionPoms(conditionPom, conditionMappings, context)
+        conditionMappings = loadConditionPoms(conditionPom, conditionMappings, context).reverse //reverse is a tad hacky :/
       }
     }
 
@@ -128,31 +129,63 @@ object RMLMappingsLoader {
 
 
     //TODO: fill in value, property and operator field for condition
-    val value = null
-    
-    val property = null
-    val operator = null
+    var value : String = null
+    var property : String = null
+    for(param <- condition.getFunctionTermMaps.asScala.head.getParameters.asScala) {
+      if(param.stringValue().contains("value")) {
+        value = condition.getFunctionTermMaps.asScala.head.getParameterRefs.get(param.stringValue())
+      } else if(param.stringValue().contains("property")) {
+        property = condition.getFunctionTermMaps.asScala.head.getParameterRefs.get(param.stringValue())
+      }
+    }
 
-    var nextConditionPom: StdConditionPredicateObjectMap = null
-    var nextFallbacks: List[PredicateObjectMap] = List[PredicateObjectMap]()
+    var operator : String = null
+
+    for(pom <- condition.getFunctionTermMaps.asScala.head.getFunctionTriplesMap.getPredicateObjectMaps.asScala) {
+      val constantValue = pom.getPredicateMaps.asScala.head.getConstantValue
+      val executes = RdfNamespace.FNO.namespace + "executes"
+      if(constantValue.stringValue() == executes) {
+        operator = pom.getObjectMaps.asScala.head.getConstantValue.stringValue().replace(RdfNamespace.DBF.namespace, "")
+      }
+    }
+
+    var nextConditionPom: PredicateObjectMap = null
     for(fallback <- fallbacks)
     {
-      if(fallback.getPredicateMaps.asScala.head.getConstantValue == RdfNamespace.RDF.namespace + "type")
-      {
+      if(fallback.isInstanceOf[StdConditionPredicateObjectMap]) {
         nextConditionPom = fallback.asInstanceOf[StdConditionPredicateObjectMap]
-      } else {
-        nextFallbacks ::= fallback
+      } else if(fallback.isInstanceOf[StdPredicateObjectMap]) {
+        nextConditionPom = fallback.asInstanceOf[StdPredicateObjectMap]
       }
-
     }
 
     _mappings ::= new ConditionMapping(property, operator, value, templateMapping)
 
-    if(nextConditionPom != null) {
-      loadConditionPoms(nextConditionPom, _mappings, context)
+    if(nextConditionPom.isInstanceOf[StdConditionPredicateObjectMap]) {
+      loadConditionPoms(nextConditionPom.asInstanceOf[StdConditionPredicateObjectMap], _mappings, context)
     } else {
-      _mappings
+      loadOtherwise(nextConditionPom.asInstanceOf[StdPredicateObjectMap], _mappings, context)
     }
+  }
+
+  private def loadOtherwise(pom: StdPredicateObjectMap, mappings: List[ConditionMapping], context : {
+                                                                                          def ontology: Ontology
+                                                                                          def language: Language
+                                                                                          def redirects: Redirects}) : List[ConditionMapping] = {
+    var _mappings = mappings
+    val correspondingClass = null
+    val correspondingProperty = null
+    val mapToClass = RMLOntologyUtil.loadMapToClassOntologyViaType(pom, context)
+    val propertyMappings = RMLPropertyMappingsLoader.loadPropertyMappingsFromList(List[PredicateObjectMap](), context)
+
+    val templateMapping = new TemplateMapping(mapToClass, correspondingClass, correspondingProperty, propertyMappings, context)
+
+    var value : String = null
+    var property : String = null
+    var operator = "otherwise"
+
+    _mappings ::= new ConditionMapping(property, operator, value, templateMapping)
+    _mappings
   }
 
 
