@@ -1,0 +1,25 @@
+<mediawiki xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.mediawiki.org/xml/export-0.8/" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en"><page><title>Mapping nl:Infobox sneltram Utrecht</title><ns>216</ns><id>11515</id><revision><id>50068</id><timestamp>2016-01-03T16:13:45Z</timestamp><contributor><username>GerardKuys</username><id>15478</id></contributor><text xml:space="preserve">{{TemplateMapping
+| mapToClass = TramStation
+| mappings =
+
+	{{ConstantMapping | ontologyProperty = country | value = Nederland }}
+	{{ConstantMapping | ontologyProperty = location | value = Utrecht (stad) }}
+	{{ConstantMapping | ontologyProperty = name | value = "Halte Sneltram Utrecht" }}
+
+	{{PropertyMapping | templateProperty = afbeelding | ontologyProperty = picture }}
+	{{PropertyMapping | templateProperty = exploitant | ontologyProperty = operator }}
+	{{PropertyMapping | templateProperty = heropening | ontologyProperty = reopeningDate }}
+	{{PropertyMapping | templateProperty = lijnen | ontologyProperty = servingRailwayLine }}
+ 	{{PropertyMapping | templateProperty = onderschrift | ontologyProperty = pictureDescription }}
+	{{PropertyMapping | templateProperty = opening | ontologyProperty = openingDate }}
+	{{PropertyMapping | templateProperty = perrons | ontologyProperty = railwayPlatforms }}
+	{{PropertyMapping | templateProperty = station | ontologyProperty = name }}
+	{{PropertyMapping | templateProperty = sluiting | ontologyProperty = closingDate }}
+	{{PropertyMapping | templateProperty = stationscode | ontologyProperty = agencyStationCode }}
+
+	{{GeocoordinatesMapping | latitudeDirection = lat_dir | longitudeDirection = lon_dir
+				| latitudeDegrees = lat_deg | longitudeDegrees = lon_deg
+                  		| latitudeMinutes = lat_min | longitudeMinutes = lon_min
+       		       		| latitudeSeconds = lat_sec | longitudeSeconds = lon_sec }}
+
+}}</text><format>text/x-wiki</format></revision></page></mediawiki>
