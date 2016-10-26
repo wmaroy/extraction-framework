@@ -7,7 +7,9 @@ import be.ugent.mmlab.rml.config.RMLConfiguration
 import be.ugent.mmlab.rml.core.StdRMLEngine
 import be.ugent.mmlab.rml.model.dataset.{RMLDataset, StdRMLDataset}
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
-import org.dbpedia.extraction.destinations.Quad
+import org.apache.jena.rdf.model.{Model, ModelFactory}
+import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
+import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{InternalLinkNode, TemplateNode}
 import org.openrdf.model.Value
 import org.openrdf.model.impl.URIImpl
@@ -20,7 +22,8 @@ import org.openrdf.rio.RDFFormat
   */
 class RMLProcessorRunner(mappings: RMLMapping) {
 
-  def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String) : Seq[Quad] = {
+  def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String, context : { def language : Language}) : Seq[Quad] = {
+
     triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri))
 
     val parameters = new util.HashMap[String, String]()
@@ -32,17 +35,33 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     val baos = new ByteArrayOutputStream()
     val oos = new ObjectOutputStream(baos)
 
-
     oos.writeObject(templateNodeHashMap)
-
     oos.flush()
     oos.close()
 
     val is = new ByteArrayInputStream(baos.toByteArray());
 
     engine.generateRDFTriples(dataset, mappings, parameters, exeTriplesMap.toArray, is)
-    dataset.dumpRDF(System.out, RDFFormat.TURTLE)
+
+    val triplesOutputStream = new ByteArrayOutputStream()
+    dataset.dumpRDF(triplesOutputStream, RDFFormat.TURTLE)
+    val triplesInputStream = new ByteArrayInputStream(triplesOutputStream.toByteArray)
+
+    val model = ModelFactory.createDefaultModel()
+    model.read(triplesInputStream, null, "TURTLE")
+    model.write(System.out, "TURTLE")
+
+    val statementIterator = model.listStatements()
+    var list = List()
+    while(statementIterator.hasNext) {
+      val statement = statementIterator.nextStatement()
+      //new Quad(context.language, DBpediaDatasets.OntologyPropertiesLiterals, statement.getSubject.getURI, statement.getPredicate.getURI, statement.getObject.asResource().getURI, templateNode.sourceUri)
+      print(statement.getSubject.getURI)
+    }
+
+
     Seq.empty
+
   }
 
   private def convertTemplateNodeToMap(templateNode: TemplateNode) : util.HashMap[String,String] = {

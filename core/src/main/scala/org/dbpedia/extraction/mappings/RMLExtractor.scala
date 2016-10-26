@@ -4,6 +4,7 @@ import be.ugent.mmlab.rml.model.RMLMapping
 import org.dbpedia.extraction.destinations.{Dataset, Quad}
 import org.dbpedia.extraction.mappings.rml.processing.RMLProcessorRunner
 import org.dbpedia.extraction.mappings.rml.util.RMLMappingWrapper
+import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{Node, PageNode, TemplateNode}
 
 import scala.language.reflectiveCalls
@@ -15,6 +16,7 @@ import scala.language.reflectiveCalls
   */
 class RMLExtractor(
   context : {
+    def language: Language
     def rmlMappings: RMLMapping
   }
 ) extends PageNodeExtractor{
@@ -24,7 +26,7 @@ class RMLExtractor(
   val rmlProcessorRunner = new RMLProcessorRunner(context.rmlMappings)
 
   /**
-    * @param page       The source node
+    * @param input       The source node
     * @param subjectUri The subject URI of the generated triples
     * @param context    The page context which holds the state of the extraction.
     * @return A graph holding the extracted data
@@ -49,7 +51,7 @@ class RMLExtractor(
       {
         rmlMappingWrapper.getTriplesMap(templateNode.title.decoded) match
         {
-          case Some(triplesMap) => rmlProcessorRunner.process(templateNode, triplesMap, subjectUri)
+          case Some(triplesMap) => rmlProcessorRunner.process(templateNode, triplesMap, subjectUri, context)
           case None => Seq.empty
         }
       }
