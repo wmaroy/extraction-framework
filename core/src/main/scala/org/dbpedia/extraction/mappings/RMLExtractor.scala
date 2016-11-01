@@ -35,7 +35,6 @@ class RMLExtractor(
     */
   override def extract(input: PageNode, subjectUri: String, context: PageContext): Seq[Quad] = {
     extractNode(input, subjectUri, context)
-    Seq.empty
   }
 
   override val datasets: Set[Dataset] = Set.empty
