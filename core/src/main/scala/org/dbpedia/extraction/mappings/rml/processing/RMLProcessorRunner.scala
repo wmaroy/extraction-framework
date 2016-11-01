@@ -12,7 +12,7 @@ import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
 import org.dbpedia.extraction.ontology.Ontology
 import org.dbpedia.extraction.util.Language
-import org.dbpedia.extraction.wikiparser.{InternalLinkNode, TemplateNode}
+import org.dbpedia.extraction.wikiparser.{ExternalLinkNode, InternalLinkNode, TemplateNode}
 import org.openrdf.model.Value
 import org.openrdf.model.impl.URIImpl
 import org.openrdf.rio.RDFFormat
@@ -50,32 +50,40 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     dataset.dumpRDF(triplesOutputStream, RDFFormat.TURTLE)
     val triplesInputStream = new ByteArrayInputStream(triplesOutputStream.toByteArray)
 
+
+
     val model = ModelFactory.createDefaultModel()
     model.read(triplesInputStream, null, "TURTLE")
 
     val statementIterator = model.listStatements()
-    var list = List()
+
+    var seq = Seq.empty[Quad]
+
     while(statementIterator.hasNext) {
 
       val statement = statementIterator.nextStatement()
 
       val objectUri = if(statement.getObject.isResource) {
-        statement.getObject.asResource().getURI
+        statement.getObject.asResource().toString
       } else if(statement.getObject.isLiteral) {
-        statement.getObject.asLiteral().getDatatypeURI
+        statement.getObject.asLiteral().getString
       } else {
         throw new RuntimeException(statement.getSubject.getURI + " has no valid object")
       }
 
-      val ontolog = context.ontology
       val quad = new Quad(context.language, DBpediaDatasets.OntologyPropertiesLiterals, statement.getSubject.getURI,
         RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context),
         objectUri, templateNode.sourceUri)
-      println(quad.toString())
+
+
+
+      seq :+= quad
+
     }
 
+    println("Seq size: " + seq.size)
 
-    Seq.empty
+    seq
 
   }
 
@@ -85,14 +93,14 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     for(key <- keyset) {
       val node = templateNode.property(key).get
       if(node.children.size == 1) {
-        hashMap.put(key, node.children.head.retrieveText.get.replaceAll("\n",""))
+        hashMap.put(key, node.children.head.retrieveText.get.replaceAll("\n", ""))
       } else {
         var found = false;
         var i = 0
         while(!found && i < node.children.size) {
           if(node.children(i).isInstanceOf[InternalLinkNode]) {
             val internalLinkNode = node.children(i).asInstanceOf[InternalLinkNode]
-            hashMap.put(key, internalLinkNode.destination.decoded)
+            hashMap.put(key, internalLinkNode.destination.resourceIri)
             found = true
           }
           i += 1
