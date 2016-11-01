@@ -9,6 +9,8 @@ import be.ugent.mmlab.rml.model.dataset.{RMLDataset, StdRMLDataset}
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
 import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
+import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
+import org.dbpedia.extraction.ontology.Ontology
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{InternalLinkNode, TemplateNode}
 import org.openrdf.model.Value
@@ -22,7 +24,8 @@ import org.openrdf.rio.RDFFormat
   */
 class RMLProcessorRunner(mappings: RMLMapping) {
 
-  def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String, context : { def language : Language}) : Seq[Quad] = {
+  def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String, context : { def language : Language
+                                                                                                  def ontology: Ontology}) : Seq[Quad] = {
 
     triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri))
 
@@ -49,14 +52,26 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
     val model = ModelFactory.createDefaultModel()
     model.read(triplesInputStream, null, "TURTLE")
-    model.write(System.out, "TURTLE")
 
     val statementIterator = model.listStatements()
     var list = List()
     while(statementIterator.hasNext) {
+
       val statement = statementIterator.nextStatement()
-      //new Quad(context.language, DBpediaDatasets.OntologyPropertiesLiterals, statement.getSubject.getURI, statement.getPredicate.getURI, statement.getObject.asResource().getURI, templateNode.sourceUri)
-      print(statement.getSubject.getURI)
+
+      val objectUri = if(statement.getObject.isResource) {
+        statement.getObject.asResource().getURI
+      } else if(statement.getObject.isLiteral) {
+        statement.getObject.asLiteral().getDatatypeURI
+      } else {
+        throw new RuntimeException(statement.getSubject.getURI + " has no valid object")
+      }
+
+      val ontolog = context.ontology
+      val quad = new Quad(context.language, DBpediaDatasets.OntologyPropertiesLiterals, statement.getSubject.getURI,
+        RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context),
+        objectUri, templateNode.sourceUri)
+      println(quad.toString())
     }
 
 
