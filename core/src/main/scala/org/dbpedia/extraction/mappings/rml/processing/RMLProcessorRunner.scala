@@ -50,15 +50,11 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     dataset.dumpRDF(triplesOutputStream, RDFFormat.TURTLE)
     val triplesInputStream = new ByteArrayInputStream(triplesOutputStream.toByteArray)
 
-
-
     val model = ModelFactory.createDefaultModel()
     model.read(triplesInputStream, null, "TURTLE")
 
     val statementIterator = model.listStatements()
-
     var seq = Seq.empty[Quad]
-
     while(statementIterator.hasNext) {
 
       val statement = statementIterator.nextStatement()
@@ -80,8 +76,6 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       seq :+= quad
 
     }
-
-    println("Seq size: " + seq.size)
 
     seq
 
