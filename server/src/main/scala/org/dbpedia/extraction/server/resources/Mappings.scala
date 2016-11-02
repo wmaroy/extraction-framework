@@ -188,8 +188,14 @@ class Mappings(@PathParam("lang") langCode : String)
 
       //Load mappings
       val factory = new RMLTemplateMappingFactory()
-      val rmlMapping = factory.createMapping(parser(page.head).get, language, MappingsLoader.load(context))
-      rmlMapping.writeAsNTriples
+      try {
+        val rmlMapping = factory.createMapping(parser(page.head).get, language, MappingsLoader.load(context))
+        rmlMapping.writeAsNTriples
+      } catch {
+        case e: Exception =>
+          logger.log(Level.WARNING,"Loading " + title + " failed")
+          ""
+      }
     }
 
     /**
