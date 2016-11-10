@@ -136,7 +136,6 @@ extends PropertyMapping
     if(ontologyProperty != null)
     {
       instanceUri = pageContext.generateUri(subjectUri, ontologyProperty.name)
-
       quads += new Quad(context.language,  DBpediaDatasets.OntologyPropertiesGeo, subjectUri, ontologyProperty, instanceUri, sourceUri)
     }
 

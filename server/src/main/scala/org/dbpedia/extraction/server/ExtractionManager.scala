@@ -214,9 +214,7 @@ abstract class ExtractionManager(
             val disambiguations = self.disambiguations
             val rmlMappings = RMLParser.parseFromFile(pathToRml)
       }
-
     }
-
 
     protected def loadMappings() : Map[Language, Mappings] =
     {
@@ -232,13 +230,10 @@ abstract class ExtractionManager(
           val mappingPageSource = self.mappingPageSource(lang)
           val disambiguations = self.disambiguations
         }
-
-        val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
-
-        //MappingsLoader.load(context)
-
-        RMLMappingsLoader.load(rmlContext)
+        MappingsLoader.load(context)
+        // val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
+        // RMLMappingsLoader.load(rmlContext) --> used for intermediate extraction step in RML for testing purposes, not needed for finalized RML extraction
+        //new Mappings(Map.empty, List.empty)
     }
-
 
 }
