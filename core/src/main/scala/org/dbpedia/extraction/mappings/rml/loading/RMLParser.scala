@@ -5,7 +5,7 @@ import java.nio.file.Paths
 import be.ugent.mmlab.rml.mapdochandler.extraction.std.StdRMLMappingFactory
 import be.ugent.mmlab.rml.mapdochandler.retrieval.RMLDocRetrieval
 import be.ugent.mmlab.rml.model.RMLMapping
-import org.openrdf.rio.RDFFormat
+import org.eclipse.rdf4j.rio.RDFFormat
 
 /**
   * Responsible for parsing RML documents using the MapDocHandler

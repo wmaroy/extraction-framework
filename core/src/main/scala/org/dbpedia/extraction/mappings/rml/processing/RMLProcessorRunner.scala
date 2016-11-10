@@ -3,19 +3,22 @@ package org.dbpedia.extraction.mappings.rml.processing
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, InputStream, ObjectOutputStream}
 import java.util
 
-import be.ugent.mmlab.rml.config.RMLConfiguration
 import be.ugent.mmlab.rml.core.StdRMLEngine
 import be.ugent.mmlab.rml.model.dataset.{RMLDataset, StdRMLDataset}
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
+import org.dbpedia.extraction.dataparser.DateTimeParser
 import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
+import org.dbpedia.extraction.mappings.Redirects
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
 import org.dbpedia.extraction.ontology.Ontology
+import org.dbpedia.extraction.ontology.datatypes.Datatype
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.{ExternalLinkNode, InternalLinkNode, TemplateNode}
-import org.openrdf.model.Value
-import org.openrdf.model.impl.URIImpl
-import org.openrdf.rio.RDFFormat
+import org.eclipse.rdf4j.model.impl.URIImpl
+import org.eclipse.rdf4j.rio.RDFFormat
+
+import scala.language.reflectiveCalls
 
 /**
   *
@@ -25,7 +28,8 @@ import org.openrdf.rio.RDFFormat
 class RMLProcessorRunner(mappings: RMLMapping) {
 
   def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String, context : { def language : Language
-                                                                                                  def ontology: Ontology}) : Seq[Quad] = {
+                                                                                                  def ontology: Ontology
+                                                                                                  def redirects: Redirects}) : Seq[Quad] = {
 
     triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri))
 
@@ -42,7 +46,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     oos.flush()
     oos.close()
 
-    val is = new ByteArrayInputStream(baos.toByteArray());
+    val is = new ByteArrayInputStream(baos.toByteArray())
 
     engine.generateRDFTriples(dataset, mappings, parameters, exeTriplesMap.toArray, is)
 
@@ -67,11 +71,45 @@ class RMLProcessorRunner(mappings: RMLMapping) {
         throw new RuntimeException(statement.getSubject.getURI + " has no valid object")
       }
 
-      val quad = new Quad(context.language, DBpediaDatasets.OntologyPropertiesLiterals, statement.getSubject.getURI,
-        RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context),
-        objectUri, templateNode.sourceUri)
+      val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context)
+
+      //TODO: check for all mapping datastructures if datatype and mapDataset is calculated like this
+      val datatype = if(ontologyProperty.range.isInstanceOf[Datatype]) ontologyProperty.range.asInstanceOf[Datatype] else null
+      val mapDataset = if (datatype == null) DBpediaDatasets.OntologyPropertiesObjects else DBpediaDatasets.OntologyPropertiesLiterals
 
 
+      //TODO: writing values should get it's own def
+      val value = ontologyProperty.range match {
+        case dt : Datatype => dt.name match {
+          case "xsd:date" =>
+          {
+            val parser = new DateTimeParser(context, dt)
+            parser.findDate(objectUri).get.toString
+          }
+          case "xsd:gYear" =>
+          {
+            val parser = new DateTimeParser(context, dt)
+            parser.findDate(objectUri).get.toString
+          }
+          case "xsd:gYearMonth" =>
+          {
+            val parser = new DateTimeParser(context, dt)
+            parser.findDate(objectUri).get.toString
+          }
+          case "xsd:gMonthDay" =>
+          {
+            val parser = new DateTimeParser(context, dt)
+            parser.findDate(objectUri).get.toString
+          }
+          case other => objectUri
+        }
+        case other => objectUri
+      }
+
+
+
+      val quad = new Quad(context.language, mapDataset, statement.getSubject.getURI, ontologyProperty,
+        value, templateNode.sourceUri, datatype)
 
       seq :+= quad
 
@@ -102,6 +140,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
       }
     }
+
     return hashMap
   }
 

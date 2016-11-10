@@ -17,6 +17,7 @@ import scala.language.reflectiveCalls
   */
 class RMLExtractor(
   context : {
+    def redirects: Redirects
     def language: Language
     def rmlMappings: RMLMapping
     def ontology: Ontology

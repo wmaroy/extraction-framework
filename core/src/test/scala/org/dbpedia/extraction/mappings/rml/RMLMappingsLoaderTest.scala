@@ -36,7 +36,7 @@ class RMLMappingsLoaderTest extends FlatSpec with Matchers
   var date = 0
   var intermediate = 0
   var geo = 0
-  /*
+
   for(mapping <- rmlTemplateMappings.head._2.asInstanceOf[TemplateMapping].mappings) {
     mapping.getClass.getSimpleName match {
       case "SimplePropertyMapping" => simple += 1
@@ -70,7 +70,7 @@ class RMLMappingsLoaderTest extends FlatSpec with Matchers
   println("DateIntervalMappings: " + date)
   println("IntermediateNodeMappings: " + intermediate)
   println("GeoCoordinateMappings: " + geo)
-  */
+
 
   println("\nEnd of test.\n\n\n")
 

@@ -183,7 +183,7 @@ class DateTimeParser ( context : {
         None
     }
 
-    private def findDate(input: String) : Option[Date] =
+    def findDate(input: String) : Option[Date] =                                                                          //TODO: wmaroy reused this for RMLProcessorRunner
     {
         for(date <- catchDate(input))
         {
