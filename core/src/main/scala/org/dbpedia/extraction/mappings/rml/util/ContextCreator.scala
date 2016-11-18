@@ -20,6 +20,7 @@ object ContextCreator {
   private val ontologySource = XMLSource.fromFile(ontologyFile,Language.Mappings)
   private val ontologyObject = new OntologyReader().read(ontologySource)
 
+
   def createXMLContext(pathToXML: String, lang: Language):
   {
     def ontology: Ontology

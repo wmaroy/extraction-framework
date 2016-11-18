@@ -7,7 +7,7 @@ import be.ugent.mmlab.rml.core.StdRMLEngine
 import be.ugent.mmlab.rml.model.dataset.{RMLDataset, StdRMLDataset}
 import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
-import org.dbpedia.extraction.dataparser.DateTimeParser
+import org.dbpedia.extraction.dataparser._
 import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
 import org.dbpedia.extraction.mappings.Redirects
 import org.dbpedia.extraction.mappings.rml.util.RMLOntologyUtil
@@ -63,7 +63,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
       val statement = statementIterator.nextStatement()
 
-      val objectUri = if(statement.getObject.isResource) {
+      val objectValue = if(statement.getObject.isResource) {
         statement.getObject.asResource().toString
       } else if(statement.getObject.isLiteral) {
         statement.getObject.asLiteral().getString
@@ -78,38 +78,8 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       val mapDataset = if (datatype == null) DBpediaDatasets.OntologyPropertiesObjects else DBpediaDatasets.OntologyPropertiesLiterals
 
 
-      //TODO: writing values should get it's own def
-      val value = ontologyProperty.range match {
-        case dt : Datatype => dt.name match {
-          case "xsd:date" =>
-          {
-            val parser = new DateTimeParser(context, dt)
-            parser.findDate(objectUri).get.toString
-          }
-          case "xsd:gYear" =>
-          {
-            val parser = new DateTimeParser(context, dt)
-            parser.findDate(objectUri).get.toString
-          }
-          case "xsd:gYearMonth" =>
-          {
-            val parser = new DateTimeParser(context, dt)
-            parser.findDate(objectUri).get.toString
-          }
-          case "xsd:gMonthDay" =>
-          {
-            val parser = new DateTimeParser(context, dt)
-            parser.findDate(objectUri).get.toString
-          }
-          case other => objectUri
-        }
-        case other => objectUri
-      }
-
-
-
       val quad = new Quad(context.language, mapDataset, statement.getSubject.getURI, ontologyProperty,
-        value, templateNode.sourceUri, datatype)
+        objectValue, templateNode.sourceUri, datatype)
 
       seq :+= quad
 
@@ -127,17 +97,16 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       if(node.children.size == 1) {
         hashMap.put(key, node.children.head.retrieveText.get.replaceAll("\n", ""))
       } else {
-        var found = false;
         var i = 0
-        while(!found && i < node.children.size) {
+        var value = ""
+        while(i < node.children.size) {
           if(node.children(i).isInstanceOf[InternalLinkNode]) {
             val internalLinkNode = node.children(i).asInstanceOf[InternalLinkNode]
-            hashMap.put(key, internalLinkNode.destination.resourceIri)
-            found = true
+            value += internalLinkNode.destination.resourceIri + "|" + internalLinkNode.retrieveText.get + "><"
           }
           i += 1
         }
-
+        hashMap.put(key, value)
       }
     }
 
