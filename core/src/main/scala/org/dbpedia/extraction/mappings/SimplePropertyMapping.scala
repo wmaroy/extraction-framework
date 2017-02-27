@@ -33,8 +33,6 @@ class SimplePropertyMapping (
   }
 )
 
-
-
 extends PropertyMapping
 {
     val selector: List[_] => List[_] =
@@ -44,8 +42,6 @@ extends PropertyMapping
             case null => identity
             case _ => throw new IllegalArgumentException("Only 'first' or 'last' are allowed in property 'select'")
         }
-
-
 
 
   /**
@@ -214,7 +210,7 @@ extends PropertyMapping
 
             //get the property wikitext and plainText size
             val propertyNodeWikiLength = propertyNode.toWikiText.substring(propertyNode.toWikiText.indexOf('=')+1).trim.length // exclude '| propKey ='
-            val propertyNodeTextLength = propertyNode.propertyNodeValueToPalinText.trim.length
+            val propertyNodeTextLength = propertyNode.propertyNodeValueToPlainText.trim.length
 
             for( parseResult <- selector(parseResults) )
             {
@@ -256,11 +252,6 @@ extends PropertyMapping
 
                 graph ++= g
             }
-        }
-        var i = 0
-        while(i < graph.size) {
-          Counter.increment()
-          i +=1
         }
         graph
     }

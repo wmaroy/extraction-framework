@@ -70,7 +70,9 @@ object NodeUtil
 
         transformCmd match
         {
-            case "internal" => new InternalLinkNode(WikiTitle.parse(textNode.text, language), List(textNode), line)
+            case "internal" => {
+                new InternalLinkNode(WikiTitle.parse(textNode.text, language), List(textNode), line)
+            }
             case "external" => try {
                 if (UriUtils.hasKnownScheme(textNode.text))
                     new ExternalLinkNode(new URI(textNode.text), List(textNode), line)

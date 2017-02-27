@@ -67,12 +67,16 @@ abstract class ExtractionManager(
     protected val parser = WikiParser.getInstance()
 
     def extract(source: Source, destination: Destination, language: Language, useCustomExtraction: Boolean = false): Unit = {
+      val start = System.nanoTime()
       val extract = if (useCustomExtraction) customExtractor(language) else mappingExtractor(language)
       destination.open()
-      Counter.reset()
-      for (page <- source) destination.write(extract(page))
-      Counter.print()
+      for (page <- source) {
+        val extracted = extract(page)
+        destination.write(extracted)
+      }
       destination.close()
+      val elapsed = (System.nanoTime() - start) / 1000000000.0 +" seconds"
+      println("TOTAL EXTRACTION TIME: " + elapsed + " seconds.")
     }
 
     def validateMapping(mappingsPages: Traversable[WikiPage], lang: Language) : Elem =
@@ -231,8 +235,8 @@ abstract class ExtractionManager(
           val disambiguations = self.disambiguations
         }
         MappingsLoader.load(context)
-        // val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
-        // RMLMappingsLoader.load(rmlContext) --> used for intermediate extraction step in RML for testing purposes, not needed for finalized RML extraction
+        //val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
+        //RMLMappingsLoader.load(rmlContext) --> used for intermediate extraction step in RML for testing purposes, not needed for finalized RML extraction
         //new Mappings(Map.empty, List.empty)
     }
 

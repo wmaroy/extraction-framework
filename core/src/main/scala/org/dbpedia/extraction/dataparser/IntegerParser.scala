@@ -40,7 +40,7 @@ class IntegerParser( context : { def language : Language } ,
         None
     }
 
-    private def parseValue(input : String) : Option[Double] =   // double is returned because
+    def parseValue(input : String) : Option[Double] =   // double is returned because                                       // RMLProcessRunner needs this
     {
         val numberStr = if(strict) input.trim else IntegerRegex.findFirstMatchIn(input.trim) match
         {

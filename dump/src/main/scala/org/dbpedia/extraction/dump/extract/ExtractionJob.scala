@@ -45,14 +45,28 @@ class ExtractionJob(extractor: RootExtractor, source: Source, namespaces: Set[Na
     destination.open()
 
     workers.start()
-    
-    for (page <- source) workers.process(page)
+
+
+    process()
+
     
     workers.stop()
     
     destination.close()
     
     progress.end()
+  }
+
+  def process() : Unit = {
+    var count = 0
+    for (page <- source) {
+      count += 1
+      if(count <= 2000) {
+        workers.process(page)
+      } else {
+        return
+      }
+    }
   }
   
 }

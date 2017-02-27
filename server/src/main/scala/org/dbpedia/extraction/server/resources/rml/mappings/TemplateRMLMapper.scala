@@ -1,8 +1,10 @@
 package org.dbpedia.extraction.server.resources.rml.mappings
 
+import be.ugent.mmlab.rml.model.RDFTerm.SubjectMap
 import org.dbpedia.extraction.mappings._
+import org.dbpedia.extraction.ontology.OntologyClass
 import org.dbpedia.extraction.server.resources.rml.model.RMLModel
-import org.dbpedia.extraction.server.resources.rml.model.rmlresources.{RMLLiteral, RMLPredicateObjectMap, RMLUri}
+import org.dbpedia.extraction.server.resources.rml.model.rmlresources.{RMLLiteral, RMLPredicateObjectMap, RMLSubjectMap, RMLUri}
 
 /**
   * Creates an RML Template Mapping
@@ -23,8 +25,9 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
 
   private def defineSubjectMap() =
   {
-    rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}"))
+    rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/wikititle"))
     rmlModel.subjectMap.addClass(rmlModel.rmlFactory.createRMLUri(templateMapping.mapToClass.uri))
+    addExtraClassesToSubjectMap(rmlModel.subjectMap)
     rmlModel.subjectMap.addIRITermType()
     addCorrespondingPropertyAndClassToSubjectMap()
   }
@@ -59,6 +62,18 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
       val subjectMap = parentTriplesMap.addSubjectMap(parentTriplesMap.uri.extend("/SubjectMap"))
       subjectMap.addClass(new RMLUri(templateMapping.correspondingClass.uri))
       parentTriplesMap.addLogicalSource(rmlModel.logicalSource)
+    }
+  }
+
+  /**
+    * Add related classes to the subject map
+    * @param subjectMap
+    */
+  private def addExtraClassesToSubjectMap(subjectMap: RMLSubjectMap) =
+  {
+    val relatedClasses = templateMapping.mapToClass.relatedClasses
+    for(cls <- relatedClasses) {
+      subjectMap.addClass(new RMLUri(cls.uri))
     }
   }
 

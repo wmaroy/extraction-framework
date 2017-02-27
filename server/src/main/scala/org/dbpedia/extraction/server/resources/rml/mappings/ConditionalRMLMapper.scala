@@ -9,6 +9,7 @@ import scala.language.reflectiveCalls
 
 /**
   * Creates RML Mapping from ConditionalMappings and adds the triples to the given model
+  *
   */
 class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
 
@@ -32,12 +33,12 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     val mapToClassPom = rmlModel.triplesMap.addConditionalPredicateObjectMap(mapToClassPomUri)
     mapToClassPom.addDCTermsType(new RMLLiteral("conditionalMapping"))
     mapToClassPom.addPredicate(new RMLUri(RdfNamespace.RDF.namespace + "type"))
+    //TODO: add the related classes as well!
     val mapToClassOmUri = mapToClassPomUri.extend("/ObjectMap")
     val mapToClassOm = mapToClassPom.addObjectMap(mapToClassOmUri)
 
     mapToClassOm.addConstant(new RMLUri(firstTemplateMapping.mapToClass.uri))
     val conditionFunctionTermMap = addEqualCondition(firstConditionMapping, mapToClassPom)
-
 
 
     //add predicate object maps
@@ -71,6 +72,7 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     val mapToClassPomUri = new RMLUri(predicateObjectMap.resource.getURI).extend("/" + index)
     val mapToClassPom = predicateObjectMap.addFallbackMap(mapToClassPomUri)
     mapToClassPom.addPredicate(new RMLUri(RdfNamespace.RDF.namespace + "type"))
+    //TODO: add the related classes as well!
     mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
 
     val conditionFunctionTermMap = addEqualCondition(condition, mapToClassPom)
@@ -118,7 +120,12 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     }
   }
 
-
+  /**
+    * Adds the operator function to the mapping file
+    * @param conditionMapping
+    * @param pom
+    * @return
+    */
   private def addEqualCondition(conditionMapping: ConditionMapping, pom: RMLConditionalPredicateObjectMap) : RMLFunctionTermMap =
   {
 
@@ -132,19 +139,33 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     executePom.addPredicate(new RMLUri(RdfNamespace.FNO.namespace + "executes"))
     executePom.addObjectMap(executePom.uri.extend("/ObjectMap")).addConstant(new RMLUri(RdfNamespace.DBF.namespace + conditionMapping.operator))
 
+    // checks if this condition needs a value or not
     if(conditionMapping.value != null) {
       val paramValuePom = functionValue.addPredicateObjectMap(functionValue.uri.extend("/ValueParameterPOM"))
-      paramValuePom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + conditionMapping.operator + DbfFunction.operatorFunction.valueParameter))
+      paramValuePom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace  + conditionMapping.operator + "/" + DbfFunction.operatorFunction.valueParameter))
       paramValuePom.addObjectMap(paramValuePom.uri.extend("/ObjectMap")).addConstant(new RMLLiteral(conditionMapping.value))
     }
 
+    // checks if this condition needs a property or not
     if(conditionMapping.templateProperty != null) {
       val paramPropertyPom = functionValue.addPredicateObjectMap(functionValue.uri.extend("/PropertyParameterPOM"))
-      paramPropertyPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + conditionMapping.operator + DbfFunction.operatorFunction.propertyParameter))
-      paramPropertyPom.addObjectMap(paramPropertyPom.uri.extend("/ObjectMap")).addConstant(new RMLLiteral(conditionMapping.templateProperty))
+      paramPropertyPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + conditionMapping.operator + "/" + DbfFunction.operatorFunction.propertyParameter))
+      paramPropertyPom.addObjectMap(paramPropertyPom.uri.extend("/ObjectMap")).addRMLReference(new RMLLiteral(conditionMapping.templateProperty))
     }
 
     functionTermMap
+  }
+
+  /**
+    * Add related classes to the subject map
+    * @param subjectMap
+    */
+  private def addExtraClassesToSubjectMap(subjectMap: RMLSubjectMap) =
+  {
+    val relatedClasses = mapping.cases.head.mapping.asInstanceOf[TemplateMapping].mapToClass.relatedClasses
+    for(cls <- relatedClasses) {
+      subjectMap.addClass(new RMLUri(cls.uri))
+    }
   }
 
 }

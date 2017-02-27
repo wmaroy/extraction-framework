@@ -150,6 +150,8 @@ object Language extends (String => Language)
       "http://mappings.dbpedia.org/api.php"
     )
 
+
+
     languages.toMap // toMap makes immutable
   }
   

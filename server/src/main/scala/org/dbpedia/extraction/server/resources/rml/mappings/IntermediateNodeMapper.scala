@@ -53,7 +53,7 @@ class IntermediateNodeMapper(rmlModel: RMLModel, mapping: IntermediateNodeMappin
     val parentSubjectMap = parentTriplesMap.addSubjectMap(parentTriplesMapUri.extend("/SubjectMap"))
     parentSubjectMap.addClass(new RMLUri(mapping.nodeClass.uri))
     parentSubjectMap.addIRITermType()
-    parentSubjectMap.addConstant(new RMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}/" + mapping.nodeClass.name + "/" + mapping.correspondingProperty.name))
+    parentSubjectMap.addRMLReference(new RMLLiteral(mapping.correspondingProperty.name))
 
     //create the intermediate mappings
     for(mapping <- mapping.mappings) {

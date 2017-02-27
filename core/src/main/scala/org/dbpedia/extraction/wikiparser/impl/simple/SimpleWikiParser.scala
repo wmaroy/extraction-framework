@@ -98,6 +98,10 @@ class SimpleWikiParser extends WikiParser
 
     }
 
+    def parseString(string:String): List[Node] = {
+      parseUntil(new Matcher(List(), true), new Source(string, Language.Commons), 0)
+    }
+
     private def findTemplate(node : Node, names : Set[String], language : Language) : Boolean = node match
     {
         case TemplateNode(title, _, _, _) => names.contains(title.decoded)

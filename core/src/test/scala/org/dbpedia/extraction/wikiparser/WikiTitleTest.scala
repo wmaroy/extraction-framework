@@ -5,6 +5,7 @@ import org.scalatest.Matchers
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.dbpedia.extraction.util.Language
+import org.dbpedia.extraction.wikiparser.impl.simple.{Matcher, SimpleWikiParser, Source}
 
 /**
  *

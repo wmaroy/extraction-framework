@@ -38,7 +38,7 @@ object StringParser extends DataParser
             Some(text)
         }
     }
-  
+
     private def nodeToString(node : Node, sb : StringBuilder)
     {
         node match

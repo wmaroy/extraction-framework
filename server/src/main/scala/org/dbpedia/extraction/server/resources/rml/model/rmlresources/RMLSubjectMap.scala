@@ -14,6 +14,11 @@ class RMLSubjectMap(override val resource: Resource) extends RMLResource(resourc
     this
   }
 
+  def addRMLReference(literal: RMLLiteral) =
+  {
+    resource.addLiteral(createProperty(RdfNamespace.RML.namespace + "reference"), literal.toString())
+  }
+
   def addConstant(uri: RMLUri) : RMLSubjectMap = {
     resource.addProperty(createProperty(RdfNamespace.RR.namespace + "constant"), createProperty(uri.toString()))
     this

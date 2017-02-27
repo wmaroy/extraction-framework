@@ -3,16 +3,21 @@ package org.dbpedia.extraction.dump.extract
 import org.dbpedia.extraction.destinations._
 import org.dbpedia.extraction.mappings._
 import org.dbpedia.extraction.ontology.io.OntologyReader
-import org.dbpedia.extraction.sources.{WikiPage, XMLSource, WikiSource, Source}
+import org.dbpedia.extraction.sources.{Source, WikiPage, WikiSource, XMLSource}
 import org.dbpedia.extraction.wikiparser._
 import org.dbpedia.extraction.dump.download.Download
-import org.dbpedia.extraction.util.{Language, Finder, ExtractorUtils}
+import org.dbpedia.extraction.util.{ExtractorUtils, Finder, Language}
 import org.dbpedia.extraction.util.RichFile.wrapFile
-import scala.collection.mutable.{ArrayBuffer,HashMap}
+
+import scala.collection.mutable.{ArrayBuffer, HashMap}
 import java.io._
 import java.net.URL
+
 import scala.io.Codec.UTF8
 import java.util.logging.Logger
+
+import be.ugent.mmlab.rml.model.RMLMapping
+import org.dbpedia.extraction.mappings.rml.loading.RMLParser
 import org.dbpedia.extraction.util.IOUtils
 
 /**
@@ -97,11 +102,26 @@ class ConfigLoader(config: Config)
     
             private val _redirects =
             {
-              val cache = finder.file(date, "template-redirects.obj")
-              Redirects.load(articlesSource, cache, language)
+              //empty redirect map for now @wmaroy
+              //val cache = finder.file(date, "template-redirects.obj")
+              //Redirects.load(articlesSource, cache, language)
+              new Redirects(Map())
             }
-            
+
             def redirects : Redirects = _redirects
+
+
+
+            // ADDED FOR RML
+            private val _rmlMappings = {
+              val pathToRml = "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
+              RMLParser.parseFromFile(pathToRml)
+            }
+
+            def rmlMappings : RMLMapping = _rmlMappings
+
+
+
 
             private val _disambiguations =
             {

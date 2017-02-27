@@ -40,7 +40,7 @@ class DoubleParser( context : { def language : Language },
         None
     }
 
-    private def parseFloatValue(input : String) : Option[Double] =
+    def parseFloatValue(input : String) : Option[Double] =                                                                   //needed for RMLProcessRunner
     {
         val numberStr = if(strict) input.trim else DoubleRegex.findFirstMatchIn(input.trim) match
         {

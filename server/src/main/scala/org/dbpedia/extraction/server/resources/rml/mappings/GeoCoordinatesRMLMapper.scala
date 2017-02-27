@@ -31,7 +31,7 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
       val parentSubjectMap = triplesMap.addSubjectMap(triplesMap.uri.extend("/SubjectMap"))
       parentSubjectMap.addClass(new RMLUri(RdfNamespace.GEO.namespace + "SpatialThing"))
       parentSubjectMap.addIRITermType()
-      parentSubjectMap.addConstant(new RMLLiteral("http://en.dbpedia.org/resource/{{wikititle}}/" + mapping.ontologyProperty.name + "/"))
+      parentSubjectMap.addRMLReference(new RMLLiteral(mapping.ontologyProperty.name))
       addGeoCoordinatesMappingToTriplesMap(triplesMap)
       List(pom)
     } else {
@@ -150,6 +150,52 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
 
     val latParameterPomUri = latFunctionValueUri.extend("/ParameterPOM")
     val latParameterPom = latFunctionValue.addPredicateObjectMap(latParameterPomUri)
+    latParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "coordParameter"))
+    val latParameterOmUri = latParameterPomUri.extend("/ObjectMap")
+    latParameterPom.addObjectMap(latParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
+
+    lonPom.addDCTermsType(new RMLLiteral("longitudeMapping"))
+    lonPom.addPredicate(new RMLUri(RdfNamespace.GEO.namespace + "long"))
+    val lonOmUri = lonPom.uri.extend("/FunctionTermMap")
+    val lonOm = lonPom.addFunctionTermMap(lonOmUri)
+    val lonFunctionValueUri = lonOmUri.extend("/FunctionValue")
+    val lonFunctionValue = lonOm.addFunctionValue(lonFunctionValueUri)
+    lonFunctionValue.addLogicalSource(rmlModel.logicalSource)
+    lonFunctionValue.addSubjectMap(rmlModel.functionSubjectMap)
+
+    val lonExecutePomUri = lonFunctionValueUri.extend("/ExecutePOM")
+    val lonExecutePom = lonFunctionValue.addPredicateObjectMap(lonExecutePomUri)
+    lonExecutePom.addPredicate(new RMLUri(RdfNamespace.FNO.namespace + "executes"))
+    val lonExecuteOmUri = lonExecutePomUri.extend("/ObjectMap")
+    lonExecutePom.addObjectMap(lonExecuteOmUri).addConstant(new RMLUri(RdfNamespace.DBF.namespace + "lonFunction"))
+
+    val lonParameterPomUri = lonFunctionValueUri.extend("/ParameterPOM")
+    val lonParameterPom = lonFunctionValue.addPredicateObjectMap(lonParameterPomUri)
+    lonParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "coordParameter"))
+    val lonParameterOmUri = lonParameterPomUri.extend("/ObjectMap")
+    lonParameterPom.addObjectMap(lonParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
+
+  }
+
+  private def addLongitudeLatitudeToPredicateObjectMap(latPom: RMLPredicateObjectMap, lonPom: RMLPredicateObjectMap) =
+  {
+    latPom.addDCTermsType(new RMLLiteral("latitudeMapping"))
+    latPom.addPredicate(new RMLUri(RdfNamespace.GEO.namespace + "lat"))
+    val latOmUri = latPom.uri.extend("/FunctionTermMap")
+    val latOm = latPom.addFunctionTermMap(latOmUri)
+    val latFunctionValueUri = latOmUri
+    val latFunctionValue = latOm.addFunctionValue(latFunctionValueUri)
+    latFunctionValue.addLogicalSource(rmlModel.logicalSource)
+    latFunctionValue.addSubjectMap(rmlModel.functionSubjectMap)
+
+    val latExecutePomUri = latFunctionValueUri.extend("/ExecutePOM")
+    val latExecutePom = latFunctionValue.addPredicateObjectMap(latExecutePomUri)
+    latExecutePom.addPredicate(new RMLUri(RdfNamespace.FNO.namespace + "executes"))
+    val latExecuteOmUri = latExecutePomUri.extend("/ObjectMap")
+    latExecutePom.addObjectMap(latExecuteOmUri).addConstant(new RMLUri(RdfNamespace.DBF.namespace + "latFunction"))
+
+    val latParameterPomUri = latFunctionValueUri.extend("/ParameterPOM")
+    val latParameterPom = latFunctionValue.addPredicateObjectMap(latParameterPomUri)
     latParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "latParameter"))
     val latParameterOmUri = latParameterPomUri.extend("/ObjectMap")
     latParameterPom.addObjectMap(latParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
@@ -174,22 +220,6 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
     lonParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "lonParameter"))
     val lonParameterOmUri = lonParameterPomUri.extend("/ObjectMap")
     lonParameterPom.addObjectMap(lonParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
-
-  }
-
-  private def addLongitudeLatitudeToPredicateObjectMap(latPom: RMLPredicateObjectMap, lonPom: RMLPredicateObjectMap) =
-  {
-    latPom.addDCTermsType(new RMLLiteral("latitudeMapping"))
-    latPom.addPredicate(new RMLUri(RdfNamespace.GEO.namespace + "lat"))
-
-    val latitudeOmUri = latPom.uri.extend("/ObjectMap")
-    latPom.addObjectMap(latitudeOmUri).addRMLReference(new RMLLiteral("latitude"))
-
-    lonPom.addDCTermsType(new RMLLiteral("longitudeMapping"))
-    lonPom.addPredicate(new RMLUri(RdfNamespace.GEO.namespace + "long"))
-
-    val longitudeOmUri = lonPom.uri.extend("/ObjectMap")
-    lonPom.addObjectMap(latitudeOmUri).addRMLReference(new RMLLiteral("longitude"))
   }
 
   private def addDegreesToPredicateObjectMap(latPom: RMLPredicateObjectMap, lonPom: RMLPredicateObjectMap) =
@@ -230,6 +260,16 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
       latMinutesParameterPom.addObjectMap(latMinutesParameterOmUri).addRMLReference(new RMLLiteral(mapping.latitudeMinutes))
     } else {
       latMinutesParameterPom.addObjectMap(latMinutesParameterOmUri).addRMLReference(new RMLLiteral("null"))
+    }
+
+    val latSecondsParameterPomUri = latitudeFunctionValueUri.extend("/LatSecondsParameterPOM")
+    val latSecondsParameterPom = latitudeFunctionValue.addPredicateObjectMap(latSecondsParameterPomUri)
+    latSecondsParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + DbfFunction.latFunction.latSecondsParameter))
+    val latSecondsParameterOmUri = latSecondsParameterPomUri.extend("/ObjectMap")
+    if(mapping.latitudeSeconds != null) {
+      latSecondsParameterPom.addObjectMap(latSecondsParameterOmUri).addRMLReference(new RMLLiteral(mapping.latitudeSeconds))
+    } else {
+      latSecondsParameterPom.addObjectMap(latSecondsParameterOmUri).addRMLReference(new RMLLiteral("null"))
     }
 
     val latDirectionParameterPomUri = latitudeFunctionValueUri.extend("/latDirectionParameterPOM")
@@ -279,6 +319,16 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
       lonMinutesParameterPom.addObjectMap(lonMinutesParameterOmUri).addRMLReference(new RMLLiteral(mapping.longitudeMinutes))
     } else {
       lonMinutesParameterPom.addObjectMap(lonMinutesParameterOmUri).addRMLReference(new RMLLiteral("null"))
+    }
+
+    val lonSecondsParameterPomUri = longitudeFunctionValueUri.extend("/lonSecondsParameterPOM")
+    val lonSecondsParameterPom = longitudeFunctionValue.addPredicateObjectMap(lonSecondsParameterPomUri)
+    lonSecondsParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + DbfFunction.lonFunction.lonSecondsParameter))
+    val lonSecondsParameterOmUri = lonSecondsParameterPomUri.extend("/ObjectMap")
+    if(mapping.longitudeSeconds != null) {
+      lonSecondsParameterPom.addObjectMap(lonSecondsParameterOmUri).addRMLReference(new RMLLiteral(mapping.longitudeSeconds))
+    } else {
+      lonSecondsParameterPom.addObjectMap(lonSecondsParameterOmUri).addRMLReference(new RMLLiteral("null"))
     }
 
     val lonDirectionParameterPomUri = longitudeFunctionValueUri.extend("/lonDirectionParameterPOM")

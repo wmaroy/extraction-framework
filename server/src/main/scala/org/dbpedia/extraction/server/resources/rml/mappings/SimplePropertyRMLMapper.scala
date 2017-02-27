@@ -35,7 +35,6 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
   def addSimplePropertyMappingToTriplesMap(uri: String, triplesMap: RMLTriplesMap) : List[RMLPredicateObjectMap] =
   {
 
-
     val simplePropertyMappingUri = new RMLUri(uri + "/SimplePropertyMapping/" + mapping.ontologyProperty.name + "/" + mapping.templateProperty)
     val simplePmPom = triplesMap.addPredicateObjectMap(simplePropertyMappingUri)
 
@@ -51,19 +50,6 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
   private def addSimplePropertyToPredicateObjectMap(simplePmPom: RMLPredicateObjectMap) =
   {
 
-    /**
-    val executeFunction = mapping.factor != 1 ||
-      mapping.select != null || mapping.prefix != null ||
-      mapping.suffix != null || mapping.transform != null ||
-      mapping.unit != null
-
-    if (!executeFunction) {
-      val objectMapUri = simplePmPom.uri.extend("/ObjectMap")
-      val objectMap = simplePmPom.addObjectMap(objectMapUri)
-      objectMap.addRMLReference(new RMLLiteral(mapping.templateProperty))
-    }
-    else {
-    **/
       val functionTermMapUri = simplePmPom.uri.extend("/FunctionTermMap")
       val functionTermMap = simplePmPom.addFunctionTermMap(functionTermMapUri)
       val functionValueUri = functionTermMapUri.extend("/FunctionValue")
@@ -104,7 +90,7 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
       }
 
       if(mapping.ontologyProperty != null) {
-        addConstantParameterFunction("dataType", functionValue)
+        addConstantParameterFunction("ontologyProperty", functionValue)
       }
 
   }
@@ -130,6 +116,7 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
 
   private def getParameterValue(param: String) : String =
   {
+
     param match {
       case "factor" => mapping.factor.toString
       case "transform" => mapping.transform
@@ -138,12 +125,9 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
       case "suffix" => mapping.suffix
       case "unit" => mapping.unit.name
       case "property" => mapping.templateProperty
-      case "dataType" => {
-        if(mapping.ontologyProperty.range.isInstanceOf[OntologyClass]) {
-          "owl:Thing"
-        } else mapping.ontologyProperty.range.name
-      }
+      case "ontologyProperty" => mapping.ontologyProperty.name
     }
+
   }
 
 
