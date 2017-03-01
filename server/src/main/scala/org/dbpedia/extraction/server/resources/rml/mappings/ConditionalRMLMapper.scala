@@ -23,7 +23,6 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
   }
 
   def addConditions() = {
-
     val firstConditionMapping = mapping.cases(0)
     val firstTemplateMapping = firstConditionMapping.mapping.asInstanceOf[TemplateMapping]
 
@@ -43,9 +42,11 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
 
     //add predicate object maps
     val rmlMapper = new RMLModelMapper(rmlModel)
+    val state = new MappingState
+
     for(propertyMapping <- firstTemplateMapping.mappings)
     {
-      val pomList = rmlMapper.addMapping(propertyMapping)
+      val pomList = rmlMapper.addMapping(propertyMapping, state)
       for(pom <- pomList)
       {
         val condPom = rmlModel.rmlFactory.transformToConditional(pom)
@@ -76,10 +77,11 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
 
     val conditionFunctionTermMap = addEqualCondition(condition, mapToClassPom)
+    val state = new MappingState
 
     for(propertyMapping <- templateMapping.mappings)
     {
-      val pomList = rmlMapper.addIndependentMapping(propertyMapping)
+      val pomList = rmlMapper.addIndependentMapping(propertyMapping, state)
       for(pom <- pomList)
       {
         val condPom = rmlFactory.transformToConditional(pom)
@@ -102,7 +104,8 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
 
   private def defineSubjectMap() =
   {
-    rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://mappings.dbpedia.org/wiki/resource/{{wikititle}}"))
+    rmlModel.subjectMap.addTemplate(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/wiki/resource/{wikititle}"))
+    addExtraClassesToSubjectMap(rmlModel.subjectMap)
     rmlModel.subjectMap.addIRITermType()
   }
 
@@ -115,8 +118,10 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
   def addDefaultMappings() =
   {
     val rmlMapper = new RMLModelMapper(rmlModel)
+    val state = new MappingState
+
     for(defaultMapping <- mapping.defaultMappings) {
-      rmlMapper.addMapping(defaultMapping)
+      rmlMapper.addMapping(defaultMapping, state)
     }
   }
 

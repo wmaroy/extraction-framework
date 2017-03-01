@@ -7,8 +7,9 @@ import org.apache.jena.util.URIref
   */
 class RMLUri(uri: String) {
 
-  override def toString() = {
+  override def toString = {
     encode(uri)
+
   }
 
   // returns a copy with an extended uri

@@ -1,7 +1,7 @@
 package org.dbpedia.extraction.mappings
 
 import be.ugent.mmlab.rml.model.RMLMapping
-import org.dbpedia.extraction.destinations.{Dataset, Quad}
+import org.dbpedia.extraction.destinations.{DBpediaDatasets, Dataset, Quad}
 import org.dbpedia.extraction.mappings.rml.processing.RMLProcessorRunner
 import org.dbpedia.extraction.mappings.rml.util.RMLMappingWrapper
 import org.dbpedia.extraction.ontology.Ontology
@@ -38,7 +38,7 @@ class RMLExtractor(
     extractNode(input, subjectUri, context)
   }
 
-  override val datasets: Set[Dataset] = Set.empty
+  override val datasets: Set[Dataset] = Set(DBpediaDatasets.OntologyPropertiesObjects) ++ Set(DBpediaDatasets.OntologyPropertiesLiterals) ++ Set(DBpediaDatasets.OntologyPropertiesGeo)
 
   /**
     * Extracts a data from a node.

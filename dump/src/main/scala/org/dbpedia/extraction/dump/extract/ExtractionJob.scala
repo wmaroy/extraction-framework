@@ -61,10 +61,13 @@ class ExtractionJob(extractor: RootExtractor, source: Source, namespaces: Set[Na
     var count = 0
     for (page <- source) {
       count += 1
-      if(count <= 2000) {
+      if(count <= 500) {
         workers.process(page)
       } else {
         return
+      }
+      if(count % 100 == 0) {
+        println(count + " pages done")
       }
     }
   }

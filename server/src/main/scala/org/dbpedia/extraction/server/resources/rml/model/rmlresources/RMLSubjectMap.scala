@@ -48,4 +48,9 @@ class RMLSubjectMap(override val resource: Resource) extends RMLResource(resourc
     this
   }
 
+  def addTemplate(literal : RMLLiteral) : RMLSubjectMap = {
+    resource.addProperty(createProperty(RdfNamespace.RR.namespace + "template"), literal.toString())
+    this
+  }
+
 }

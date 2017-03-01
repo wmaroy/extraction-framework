@@ -25,7 +25,7 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
 
   private def defineSubjectMap() =
   {
-    rmlModel.subjectMap.addConstant(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/wikititle"))
+    rmlModel.subjectMap.addTemplate(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/{wikititle}"))
     rmlModel.subjectMap.addClass(rmlModel.rmlFactory.createRMLUri(templateMapping.mapToClass.uri))
     addExtraClassesToSubjectMap(rmlModel.subjectMap)
     rmlModel.subjectMap.addIRITermType()
@@ -39,9 +39,10 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
 
   private def addPropertyMappings() =
   {
+    val state = new MappingState
     val mapper = new RMLModelMapper(rmlModel)
     for(mapping <- templateMapping.mappings) {
-      addPropertyMapping(mapper, mapping)
+      addPropertyMapping(mapper, mapping, state)
     }
   }
 
@@ -78,9 +79,9 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
   }
 
 
-  private def addPropertyMapping(mapper: RMLModelMapper, mapping: PropertyMapping) =
+  private def addPropertyMapping(mapper: RMLModelMapper, mapping: PropertyMapping, state: MappingState) =
   {
-    mapper.addMapping(mapping)
+    mapper.addMapping(mapping, state)
   }
 
 }

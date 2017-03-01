@@ -67,7 +67,6 @@ abstract class ExtractionManager(
     protected val parser = WikiParser.getInstance()
 
     def extract(source: Source, destination: Destination, language: Language, useCustomExtraction: Boolean = false): Unit = {
-      val start = System.nanoTime()
       val extract = if (useCustomExtraction) customExtractor(language) else mappingExtractor(language)
       destination.open()
       for (page <- source) {
@@ -75,8 +74,6 @@ abstract class ExtractionManager(
         destination.write(extracted)
       }
       destination.close()
-      val elapsed = (System.nanoTime() - start) / 1000000000.0 +" seconds"
-      println("TOTAL EXTRACTION TIME: " + elapsed + " seconds.")
     }
 
     def validateMapping(mappingsPages: Traversable[WikiPage], lang: Language) : Elem =

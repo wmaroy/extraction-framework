@@ -1,6 +1,7 @@
 package org.dbpedia.extraction.mappings.rml.processing
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, InputStream, ObjectOutputStream}
+import java.net.{URLDecoder, URLEncoder}
 import java.util
 
 import be.ugent.mmlab.rml.core.StdRMLEngine
@@ -19,8 +20,8 @@ import org.dbpedia.extraction.wikiparser.impl.simple.{Matcher, SimpleWikiParser,
 import org.dbpedia.extraction.wikiparser.{ExternalLinkNode, InternalLinkNode, TemplateNode}
 import org.eclipse.rdf4j.model.impl.URIImpl
 import org.eclipse.rdf4j.rio.RDFFormat
-import scala.collection.JavaConverters._
 
+import scala.collection.JavaConverters._
 import scala.language.reflectiveCalls
 
 /**
@@ -34,18 +35,19 @@ class RMLProcessorRunner(mappings: RMLMapping) {
                                                                                                   def ontology: Ontology
                                                                                                   def redirects: Redirects}) : Seq[Quad] = {
 
-    println(templateNode.title.decoded)
 
     /**
       *  Setting up the processor
       */
-    triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri))
+    //triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri)) // BAD, change this ASAP!
 
     val parameters = new util.HashMap[String, String]()
     val exeTriplesMap = List[String](triplesMap.getName)
     val engine = new StdRMLEngine()
     val dataset : RMLDataset = new StdRMLDataset()
     val templateNodeHashMap = convertTemplateNodeToMap(templateNode)
+    val regex = ".*/".r
+    templateNodeHashMap.put("wikititle", regex.replaceAllIn(subjectUri, ""))
 
     /**
       * Setting up the dataset stream
@@ -59,7 +61,6 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
     val is = new ByteArrayInputStream(baos.toByteArray())
 
-    val running_start = System.nanoTime()
 
     /**
       * Running the processor
@@ -67,11 +68,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
     engine.generateRDFTriples(dataset, mappings, parameters, exeTriplesMap.toArray, is)
 
-    val running_elapsed = System.nanoTime() - running_start
-    println("Running RML Mapper engine: " + running_elapsed / 1000000000.0 +" seconds")
 
-
-    val processing_start = System.nanoTime()
 
     /**
       * Processing the output of the processor
@@ -83,11 +80,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     val model = ModelFactory.createDefaultModel()
     model.read(triplesInputStream, null, "TURTLE")
 
-    val processing_elapsed = System.nanoTime()
-    println("Processing output: " + processing_elapsed / 1000000000.0 +" seconds")
 
-
-    val generating_start = System.nanoTime()
 
     /**
       * Iterating over the output and generating Quads
@@ -107,6 +100,9 @@ class RMLProcessorRunner(mappings: RMLMapping) {
         throw new RuntimeException(statement.getSubject.getURI + " has no valid object")
       }
 
+      val subjectURI = statement.getSubject.getURI
+      val subjectURIDecoded = URLDecoder.decode(subjectURI, "UTF-8") // The RMLProcessor encodes this uri
+
       // extract predicate value
       val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context)
 
@@ -120,15 +116,13 @@ class RMLProcessorRunner(mappings: RMLMapping) {
 
 
       // generate quad
-      val quad = new Quad(context.language, mapDataset, statement.getSubject.getURI, ontologyProperty,
+      val quad = new Quad(context.language, mapDataset, subjectURIDecoded, ontologyProperty,
         objectValue, templateNode.sourceUri, datatype)
 
       seq :+= quad
 
     }
 
-    val generating_elapsed = System.nanoTime()
-    println("Generating quads: " + generating_elapsed/ 1000000000.0 +" seconds")
 
     seq
 

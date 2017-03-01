@@ -198,7 +198,7 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
     val latParameterPom = latFunctionValue.addPredicateObjectMap(latParameterPomUri)
     latParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "latParameter"))
     val latParameterOmUri = latParameterPomUri.extend("/ObjectMap")
-    latParameterPom.addObjectMap(latParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
+    latParameterPom.addObjectMap(latParameterOmUri).addRMLReference(new RMLLiteral(mapping.latitude))
 
     lonPom.addDCTermsType(new RMLLiteral("longitudeMapping"))
     lonPom.addPredicate(new RMLUri(RdfNamespace.GEO.namespace + "long"))
@@ -219,7 +219,7 @@ class GeoCoordinatesRMLMapper(rmlModel: RMLModel, mapping: GeoCoordinatesMapping
     val lonParameterPom = lonFunctionValue.addPredicateObjectMap(lonParameterPomUri)
     lonParameterPom.addPredicate(new RMLUri(RdfNamespace.DBF.namespace + "lonParameter"))
     val lonParameterOmUri = lonParameterPomUri.extend("/ObjectMap")
-    lonParameterPom.addObjectMap(lonParameterOmUri).addRMLReference(new RMLLiteral(mapping.coordinates))
+    lonParameterPom.addObjectMap(lonParameterOmUri).addRMLReference(new RMLLiteral(mapping.longitude))
   }
 
   private def addDegreesToPredicateObjectMap(latPom: RMLPredicateObjectMap, lonPom: RMLPredicateObjectMap) =
