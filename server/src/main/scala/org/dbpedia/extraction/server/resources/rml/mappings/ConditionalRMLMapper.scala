@@ -104,7 +104,7 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
 
   private def defineSubjectMap() =
   {
-    rmlModel.subjectMap.addTemplate(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/wiki/resource/{wikititle}"))
+    rmlModel.subjectMap.addTemplate(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/{wikititle}"))
     addExtraClassesToSubjectMap(rmlModel.subjectMap)
     rmlModel.subjectMap.addIRITermType()
   }

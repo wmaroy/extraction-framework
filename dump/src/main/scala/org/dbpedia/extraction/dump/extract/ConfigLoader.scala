@@ -16,7 +16,7 @@ import java.net.URL
 import scala.io.Codec.UTF8
 import java.util.logging.Logger
 
-import be.ugent.mmlab.rml.model.RMLMapping
+import be.ugent.mmlab.rml.model.{RMLMapping, TriplesMap}
 import org.dbpedia.extraction.mappings.rml.loading.RMLParser
 import org.dbpedia.extraction.util.IOUtils
 
@@ -113,10 +113,15 @@ class ConfigLoader(config: Config)
 
 
             // ADDED FOR RML
+
             private val _rmlMappings = {
+
               val pathToRml = "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
               RMLParser.parseFromFile(pathToRml)
             }
+
+
+            //private val _rmlMappings = null
 
             def rmlMappings : RMLMapping = _rmlMappings
 

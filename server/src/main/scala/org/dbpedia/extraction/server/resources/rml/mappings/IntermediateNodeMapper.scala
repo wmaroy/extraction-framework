@@ -71,6 +71,7 @@ class IntermediateNodeMapper(rmlModel: RMLModel, mapping: IntermediateNodeMappin
     parentSubjectMap.addClass(new RMLUri(mapping.nodeClass.uri))
     parentSubjectMap.addIRITermType()
     parentSubjectMap.addTemplate(new RMLLiteral("http://en.dbpedia.org/resource/{wikititle}__" + intermedatiaNodeMappingsNumber))
+    if(mapping.correspondingProperty != null) parentSubjectMap.addRMLReference(new RMLLiteral(mapping.correspondingProperty.uri))
 
     //create the intermediate mappings
     for(mapping <- mapping.mappings) {

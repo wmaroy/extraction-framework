@@ -61,7 +61,7 @@ class ExtractionJob(extractor: RootExtractor, source: Source, namespaces: Set[Na
     var count = 0
     for (page <- source) {
       count += 1
-      if(count <= 500) {
+      if(count <= 1000) {
         workers.process(page)
       } else {
         return

@@ -51,10 +51,9 @@ class RMLExtractor(
     {
       case templateNode : TemplateNode =>
       {
-
-        rmlMappingWrapper.getTriplesMap(templateNode.title.decoded) match
-        {
-          case Some(triplesMap) => rmlProcessorRunner.process(templateNode, triplesMap, subjectUri, context)
+        rmlMappingWrapper.getTriplesMap(templateNode.title.decoded) match {
+          case Some(triplesMap) =>
+            rmlProcessorRunner.process(templateNode, triplesMap, subjectUri, context)
           case None => Seq.empty
         }
       }

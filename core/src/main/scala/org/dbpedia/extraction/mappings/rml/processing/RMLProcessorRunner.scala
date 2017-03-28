@@ -31,7 +31,7 @@ import scala.language.reflectiveCalls
   */
 class RMLProcessorRunner(mappings: RMLMapping) {
 
-  def process(templateNode: TemplateNode, triplesMap: TriplesMap, subjectUri: String, context : { def language : Language
+  def process(templateNode: TemplateNode, triplesMap: String, subjectUri: String, context : { def language : Language
                                                                                                   def ontology: Ontology
                                                                                                   def redirects: Redirects}) : Seq[Quad] = {
 
@@ -39,10 +39,9 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     /**
       *  Setting up the processor
       */
-    //triplesMap.getSubjectMap.setConstantValue(new URIImpl(subjectUri)) // BAD, change this ASAP!
 
     val parameters = new util.HashMap[String, String]()
-    val exeTriplesMap = List[String](triplesMap.getName)
+    val exeTriplesMap = List[String](triplesMap)
     val engine = new StdRMLEngine()
     val dataset : RMLDataset = new StdRMLDataset()
     val templateNodeHashMap = convertTemplateNodeToMap(templateNode)
@@ -54,11 +53,9 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       */
     val baos = new ByteArrayOutputStream()
     val oos = new ObjectOutputStream(baos)
-
     oos.writeObject(templateNodeHashMap)
     oos.flush()
     oos.close()
-
     val is = new ByteArrayInputStream(baos.toByteArray())
 
 
@@ -76,7 +73,6 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     val triplesOutputStream = new ByteArrayOutputStream()
     dataset.dumpRDF(triplesOutputStream, RDFFormat.TURTLE)
     val triplesInputStream = new ByteArrayInputStream(triplesOutputStream.toByteArray)
-
     val model = ModelFactory.createDefaultModel()
     model.read(triplesInputStream, null, "TURTLE")
 
