@@ -45,10 +45,10 @@ abstract class Node(val children : List[Node], val line : Int)
         
         while(node.parent != null)
         {
-            node = node.parent;
+            node = node.parent
         }
         
-        node.asInstanceOf[PageNode];
+        node.asInstanceOf[PageNode]
     }
    
     /**
@@ -60,18 +60,18 @@ abstract class Node(val children : List[Node], val line : Int)
     
     private def findSection : SectionNode = {
       
-        var section : SectionNode = null;
+        var section : SectionNode = null
         
         for(node <- root.children)
         {
             if(node.line > line)
             {
-                return section;
+                return section
             }
 
             if(node.isInstanceOf[SectionNode])
             {
-                section = node.asInstanceOf[SectionNode];
+                section = node.asInstanceOf[SectionNode]
             }
         }
         
@@ -145,7 +145,7 @@ object Node {
   // For this list of characters, see ifragment in RFC 3987 and 
   // https://sourceforge.net/mailarchive/message.php?msg_id=28982391
   // Only difference to ipchar: don't escape '?'. We don't escape '/' anyway.
-  private val fragmentEscapes = {
+  val fragmentEscapes = {
     val chars = ('\u0000' to '\u001F').mkString + "\"#%<>[\\]^`{|}" + ('\u007F' to '\u009F').mkString
     val replace = replacements('%', chars)
     // don't escape space, replace it by underscore

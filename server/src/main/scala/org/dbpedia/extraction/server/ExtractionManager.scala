@@ -2,14 +2,16 @@ package org.dbpedia.extraction.server
 
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.ontology.Ontology
-
 import scala.xml.Elem
 import java.util.logging.{Level, Logger}
-
 import org.dbpedia.extraction.ontology.io.OntologyReader
 import org.dbpedia.extraction.destinations.Destination
-import org.dbpedia.extraction.sources.{Source, WikiPage, WikiSource, XMLSource}
+import org.dbpedia.extraction.sources.{XMLSource, WikiSource, Source, WikiPage}
 import org.dbpedia.extraction.mappings._
+import org.dbpedia.extraction.ontology.Ontology
+import org.dbpedia.extraction.ontology.io.OntologyReader
+import org.dbpedia.extraction.sources.{Source, WikiPage, WikiSource, XMLSource}
+import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser._
 import java.io.File
 import java.net.URL
@@ -69,10 +71,7 @@ abstract class ExtractionManager(
     def extract(source: Source, destination: Destination, language: Language, useCustomExtraction: Boolean = false): Unit = {
       val extract = if (useCustomExtraction) customExtractor(language) else mappingExtractor(language)
       destination.open()
-      for (page <- source) {
-        val extracted = extract(page)
-        destination.write(extracted)
-      }
+      for (page <- source) destination.write(extract.extract(page))
       destination.close()
     }
 
@@ -231,10 +230,12 @@ abstract class ExtractionManager(
           val mappingPageSource = self.mappingPageSource(lang)
           val disambiguations = self.disambiguations
         }
+
         MappingsLoader.load(context)
         //val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
         //RMLMappingsLoader.load(rmlContext) --> used for intermediate extraction step in RML for testing purposes, not needed for finalized RML extraction
         //new Mappings(Map.empty, List.empty)
     }
+
 
 }

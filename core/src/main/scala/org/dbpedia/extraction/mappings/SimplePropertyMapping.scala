@@ -8,11 +8,8 @@ import org.dbpedia.extraction.destinations.{DBpediaDatasets, Quad}
 import org.dbpedia.extraction.util.{ExtractorUtils, Language}
 import org.dbpedia.extraction.ontology._
 import java.lang.IllegalArgumentException
-
-import org.dbpedia.extraction.mappings.rml.util.Counter
 import org.dbpedia.extraction.wikiparser.TemplateNode
-import org.dbpedia.extraction.ontology.{DBpediaNamespace, OntologyClass, OntologyDatatypeProperty, OntologyProperty}
-
+import org.dbpedia.extraction.ontology.{OntologyDatatypeProperty,OntologyClass,OntologyProperty,DBpediaNamespace}
 import scala.collection.mutable.ArrayBuffer
 import scala.language.reflectiveCalls
 
@@ -32,7 +29,6 @@ class SimplePropertyMapping (
     def language : Language
   }
 )
-
 extends PropertyMapping
 {
     val selector: List[_] => List[_] =
@@ -42,7 +38,6 @@ extends PropertyMapping
             case null => identity
             case _ => throw new IllegalArgumentException("Only 'first' or 'last' are allowed in property 'select'")
         }
-
 
   /**
    * Transforms a text value appending/prepending a suffix/prefix.
@@ -210,7 +205,7 @@ extends PropertyMapping
 
             //get the property wikitext and plainText size
             val propertyNodeWikiLength = propertyNode.toWikiText.substring(propertyNode.toWikiText.indexOf('=')+1).trim.length // exclude '| propKey ='
-            val propertyNodeTextLength = propertyNode.propertyNodeValueToPlainText.trim.length
+            val propertyNodeTextLength = propertyNode.propertyNodeValueToPalinText.trim.length
 
             for( parseResult <- selector(parseResults) )
             {
@@ -253,6 +248,7 @@ extends PropertyMapping
                 graph ++= g
             }
         }
+        
         graph
     }
 
