@@ -59,7 +59,8 @@ abstract class ExtractionManager(
 
     protected val disambiguations : Disambiguations = loadDisambiguations()
 
-    private val pathToRml = "/home/wmaroy/github/extraction-framework/server/src/main/resources/mapping_en_Infobox_country.rml"//"../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
+    private val pathToRml = paths.rmlMappings
+    //private val pathToRml = "/home/wmaroy/github/extraction-framework/server/src/main/resources/mapping_en_Infobox_country.rml"//"../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
 
     /**
      * Called by server to update all users of this extraction manager.

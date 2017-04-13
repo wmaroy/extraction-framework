@@ -69,7 +69,7 @@ object Server
 
         val languages = configuration.languages
 
-        val paths = new Paths(new URL(mappingsUrl, "index.php"), new URL(mappingsUrl, "api.php"), configuration.statisticsDir, configuration.ontologyFile, configuration.mappingsDir)
+        val paths = new Paths(new URL(mappingsUrl, "index.php"), new URL(mappingsUrl, "api.php"), configuration.statisticsDir, configuration.ontologyFile, configuration.mappingsDir, configuration.rmlMappings)
         
         _instance = new Server(serverPassword, languages, paths, configuration.mappingTestExtractorClasses, configuration.customTestExtractorClasses)
         

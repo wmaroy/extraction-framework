@@ -27,4 +27,7 @@ private class ServerConfiguration(config: Properties) {
   val mappingTestExtractorClasses = ExtractorUtils.loadExtractorClassSeq(getStrings(config, "mappingsTestExtractors", ',', false))
   val customTestExtractorClasses = ExtractorUtils.loadExtractorsMapFromConfig(languages, config)
 
+  // rml mappings
+  val rmlMappings = getString(config, "rmlMappings", true)
+
 }

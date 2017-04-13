@@ -5,4 +5,5 @@ target/
 *.log
 *.lck
 *.tmp
+*.rml
 java_pid*
