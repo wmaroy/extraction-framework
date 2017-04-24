@@ -62,11 +62,7 @@ class ExtractionJob(extractor: WikiPageExtractor, source: Source, namespaces: Se
     var count = 0
     for (page <- source) {
       count += 1
-      if(count <= 1000) {
-        workers.process(page)
-      } else {
-        return
-      }
+      workers.process(page)
       if(count % 100 == 0) {
         println(count + " pages done")
       }

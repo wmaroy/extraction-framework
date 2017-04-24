@@ -68,13 +68,16 @@ class TemplateRMLMapper(rmlModel: RMLModel, templateMapping: TemplateMapping) {
 
   /**
     * Add related classes to the subject map
+    *
     * @param subjectMap
     */
   private def addExtraClassesToSubjectMap(subjectMap: RMLSubjectMap) =
   {
     val relatedClasses = templateMapping.mapToClass.relatedClasses
     for(cls <- relatedClasses) {
-      subjectMap.addClass(new RMLUri(cls.uri))
+      if(!cls.uri.contains("%3E")) {
+        subjectMap.addClass(new RMLUri(cls.uri))
+      }
     }
   }
 

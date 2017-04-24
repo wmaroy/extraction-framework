@@ -60,7 +60,6 @@ abstract class ExtractionManager(
     protected val disambiguations : Disambiguations = loadDisambiguations()
 
     private val pathToRml = paths.rmlMappings
-    //private val pathToRml = "/home/wmaroy/github/extraction-framework/server/src/main/resources/mapping_en_Infobox_country.rml"//"../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
 
     /**
      * Called by server to update all users of this extraction manager.
@@ -231,9 +230,6 @@ abstract class ExtractionManager(
         }
 
         MappingsLoader.load(context)
-        //val rmlContext = ContextCreator.createRMLContext(pathToRml, lang)
-        //RMLMappingsLoader.load(rmlContext) --> used for intermediate extraction step in RML for testing purposes, not needed for finalized RML extraction
-        //new Mappings(Map.empty, List.empty)
     }
 
 

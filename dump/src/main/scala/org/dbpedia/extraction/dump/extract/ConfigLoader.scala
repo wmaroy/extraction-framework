@@ -35,7 +35,7 @@ class ConfigLoader(config: Config)
     /**
      * Loads the configuration and creates extraction jobs for all configured languages.
      *
-     * @param configFile The configuration file
+     * @param config The configuration file
      * @return Non-strict Traversable over all configured extraction jobs i.e. an extractions job will not be created until it is explicitly requested.
      */
     def getExtractionJobs(): Traversable[ExtractionJob] =
@@ -116,29 +116,26 @@ class ConfigLoader(config: Config)
 
             private val _rmlMappings = {
 
-              val pathToRml = "../core/src/test/resources/org/dbpedia/extraction/mappings/rml/all.rml"
+              val pathToRml = config.rmlMappingsPath
               RMLParser.parseFromFile(pathToRml)
-            }
 
+            }
 
             //private val _rmlMappings = null
 
             def rmlMappings : RMLMapping = _rmlMappings
 
 
-
-
-            private val _disambiguations =
-            {
-              val cache = finder.file(date, "disambiguations-ids.obj")
-              try {
-                Disambiguations.load(reader(finder.file(date, config.disambiguations)), cache, language)
-              } catch {
-                case ex: Exception =>
-                  logger.info("Could not load disambiguations - error: " + ex.getMessage)
-                  null
-              }
+          private val _disambiguations =
+          {
+            try {
+              Disambiguations.load(reader(finder.file(date, config.disambiguations).get), finder.file(date, "disambiguations-ids.obj").get, language)
+            } catch {
+              case ex: Exception =>
+                logger.info("Could not load disambiguations - error: " + ex.getMessage)
+                null
             }
+          }
 
             def disambiguations : Disambiguations = if (_disambiguations != null) _disambiguations else new Disambiguations(Set[Long]())
         }
@@ -149,23 +146,25 @@ class ConfigLoader(config: Config)
         
         val formatDestinations = new ArrayBuffer[Destination]()
         for ((suffix, format) <- config.formats) {
-          
+
           val datasetDestinations = new HashMap[String, Destination]()
           for (dataset <- datasets) {
-            val file = finder.file(date, dataset.name.replace('_', '-')+'.'+suffix)
-            datasetDestinations(dataset.name) = new DeduplicatingDestination(new WriterDestination(writer(file), format))
+            finder.file(date, dataset.name.replace('_', '-') + '.' + suffix) match {
+              case Some(file) => datasetDestinations(dataset.name) = new DeduplicatingDestination(new WriterDestination(writer(file), format))
+              case None =>
+            }
           }
-          
-          formatDestinations += new DatasetDestination(datasetDestinations)
+
+            formatDestinations += new DatasetDestination(datasetDestinations)
         }
         
-        val destination = new MarkerDestination(new CompositeDestination(formatDestinations.toSeq: _*), finder.file(date, Extraction.Complete), false)
+        val destination = new MarkerDestination(new CompositeDestination(formatDestinations.toSeq: _*), finder.file(date, Extraction.Complete).get, false)
         
         val description = lang.wikiCode+": "+extractorClasses.size+" extractors ("+extractorClasses.map(_.getSimpleName).mkString(",")+"), "+datasets.size+" datasets ("+datasets.mkString(",")+")"
 
         val extractionJobNS = if(lang == Language.Commons) ExtractorUtils.commonsNamespacesContainingMetadata else config.namespaces
 
-        new ExtractionJob(new RootExtractor(extractor), context.articlesSource, extractionJobNS, destination, lang.wikiCode, description)
+        new ExtractionJob(extractor, context.articlesSource, extractionJobNS, destination, lang.wikiCode, description)
     }
     
     private def writer(file: File): () => Writer = {
@@ -185,7 +184,7 @@ class ConfigLoader(config: Config)
 
       val files = if (source.startsWith("@")) { // the articles source is a regex - we want to match multiple files
         finder.matchFiles(date, source.substring(1))
-      } else List(finder.file(date, source))
+      } else List(finder.file(date, source)).collect{case Some(x) => x}
 
       logger.info(s"Source is ${source} - ${files.size} file(s) matched")
 

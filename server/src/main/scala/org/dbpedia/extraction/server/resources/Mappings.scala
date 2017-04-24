@@ -203,13 +203,13 @@ class Mappings(@PathParam("lang") langCode : String)
      */
     @GET
     @Path("pages/rml/all")
-    @Produces(Array("text/turtle"))
-    def getAllRdfMappings() : String =
+    @Produces(Array("application/xml"))
+    def getAllRdfMappings() : Elem =
     {
       //getAllMappings = true
       val builder = new StringBuilder()
       val titles = Server.instance.extractor.mappingPageSource(language).map(x => x.title.encodedWithNamespace.replace(":", "%3A"))
-
+      /*
       for(title <- titles) {
         val zw = try {getRdfMapping(title)}
         catch {
@@ -217,8 +217,30 @@ class Mappings(@PathParam("lang") langCode : String)
         }
         builder.append(zw)
       }
+      */
       //getAllMappings = false
-      builder.toString()
+      //val all = builder.toString()
+
+      <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+        {ServerHeader.getHeader("Mapping pages")}
+        <body>
+          {
+            for (title <- titles) yield {
+              val zw = try {
+                getRdfMapping(title)
+              }
+              catch {
+                case x: Throwable => ""
+              }
+              builder.append(zw)
+              <mapping>
+                <title>{title}</title>
+                <p>{zw}</p>
+              </mapping>
+            }
+          }
+        </body>
+      </html>
     }
 
     /**

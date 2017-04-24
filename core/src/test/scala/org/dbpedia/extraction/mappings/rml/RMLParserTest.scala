@@ -30,6 +30,15 @@ class RMLParserTest extends FlatSpec with Matchers
         println("\nAmount of Predicate Object Maps with dcterm:type that were found: " + counter)
     }
 
+    "RMLParser " should "find multiple RML in a folder" in {
+
+        val dir = "/home/wmaroy/github/rml-xml-to-zip"
+        val loadedMappings = RMLParser.parseFromDir(dir)
+
+        println(loadedMappings.size + " mappings were loaded.")
+        println(loadedMappings)
+    }
+
     def parse(): RMLMapping =
     {
         val pathToDocument = "src/test/resources/org/dbpedia/extraction/mappings/rml/infobox_person.rml"

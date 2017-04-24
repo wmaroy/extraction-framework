@@ -17,6 +17,7 @@ import org.dbpedia.extraction.ontology.Ontology
 import org.dbpedia.extraction.ontology.datatypes.Datatype
 import org.dbpedia.extraction.util.Language
 import org.dbpedia.extraction.wikiparser.impl.simple.{Matcher, SimpleWikiParser, Source}
+import org.dbpedia.extraction.wikiparser.impl.wikipedia.Namespaces
 import org.dbpedia.extraction.wikiparser.{ExternalLinkNode, InternalLinkNode, TemplateNode}
 import org.eclipse.rdf4j.model.impl.URIImpl
 import org.eclipse.rdf4j.rio.RDFFormat
@@ -102,18 +103,38 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       // extract predicate value
       val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context)
 
-      //TODO: check for all mapping datastructures if datatype and mapDataset is calculated like this <- this is not the case
-      //TODO: Datasets need to be applied correctly, solution need to be found!
-      // extract datatype from predicate uri
-      val datatype = if(ontologyProperty.range.isInstanceOf[Datatype]) ontologyProperty.range.asInstanceOf[Datatype] else null
-      var mapDataset = if (datatype == null) DBpediaDatasets.OntologyPropertiesObjects else DBpediaDatasets.OntologyPropertiesLiterals
-      // if the triple is a geo coordinate
-      if(ontologyProperty.name == "geo:lat" || ontologyProperty.name == "geo:lon") mapDataset = DBpediaDatasets.OntologyPropertiesGeo
+      val quad = if(ontologyProperty != null) {
+        //TODO: check for all mapping datastructures if datatype and mapDataset is calculated like this <- this is not the case
+        //TODO: Datasets need to be applied correctly, solution need to be found!
+        // extract datatype from predicate uri
+        val datatype = ontologyProperty.range match {
+          case dt: Datatype => dt
+          case _ => null
+        }
+        var mapDataset = if (datatype == null) DBpediaDatasets.OntologyPropertiesObjects else DBpediaDatasets.OntologyPropertiesLiterals
+        // if the triple is a geo coordinate
+        if (ontologyProperty.name == "geo:lat" || ontologyProperty.name == "geo:lon") mapDataset = DBpediaDatasets.OntologyPropertiesGeo
 
+        // generate quad
+        val quad = new Quad(context.language, mapDataset, subjectURIDecoded, ontologyProperty,
+          objectValue, templateNode.sourceUri, datatype)
 
-      // generate quad
-      val quad = new Quad(context.language, mapDataset, subjectURIDecoded, ontologyProperty,
-        objectValue, templateNode.sourceUri, datatype)
+        quad
+
+      } else {
+
+        val datatype = if(statement.getObject.isResource) {
+          null
+        } else {
+          statement.getObject.asLiteral().getDatatypeURI
+        }
+
+        // generate quad
+        val quad = new Quad(context.language.toString, DBpediaDatasets.OntologyPropertiesLiterals.toString, subjectURIDecoded, statement.getPredicate.getURI,
+          objectValue, templateNode.sourceUri, datatype)
+
+        quad
+      }
 
       seq :+= quad
 
@@ -135,7 +156,8 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     val keyset = templateNode.keySet
     for(key <- keyset) {
       val node = templateNode.property(key).get
-      hashMap.put(key, node.toWikiText)
+      val pattern = ".*?=".r
+      hashMap.put(key, pattern replaceFirstIn(node.toWikiText, ""))
     }
 
     hashMap

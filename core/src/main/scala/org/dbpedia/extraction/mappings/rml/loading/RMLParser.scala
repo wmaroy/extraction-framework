@@ -1,5 +1,6 @@
 package org.dbpedia.extraction.mappings.rml.loading
 
+import java.io.File
 import java.nio.file.Paths
 
 import be.ugent.mmlab.rml.mapdochandler.extraction.std.StdRMLMappingFactory
@@ -30,6 +31,23 @@ object RMLParser {
 
       rmlMapping
 
+  }
+
+  /**
+    * Retrieves all RML documents in a folder and loads them into a HashMap with as key the name of the mapping
+    * @param pathToDir
+    * @return
+    */
+  def parseFromDir(pathToDir : String) : Map[String, RMLMapping] = {
+    val dir = new File(pathToDir)
+    val files = dir.listFiles
+                    .filter(_.isFile)
+                    .filter(_.length() > 0)
+                    .filter(_.getName.contains(".rml.ttl")).toList
+
+    val map = files.map(file => file.getName.replace(".rml.ttl", "") -> RMLParser.parseFromFile(file.getAbsolutePath)).toMap
+
+    map
   }
 
   /**
