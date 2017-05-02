@@ -3,7 +3,7 @@ package org.dbpedia.extraction.server.resources.rml.mappings
 import org.dbpedia.extraction.mappings.SimplePropertyMapping
 import org.dbpedia.extraction.ontology.{OntologyClass, RdfNamespace}
 import org.dbpedia.extraction.server.resources.rml.dbf.DbfFunction
-import org.dbpedia.extraction.server.resources.rml.model.rmlresources.{RMLLiteral, RMLPredicateObjectMap, RMLTriplesMap, RMLUri}
+import org.dbpedia.extraction.server.resources.rml.model.rmlresources._
 import org.dbpedia.extraction.server.resources.rml.model.RMLModel
 
 import scala.language.reflectiveCalls
@@ -43,8 +43,15 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
 
     addSimplePropertyToPredicateObjectMap(simplePmPom)
 
+
     List(simplePmPom)
 
+  }
+
+  private def addDatatype(rMLPredicateObjectMap: RMLObjectMap) = {
+    if (mapping.unit != null) {
+      rMLPredicateObjectMap.addDatatype(new RMLUri(mapping.unit.uri))
+    }
   }
 
   private def addSimplePropertyToPredicateObjectMap(simplePmPom: RMLPredicateObjectMap) =
@@ -52,6 +59,10 @@ class SimplePropertyRMLMapper(rmlModel: RMLModel, mapping: SimplePropertyMapping
 
       val functionTermMapUri = simplePmPom.uri.extend("/FunctionTermMap")
       val functionTermMap = simplePmPom.addFunctionTermMap(functionTermMapUri)
+
+      // adds the unit datatype if there is one
+      addDatatype(functionTermMap)
+
       val functionValueUri = functionTermMapUri.extend("/FunctionValue")
       val functionValue = functionTermMap.addFunctionValue(functionValueUri)
       functionValue.addLogicalSource(rmlModel.logicalSource)

@@ -30,9 +30,9 @@ import scala.language.reflectiveCalls
   * Runs the RML Processor
   * //TODO: refactor this class!
   */
-class RMLProcessorRunner(mappings: RMLMapping) {
+class RMLProcessorRunner(mappings: Map[String, RMLMapping]) {
 
-  def process(templateNode: TemplateNode, triplesMap: String, subjectUri: String, context : { def language : Language
+  def process(templateNode: TemplateNode, mappingName : String, subjectUri: String, context : { def language : Language
                                                                                                   def ontology: Ontology
                                                                                                   def redirects: Redirects}) : Seq[Quad] = {
 
@@ -42,6 +42,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       */
 
     val parameters = new util.HashMap[String, String]()
+    val triplesMap = "http://en.dbpedia.org/resource/" + mappingName
     val exeTriplesMap = List[String](triplesMap)
     val engine = new StdRMLEngine()
     val dataset : RMLDataset = new StdRMLDataset()
@@ -63,10 +64,7 @@ class RMLProcessorRunner(mappings: RMLMapping) {
     /**
       * Running the processor
       */
-
-    engine.generateRDFTriples(dataset, mappings, parameters, exeTriplesMap.toArray, is)
-
-
+    engine.generateRDFTriples(dataset, mappings(mappingName), parameters, exeTriplesMap.toArray, is)
 
     /**
       * Processing the output of the processor
@@ -97,6 +95,8 @@ class RMLProcessorRunner(mappings: RMLMapping) {
         throw new RuntimeException(statement.getSubject.getURI + " has no valid object")
       }
 
+
+
       val subjectURI = statement.getSubject.getURI
       val subjectURIDecoded = URLDecoder.decode(subjectURI, "UTF-8") // The RMLProcessor encodes this uri
 
@@ -106,11 +106,19 @@ class RMLProcessorRunner(mappings: RMLMapping) {
       val quad = if(ontologyProperty != null) {
         //TODO: check for all mapping datastructures if datatype and mapDataset is calculated like this <- this is not the case
         //TODO: Datasets need to be applied correctly, solution need to be found!
-        // extract datatype from predicate uri
-        val datatype = ontologyProperty.range match {
-          case dt: Datatype => dt
-          case _ => null
+
+        val datatype = try {
+          val regex = ".*/".r
+          val name = regex.replaceAllIn(statement.getObject.asLiteral.getDatatype.getURI, "")
+          val dt = RMLOntologyUtil.loadOntologyDataType(name , context)
+          dt
+        } catch {
+          case e: Exception => ontologyProperty.range match {
+            case dt: Datatype => dt
+            case _ => null
+          }
         }
+
         var mapDataset = if (datatype == null) DBpediaDatasets.OntologyPropertiesObjects else DBpediaDatasets.OntologyPropertiesLiterals
         // if the triple is a geo coordinate
         if (ontologyProperty.name == "geo:lat" || ontologyProperty.name == "geo:lon") mapDataset = DBpediaDatasets.OntologyPropertiesGeo
@@ -122,6 +130,8 @@ class RMLProcessorRunner(mappings: RMLMapping) {
         quad
 
       } else {
+
+        // if the ontology is not in DBpedia!
 
         val datatype = if(statement.getObject.isResource) {
           null

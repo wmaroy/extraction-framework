@@ -2,6 +2,8 @@ package org.dbpedia.extraction.dump.extract
 
 import org.dbpedia.extraction.util.ProxyAuthenticator
 import java.net.Authenticator
+
+import org.apache.log4j.{Level, Logger}
 import org.dbpedia.extraction.util.ConfigUtils
 
 /**
@@ -14,6 +16,9 @@ object Extraction {
   val Complete = "extraction-complete"
 
   def main(args: Array[String]): Unit = {
+
+    Logger.getRootLogger.setLevel(Level.DEBUG)
+
     require(args != null && args.length >= 1 && args(0).nonEmpty, "missing required argument: config file name")
     Authenticator.setDefault(new ProxyAuthenticator())
     

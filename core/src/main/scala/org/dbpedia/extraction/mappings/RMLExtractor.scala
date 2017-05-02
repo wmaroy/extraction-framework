@@ -19,14 +19,15 @@ class RMLExtractor(
   context : {
     def redirects: Redirects
     def language: Language
-    def rmlMappings: RMLMapping
+    def rmlMap : Map[String, RMLMapping]
     def ontology: Ontology
   }
 ) extends PageNodeExtractor{
 
 
-  val rmlMappingWrapper = new RMLMappingWrapper(context.rmlMappings)
-  val rmlProcessorRunner = new RMLProcessorRunner(context.rmlMappings)
+
+  //val rmlMappingWrapper = new RMLMappingWrapper(context.rmlMappings)
+  val rmlProcessorRunner = new RMLProcessorRunner(context.rmlMap)
 
   /**
     * @param input       The source node
@@ -35,7 +36,8 @@ class RMLExtractor(
     * @return A graph holding the extracted data
     */
   override def extract(input: PageNode, subjectUri: String, context: PageContext): Seq[Quad] = {
-    extractNode(input, subjectUri, context)
+    val result = extractNode(input, subjectUri, context)
+    result
   }
 
   override val datasets: Set[Dataset] = Set(DBpediaDatasets.OntologyPropertiesObjects) ++ Set(DBpediaDatasets.OntologyPropertiesLiterals) ++ Set(DBpediaDatasets.OntologyPropertiesGeo)
@@ -51,11 +53,23 @@ class RMLExtractor(
     {
       case templateNode : TemplateNode =>
       {
+        /*
         rmlMappingWrapper.getTriplesMap(templateNode.title.decoded) match {
           case Some(triplesMap) =>
             rmlProcessorRunner.process(templateNode, triplesMap, subjectUri, context)
           case None => Seq.empty
         }
+        */
+        val templateTitle = "Mapping_en:" + templateNode.title.encoded.toString
+        if (context.rmlMap.contains(templateTitle)) {
+          val result = rmlProcessorRunner.process(templateNode, templateTitle, subjectUri, context)
+          result
+        } else {
+          Seq.empty
+        }
+
+
+
       }
       case _ => Seq.empty
     }

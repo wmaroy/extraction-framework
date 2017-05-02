@@ -117,13 +117,13 @@ class ConfigLoader(config: Config)
             private val _rmlMappings = {
 
               val pathToRml = config.rmlMappingsPath
-              RMLParser.parseFromFile(pathToRml)
+              RMLParser.parseFromDir(pathToRml)
 
             }
 
             //private val _rmlMappings = null
 
-            def rmlMappings : RMLMapping = _rmlMappings
+            def rmlMap : Map[String,RMLMapping] = _rmlMappings
 
 
           private val _disambiguations =

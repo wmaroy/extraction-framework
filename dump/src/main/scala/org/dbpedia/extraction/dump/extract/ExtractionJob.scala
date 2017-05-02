@@ -8,6 +8,7 @@ import org.dbpedia.extraction.sources.{Source, WikiPage}
 import org.dbpedia.extraction.util.SimpleWorkers
 import org.dbpedia.extraction.wikiparser.Namespace
 import org.dbpedia.util.Exceptions
+import org.slf4j.LoggerFactory
 
 /**
  * Executes a extraction.
@@ -41,6 +42,7 @@ class ExtractionJob(extractor: WikiPageExtractor, source: Source, namespaces: Se
   
   def run(): Unit =
   {
+
     progress.start()
     
     destination.open()

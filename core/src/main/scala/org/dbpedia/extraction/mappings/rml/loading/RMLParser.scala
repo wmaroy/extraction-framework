@@ -39,6 +39,8 @@ object RMLParser {
     * @return
     */
   def parseFromDir(pathToDir : String) : Map[String, RMLMapping] = {
+    if(pathToDir == null) return Map()
+
     val dir = new File(pathToDir)
     val files = dir.listFiles
                     .filter(_.isFile)

@@ -1,10 +1,12 @@
 package org.dbpedia.extraction.server.resources.rml.mappings
 
+import com.sun.org.apache.xerces.internal.util.URI
 import org.dbpedia.extraction.mappings._
-import org.dbpedia.extraction.ontology.RdfNamespace
+import org.dbpedia.extraction.ontology.{OntologyClass, RdfNamespace}
 import org.dbpedia.extraction.server.resources.rml.dbf.DbfFunction
 import org.dbpedia.extraction.server.resources.rml.model.RMLModel
 import org.dbpedia.extraction.server.resources.rml.model.rmlresources._
+
 import scala.language.reflectiveCalls
 
 /**
@@ -31,14 +33,16 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
       firstConditionMapping.templateProperty + "_" + firstConditionMapping.operator + "_" + firstConditionMapping.value)
     val mapToClassPom = rmlModel.triplesMap.addConditionalPredicateObjectMap(mapToClassPomUri)
     mapToClassPom.addDCTermsType(new RMLLiteral("conditionalMapping"))
+
     mapToClassPom.addPredicate(new RMLUri(RdfNamespace.RDF.namespace + "type"))
-    //TODO: add the related classes as well!
     val mapToClassOmUri = mapToClassPomUri.extend("/ObjectMap")
     val mapToClassOm = mapToClassPom.addObjectMap(mapToClassOmUri)
-
     mapToClassOm.addConstant(new RMLUri(firstTemplateMapping.mapToClass.uri))
-    val conditionFunctionTermMap = addEqualCondition(firstConditionMapping, mapToClassPom)
 
+    // adds the related classes of this condition
+    addRelatedClassesToOM(mapToClassOm, firstTemplateMapping.mapToClass)
+
+    val conditionFunctionTermMap = addEqualCondition(firstConditionMapping, mapToClassPom)
 
     //add predicate object maps
     val rmlMapper = new RMLModelMapper(rmlModel)
@@ -73,8 +77,10 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     val mapToClassPomUri = new RMLUri(predicateObjectMap.resource.getURI).extend("/" + index)
     val mapToClassPom = predicateObjectMap.addFallbackMap(mapToClassPomUri)
     mapToClassPom.addPredicate(new RMLUri(RdfNamespace.RDF.namespace + "type"))
-    //TODO: add the related classes as well!
-    mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
+    val objectMap = mapToClassPom.addObjectMap(mapToClassPom.uri.extend("/ObjectMap")).addConstant(new RMLUri(templateMapping.mapToClass.uri))
+
+    // adds all the related classes for this condition
+    addRelatedClassesToOM(objectMap, templateMapping.mapToClass)
 
     val conditionFunctionTermMap = addEqualCondition(condition, mapToClassPom)
     val state = new MappingState
@@ -105,7 +111,6 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
   private def defineSubjectMap() =
   {
     rmlModel.subjectMap.addTemplate(rmlModel.rmlFactory.createRMLLiteral("http://en.dbpedia.org/resource/{wikititle}"))
-    addExtraClassesToSubjectMap(rmlModel.subjectMap)
     rmlModel.subjectMap.addIRITermType()
   }
 
@@ -171,6 +176,18 @@ class ConditionalRMLMapper(rmlModel: RMLModel, mapping: ConditionalMapping) {
     for(cls <- relatedClasses) {
       subjectMap.addClass(new RMLUri(cls.uri))
     }
+  }
+
+  /**
+    * Adds related classes of an ontology class to a pom
+    * @param om
+    * @param mapToClass
+    */
+  private def addRelatedClassesToOM(om : RMLObjectMap, mapToClass : OntologyClass) =
+  {
+    mapToClass.relatedClasses.foreach(relatedClass => {
+      om.addConstant(new RMLUri(relatedClass.uri))
+    })
   }
 
 }

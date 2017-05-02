@@ -8,8 +8,7 @@ import org.apache.jena.util.URIref
 class RMLUri(uri: String) {
 
   override def toString = {
-    encode(uri)
-
+    RMLUri.encode(uri)
   }
 
   // returns a copy with an extended uri
@@ -18,9 +17,10 @@ class RMLUri(uri: String) {
     new RMLUri(uri + extension)
   }
 
-  private def encode(s : String) : String =
+}
+object RMLUri {
+  def encode(s : String) : String =
   {
-    URIref.encode(s)
+    URIref.encode(s).replace(">", "%3E")
   }
-
 }

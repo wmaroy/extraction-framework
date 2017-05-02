@@ -128,8 +128,11 @@ class Extraction(@PathParam("lang") langCode : String)
         // See https://github.com/dbpedia/extraction-framework/issues/144
         // We should mimic the extraction framework behavior
         val destination = new DeduplicatingDestination(new WriterDestination(() => writer, formatter))
-        Server.instance.extractor.extract(source, destination, language, customExtraction)
 
+        val start = System.currentTimeMillis()
+        Server.instance.extractor.extract(source, destination, language, customExtraction)
+        val delta = System.currentTimeMillis() - start
+        println("PROCESSING TIME: " + delta + " milliseconds!")
         Response.ok(writer.toString)
           .header(HttpHeaders.CONTENT_TYPE, selectContentType(format)+"; charset=UTF-8" )
           .build()

@@ -44,6 +44,8 @@ object Server
 {
     val logger = Logger.getLogger(getClass.getName)
 
+    //org.apache.log4j.Logger.getRootLogger.setLevel(org.apache.log4j.Level.OFF)
+
     private var _instance: Server = null
     
     def instance = _instance

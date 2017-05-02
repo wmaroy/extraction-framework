@@ -37,7 +37,7 @@ class Config(config: Properties)
 
   val parser = config.getProperty("parser", "simple")
 
-  val rmlMappingsPath = config.getProperty("rmlMappings", "/home/wmaroy/github/extraction-framework/server/src/main/resources/mapping_en_Infobox_country.rml")
+  val rmlMappingsPath = config.getProperty("rmlMappings", null)
 
   /**
    * Local ontology file, downloaded for speed and reproducibility

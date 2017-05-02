@@ -27,9 +27,7 @@ extends PageNodeExtractor
   override def extract(page : PageNode, subjectUri : String, pageContext : PageContext) : Seq[Quad] =
   {
     if(page.title.namespace != Namespace.Main && !ExtractorUtils.titleContainsCommonsMetadata(page.title)) return Seq.empty
-
     val graph = extractNode(page, subjectUri, pageContext)
-
     if (graph.isEmpty) Seq.empty
     else splitInferredFromDirectTypes(graph, page, subjectUri)
   }

@@ -210,7 +210,7 @@ abstract class ExtractionManager(
             val mappings = self.mappings(lang);
             val redirects = self.redirects.getOrElse(lang, new Redirects(Map()))
             val disambiguations = self.disambiguations
-            val rmlMappings = RMLParser.parseFromFile(pathToRml)
+            val rmlMap = RMLParser.parseFromDir(pathToRml)
       }
     }
 
