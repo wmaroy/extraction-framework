@@ -69,6 +69,7 @@
     </build>
 
     <dependencies>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
@@ -79,6 +80,12 @@
                     <artifactId>xz</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>be.ugent.mmlab.rml</groupId>
+            <artifactId>RML-Mapper</artifactId>
+            <version>1.1</version>
         </dependency>
 
         <dependency>

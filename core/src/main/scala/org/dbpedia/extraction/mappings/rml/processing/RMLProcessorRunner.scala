@@ -36,7 +36,6 @@ class RMLProcessorRunner(mappings: Map[String, RMLMapping]) {
                                                                                                   def ontology: Ontology
                                                                                                   def redirects: Redirects}) : Seq[Quad] = {
 
-
     /**
       *  Setting up the processor
       */
@@ -104,7 +103,7 @@ class RMLProcessorRunner(mappings: Map[String, RMLMapping]) {
       val ontologyProperty = RMLOntologyUtil.loadOntologyPropertyFromIRI(statement.getPredicate.getURI, context)
 
       val quad = if(ontologyProperty != null) {
-        //TODO: check for all mapping datastructures if datatype and mapDataset is calculated like this <- this is not the case
+
         //TODO: Datasets need to be applied correctly, solution need to be found!
 
         val datatype = try {

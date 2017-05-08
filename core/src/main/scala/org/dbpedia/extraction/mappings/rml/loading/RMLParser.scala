@@ -26,7 +26,7 @@ object RMLParser {
       val path = convertToAbsolutePath(pathToRmlDocument)
       val repo = retriever.getMappingDoc(path, RDFFormat.TURTLE)
       val preparedRepo = rmlMappingFactory.prepareExtractRMLMapping(repo)
-      println("loading rml mappings...")
+      println("Loading " + path)
       val rmlMapping = rmlMappingFactory.extractRMLMapping(preparedRepo)
 
       rmlMapping

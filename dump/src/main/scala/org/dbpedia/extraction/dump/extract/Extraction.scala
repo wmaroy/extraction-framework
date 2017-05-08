@@ -3,6 +3,7 @@ package org.dbpedia.extraction.dump.extract
 import org.dbpedia.extraction.util.ProxyAuthenticator
 import java.net.Authenticator
 
+import be.ugent.mmlab.rml.logicalsourcehandler.termmap.AbstractTermMapProcessor
 import org.apache.log4j.{Level, Logger}
 import org.dbpedia.extraction.util.ConfigUtils
 
@@ -17,7 +18,7 @@ object Extraction {
 
   def main(args: Array[String]): Unit = {
 
-    Logger.getRootLogger.setLevel(Level.DEBUG)
+    Logger.getRootLogger.setLevel(Level.OFF)
 
     require(args != null && args.length >= 1 && args(0).nonEmpty, "missing required argument: config file name")
     Authenticator.setDefault(new ProxyAuthenticator())
@@ -32,6 +33,9 @@ object Extraction {
     val jobs = new ConfigLoader(new Config(config)).getExtractionJobs()
 
     //Execute the extraction jobs one by one
-    for (job <- jobs) job.run()
+    for (job <- jobs) {
+      val size = jobs.size
+      job.run()
+    }
   }
 }

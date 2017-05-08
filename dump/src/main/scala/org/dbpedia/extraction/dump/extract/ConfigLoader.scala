@@ -117,7 +117,11 @@ class ConfigLoader(config: Config)
             private val _rmlMappings = {
 
               val pathToRml = config.rmlMappingsPath
-              RMLParser.parseFromDir(pathToRml)
+              val start = System.currentTimeMillis()
+              val result = RMLParser.parseFromDir(pathToRml)
+              val delta = System.currentTimeMillis() - start
+              println("LOADING MAPPINGS TAKES " + delta + " MS")
+              result
 
             }
 

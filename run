@@ -42,5 +42,5 @@ then
   echo $PID
   mvn $MAVEN_DEBUG -B scala:run "-Dlauncher=$LAUNCHER" "-DaddArgs=$ADD_ARGS" &> "/proc/$PID/fd/0"
 else
-  mvn $MAVEN_DEBUG $BATCH scala:run "-Dlauncher=$LAUNCHER" "-DaddArgs=$ADD_ARGS"
+  mvn --quiet $BATCH scala:run "-Dlauncher=$LAUNCHER" "-DaddArgs=$ADD_ARGS"
 fi
