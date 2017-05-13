@@ -5,6 +5,7 @@ import java.net.Authenticator
 
 import be.ugent.mmlab.rml.logicalsourcehandler.termmap.AbstractTermMapProcessor
 import org.apache.log4j.{Level, Logger}
+import org.dbpedia.extraction.mappings.rml.processing.RMLProcessorRunner
 import org.dbpedia.extraction.util.ConfigUtils
 
 /**
@@ -37,5 +38,11 @@ object Extraction {
       val size = jobs.size
       job.run()
     }
+
+    RMLProcessorRunner.printResult()
+    println
+    println("Flush count: " + RMLProcessorRunner.flushCount)
+
+
   }
 }

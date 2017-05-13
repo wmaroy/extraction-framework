@@ -4,6 +4,7 @@ import java.util.logging.{Level, Logger}
 
 import org.dbpedia.extraction.destinations.Destination
 import org.dbpedia.extraction.mappings.WikiPageExtractor
+import org.dbpedia.extraction.mappings.rml.processing.RMLProcessorRunner
 import org.dbpedia.extraction.sources.{Source, WikiPage}
 import org.dbpedia.extraction.util.SimpleWorkers
 import org.dbpedia.extraction.wikiparser.Namespace
@@ -54,7 +55,12 @@ class ExtractionJob(extractor: WikiPageExtractor, source: Source, namespaces: Se
 
     
     workers.stop()
-    
+
+    // remaining
+    val start = System.currentTimeMillis()
+    destination.write(RMLProcessorRunner.flushRemaining())
+    val delta = System.currentTimeMillis() - start
+    println("Flushing took " + delta + " ms")
     destination.close()
     
     progress.end()

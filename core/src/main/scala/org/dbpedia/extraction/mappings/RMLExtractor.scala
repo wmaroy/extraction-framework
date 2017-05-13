@@ -62,7 +62,10 @@ class RMLExtractor(
         */
         val templateTitle = "Mapping_en:" + templateNode.title.encoded.toString
         if (context.rmlMap.contains(templateTitle)) {
+          val start = System.nanoTime()
           val result = rmlProcessorRunner.process(templateNode, templateTitle, subjectUri, context)
+          val delta = System.nanoTime() - start
+          RMLProcessorRunner.ProcessorRunnerCounter += delta
           result
         } else {
           Seq.empty
