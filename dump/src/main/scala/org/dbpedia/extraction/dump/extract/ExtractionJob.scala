@@ -58,7 +58,6 @@ class ExtractionJob(extractor: WikiPageExtractor, source: Source, namespaces: Se
 
     // remaining
     val start = System.currentTimeMillis()
-    destination.write(RMLProcessorRunner.flushRemaining())
     val delta = System.currentTimeMillis() - start
     println("Flushing took " + delta + " ms")
     destination.close()
